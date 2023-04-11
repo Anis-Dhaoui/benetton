@@ -3,6 +3,7 @@ import * as mongoose from 'mongoose';
 import { STATUS } from '../enum/status.enum';
 import { OS } from "../enum/os.enum";
 import { TYPE } from "../enum/type.enum";
+import { IsMACAddress } from "class-validator";
 
 @Schema({ timestamps: true })
 export class Computer {
@@ -12,7 +13,8 @@ export class Computer {
     @Prop()
     model: string;
 
-    @Prop()
+    @Prop({unique: true})
+    @IsMACAddress()
     mac: string;
 
     @Prop({default: OS.WIN10, enum: OS})
@@ -32,4 +34,4 @@ export class Computer {
 }
 export const ComputerSchema = SchemaFactory.createForClass(Computer);
 // Condition for usedBy and mac (together) must be unique 
-ComputerSchema.index({ usedBy: 1, mac: 1 }, { unique: true });
+// ComputerSchema.index({ usedBy: 1, mac: 1 }, { unique: true });

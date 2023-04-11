@@ -12,7 +12,6 @@ export class ComputersController {
 
     try {
       const newCmp = await this.computersService.create(createComputerDto);
-      Logger.error(newCmp)
       return(
         res.status(HttpStatus.CREATED).json({
           message: 'Computer has been created successfully',
@@ -23,7 +22,7 @@ export class ComputersController {
       if (err && err.code == 11000) {
         return res.status(HttpStatus.CONFLICT).json({
           statusCode: 409,
-          message: `Error: The same computer is already exists with and used by ${err.keyValue.usedBy}`,
+          message: `Error: This MAC address belongs to another computer!`,
           error: 'Conflict'
         })
       }
