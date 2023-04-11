@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import * as mongoose from 'mongoose';
-// import { User } from "src/users/schema/user.schema";
 import { STATUS } from '../enum/status.enum';
 import { OS } from "../enum/os.enum";
 import { TYPE } from "../enum/type.enum";

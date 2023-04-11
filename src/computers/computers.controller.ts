@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Res, Req, HttpStatus, Logger } from '@nestjs/common';
 import { ComputersService } from './computers.service';
 import { CreateComputerDto } from './dto/create-computer.dto';
 import { UpdateComputerDto } from './dto/update-computer.dto';
@@ -8,27 +8,51 @@ export class ComputersController {
   constructor(private readonly computersService: ComputersService) {}
 
   @Post()
-  create(@Body() createComputerDto: CreateComputerDto) {
-    return this.computersService.create(createComputerDto);
+  async create(@Res() res, @Req() req, @Body() createComputerDto: CreateComputerDto) {
+
+    try {
+      const newCmp = await this.computersService.create(createComputerDto);
+      Logger.error(newCmp)
+      return(
+        res.status(HttpStatus.CREATED).json({
+          message: 'Computer has been created successfully',
+          computer: newCmp
+        }) 
+      )
+    } catch (err) {
+      if (err && err.code == 11000) {
+        return res.status(HttpStatus.CONFLICT).json({
+          statusCode: 409,
+          message: `Error: The same computer is already exists with and used by ${err.keyValue.usedBy}`,
+          error: 'Conflict'
+        })
+      }
+      return res.status(HttpStatus.BAD_REQUEST).json({
+        statusCode: 400,
+        message: 'Error: Quote could not be added!',
+        error: 'Bad Request'
+      });
+    }
   }
 
-  @Get()
-  findAll() {
-    return this.computersService.findAll();
-  }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.computersService.findOne(+id);
-  }
+  // @Get()
+  // findAll() {
+  //   return this.computersService.findAll();
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateComputerDto: UpdateComputerDto) {
-    return this.computersService.update(+id, updateComputerDto);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.computersService.findOne(+id);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.computersService.remove(+id);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateComputerDto: UpdateComputerDto) {
+  //   return this.computersService.update(+id, updateComputerDto);
+  // }
+
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.computersService.remove(+id);
+  // }
 }
