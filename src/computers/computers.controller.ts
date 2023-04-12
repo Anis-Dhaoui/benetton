@@ -39,17 +39,22 @@ export class ComputersController {
     return await this.computersService.findAll();
   }
 
-  @Put(':computerId')
-  async update(@Param('computerId') computerId: string, @Res() res, @Body() updateComputerDto: UpdateComputerDto) {
+  @Put(':cmpId')
+  async update(@Res() res, @Param('cmpId') cmpId: string, @Body() UpdateComputerDto: UpdateComputerDto) {
     try {
-      const computer = await this.computersService.update(computerId, updateComputerDto);
+      const cmp = await this.computersService.update(cmpId, UpdateComputerDto);
       return res.status(HttpStatus.OK).json({
         message: 'Computer updated',
-        computer,
+        cmp,
       });
     } catch (err) {
-      // return res.status(err.status).json(err.response);
-      Logger.warn(err)
+      if(err.name == 'CastError'){
+        return res.status(HttpStatus.NOT_FOUND).json({
+          statusCode: 404,
+          error: 'Not Found'
+        });
+      }
+      return res.json(err.response);
     }
   }
 
