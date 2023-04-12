@@ -39,6 +39,24 @@ export class ComputersController {
     return await this.computersService.findAll();
   }
 
+  @Get(':cmpId')
+  async findOne(@Param('cmpId') cmpId: string, @Res() res, @Req() req) {
+    try {
+      const cmp = await this.computersService.findOne(cmpId);
+      return res.status(HttpStatus.OK).json({
+        cmp
+      })
+    } catch (err) {
+      if(err.name == 'CastError'){
+        return res.status(HttpStatus.NOT_FOUND).json({
+          statusCode: 404,
+          error: 'Not Found'
+        });
+      }
+      return res.json(err.response);
+    }
+  }
+
   @Put(':cmpId')
   async update(@Res() res, @Param('cmpId') cmpId: string, @Body() UpdateComputerDto: UpdateComputerDto) {
     try {
@@ -57,11 +75,6 @@ export class ComputersController {
       return res.json(err.response);
     }
   }
-
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.computersService.findOne(+id);
-  // }
 
   @Delete(':cmpId')
   async remove(@Res() res, @Param('cmpId') cmpId: string) {

@@ -24,6 +24,14 @@ export class ComputersService {
     return computers;
   }
 
+  async findOne(cmpId: string): Promise<IComputer>{
+    const cmp = await this.computerModel.findById(cmpId)
+    if(!cmp){
+      throw new NotFoundException('No data found');
+    }
+    return cmp;
+  }
+
   async update(computerId: string, updateComputerDto: UpdateComputerDto) {
     const cmp = await this.computerModel.findByIdAndUpdate(computerId, updateComputerDto, { new: true });
     if (!cmp) {
@@ -31,10 +39,6 @@ export class ComputersService {
     }
     return cmp;
   }
-
-  // findOne(id: number) {
-  //   return `This action returns a #${id} computer`;
-  // }
 
   async remove(cmpId: string): Promise<IComputer> {
     const deletedComputer = await this.computerModel.findByIdAndDelete(cmpId);
