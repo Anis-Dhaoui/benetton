@@ -35,10 +35,10 @@ export class ComputersController {
   }
 
 
-  // @Get()
-  // findAll() {
-  //   return this.computersService.findAll();
-  // }
+  @Get()
+  findAll() {
+    return this.computersService.findAll();
+  }
 
   // @Get(':id')
   // findOne(@Param('id') id: string) {

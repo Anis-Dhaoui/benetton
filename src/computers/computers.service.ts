@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateComputerDto } from './dto/create-computer.dto';
 import { UpdateComputerDto } from './dto/update-computer.dto';
 import { IComputer } from './entities/computer.entity';
@@ -15,9 +15,15 @@ export class ComputersService {
   }
 
 
-  // findAll() {
-  //   return `This action returns all computers`;
-  // }
+  async findAll() {
+    const computers = await this.computerModel.find().exec();
+
+    if (!computers || computers.length == 0) {
+      throw new NotFoundException('No data found!');
+    }
+
+    return computers;
+  }
 
   // findOne(id: number) {
   //   return `This action returns a #${id} computer`;
