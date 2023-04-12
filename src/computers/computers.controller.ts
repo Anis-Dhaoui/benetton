@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Res, Req, HttpStatus, Logger } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, Res, Req, HttpStatus, Logger } from '@nestjs/common';
 import { ComputersService } from './computers.service';
 import { CreateComputerDto } from './dto/create-computer.dto';
 import { UpdateComputerDto } from './dto/update-computer.dto';
@@ -34,20 +34,28 @@ export class ComputersController {
     }
   }
 
-
   @Get()
-  findAll() {
-    return this.computersService.findAll();
+  async findAll() {
+    return await this.computersService.findAll();
+  }
+
+  @Put(':computerId')
+  async update(@Param('computerId') computerId: string, @Res() res, @Body() updateComputerDto: UpdateComputerDto) {
+    try {
+      const computer = await this.computersService.update(computerId, updateComputerDto);
+      return res.status(HttpStatus.OK).json({
+        message: 'Computer updated',
+        computer,
+      });
+    } catch (err) {
+      // return res.status(err.status).json(err.response);
+      Logger.warn(err)
+    }
   }
 
   // @Get(':id')
   // findOne(@Param('id') id: string) {
   //   return this.computersService.findOne(+id);
-  // }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateComputerDto: UpdateComputerDto) {
-  //   return this.computersService.update(+id, updateComputerDto);
   // }
 
   // @Delete(':id')

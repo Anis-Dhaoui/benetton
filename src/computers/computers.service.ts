@@ -15,7 +15,7 @@ export class ComputersService {
   }
 
 
-  async findAll() {
+  async findAll(): Promise<IComputer[]> {
     const computers = await this.computerModel.find().exec();
 
     if (!computers || computers.length == 0) {
@@ -25,12 +25,16 @@ export class ComputersService {
     return computers;
   }
 
+  async update(computerId: string, updateComputerDto: UpdateComputerDto) {
+    const computer = await this.computerModel.findByIdAndUpdate(computerId, updateComputerDto, {new: true});
+    console.log(computer)
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+      console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+      throw new NotFoundException("This computer is not found");
+  }
+
   // findOne(id: number) {
   //   return `This action returns a #${id} computer`;
-  // }
-
-  // update(id: number, updateComputerDto: UpdateComputerDto) {
-  //   return `This action updates a #${id} computer`;
   // }
 
   // remove(id: number) {
