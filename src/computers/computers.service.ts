@@ -36,7 +36,11 @@ export class ComputersService {
   //   return `This action returns a #${id} computer`;
   // }
 
-  // remove(id: number) {
-  //   return `This action removes a #${id} computer`;
-  // }
+  async remove(cmpId: string): Promise<IComputer> {
+    const deletedComputer = await this.computerModel.findByIdAndDelete(cmpId);
+    if (!deletedComputer) {
+      throw new NotFoundException(`Computer #${cmpId} not found`);
+    }
+    return deletedComputer;
+  }
 }

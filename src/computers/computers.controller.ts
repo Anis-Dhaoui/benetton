@@ -63,8 +63,22 @@ export class ComputersController {
   //   return this.computersService.findOne(+id);
   // }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.computersService.remove(+id);
-  // }
+  @Delete(':cmpId')
+  async remove(@Res() res, @Param('cmpId') cmpId: string) {
+    try {
+      const deletedcomputer = await this.computersService.remove(cmpId);
+      return res.status(HttpStatus.OK).json({
+        message: 'Computer deleted',
+        deletedcomputer,
+      });
+    } catch (err) {
+      if(err.name == 'CastError'){
+        return res.status(HttpStatus.NOT_FOUND).json({
+          statusCode: 404,
+          error: 'Not Found'
+        });
+      }
+      return res.status(err.status).json(err.response);
+    }
+  }
 }
