@@ -1,4 +1,4 @@
-import { ArrayMinSize, IsArray, IsEmpty, IsEnum, IsMACAddress, IsNotEmpty, IsString, MaxLength, MinLength } from "class-validator";
+import { ArrayMinSize, IsArray, IsEmpty, IsEnum, IsNotEmpty, IsString, MaxLength, MinLength } from "class-validator";
 import { STATUS } from "../enum/status.enum";
 import { OS } from "../enum/os.enum";
 import { TYPE } from "../enum/type.enum";
