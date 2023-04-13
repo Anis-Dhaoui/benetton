@@ -16,11 +16,9 @@ export class ComputersService {
 
   async findAll(): Promise<IComputer[]> {
     const computers = await this.computerModel.find().exec();
-
     if (!computers || computers.length == 0) {
       throw new NotFoundException('No data found!');
     }
-
     return computers;
   }
 

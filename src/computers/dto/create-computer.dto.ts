@@ -2,8 +2,12 @@ import { ArrayMinSize, IsArray, IsEmpty, IsEnum, IsMACAddress, IsNotEmpty, IsStr
 import { STATUS } from "../enum/status.enum";
 import { OS } from "../enum/os.enum";
 import { TYPE } from "../enum/type.enum";
+import { SOFTWARES } from "../enum/softwares.enum";
 
 export class CreateComputerDto {
+    @IsString()
+    readonly ref: string;
+
     @IsString()
     @MaxLength(30)
     @IsNotEmpty()
@@ -13,10 +17,6 @@ export class CreateComputerDto {
     @MaxLength(30)
     @MinLength(3)
     readonly model: string;
-
-    @IsString()
-    @IsMACAddress()
-    readonly mac;
 
     @IsEnum(OS)
     readonly os: string;
@@ -37,4 +37,9 @@ export class CreateComputerDto {
     @MinLength(5)
     @IsNotEmpty()
     readonly usedBy: string;
+
+    @IsArray()
+    @IsEnum(SOFTWARES, { each: true })
+    @ArrayMinSize(1)
+    readonly softwares: SOFTWARES[];
 }

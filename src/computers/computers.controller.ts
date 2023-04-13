@@ -14,7 +14,7 @@ export class ComputersController {
       const newCmp = await this.computersService.create(createComputerDto);
       return(
         res.status(HttpStatus.CREATED).json({
-          message: 'Computer has been created successfully',
+          message: 'Computer created',
           computer: newCmp
         }) 
       )
@@ -22,14 +22,14 @@ export class ComputersController {
       if (err && err.code == 11000) {
         return res.status(HttpStatus.CONFLICT).json({
           statusCode: 409,
-          message: `Error: This MAC address belongs to another computer!`,
+          message: `Computer is already exists!`,
           error: 'Conflict'
         })
       }
       return res.status(HttpStatus.BAD_REQUEST).json({
-        statusCode: 400,
-        message: 'Error: Quote could not be added!',
-        error: 'Bad Request'
+        statusCode: err.statusCode,
+        message: err.message,
+        error: err.status
       });
     }
   }

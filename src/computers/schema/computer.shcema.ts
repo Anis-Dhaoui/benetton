@@ -3,35 +3,40 @@ import * as mongoose from 'mongoose';
 import { STATUS } from '../enum/status.enum';
 import { OS } from "../enum/os.enum";
 import { TYPE } from "../enum/type.enum";
-import { IsMACAddress } from "class-validator";
+import { SOFTWARES } from "../enum/softwares.enum";
 
 @Schema({ timestamps: true })
 export class Computer {
-    @Prop()
+    @Prop({
+        required: true,
+        unique: true,
+        type: String,
+      })
+    ref: string;
+
+    @Prop({ required: true })
     brandName: string;
     
-    @Prop()
+    @Prop({ required: true })
     model: string;
 
-    @Prop({unique: true})
-    @IsMACAddress()
-    mac: string;
-
-    @Prop({default: OS.WIN10, enum: OS})
+    @Prop({default: OS.WIN10, enum: OS, required: true})
     os: string;
 
-    @Prop({default: TYPE.DESKTOP, type: String, enum: TYPE})
+    @Prop({default: TYPE.DESKTOP, type: String, enum: TYPE, required: true})
     type;
 
-    @Prop({default: STATUS.RUNNING, type: String, enum: STATUS})
+    @Prop({default: STATUS.RUNNING, type: String, enum: STATUS, required: true})
     status;
 
-    @Prop()
+    @Prop({ required: true })
     sessions: string[];
 
-    @Prop()
+    @Prop({ required: true })
     usedBy: string;
+
+    @Prop({ required: true })
+    softwares: SOFTWARES[]
 }
 export const ComputerSchema = SchemaFactory.createForClass(Computer);
-// Condition for usedBy and mac (together) must be unique 
-// ComputerSchema.index({ usedBy: 1, mac: 1 }, { unique: true });
+// ComputerSchema.index({ ref: 1 }, { unique: true });
