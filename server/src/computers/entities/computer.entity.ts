@@ -9,6 +9,7 @@ export interface IComputer extends Document {
     readonly brandName: string;
     readonly model: string;
     readonly type: TYPE;
+    readonly usedBy: string;
     readonly status: STATUS;
     readonly sessions: string[];
     readonly softwares: SOFTWARES[];

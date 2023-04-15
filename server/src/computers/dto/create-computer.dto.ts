@@ -24,6 +24,12 @@ export class CreateComputerDto {
     @IsEnum(TYPE)
     readonly type : string;
 
+    @IsString()
+    @MaxLength(50)
+    @MinLength(5)
+    @IsNotEmpty()
+    readonly usedBy: string;
+    
     @IsEnum(STATUS)
     readonly status: string;
 
@@ -31,12 +37,6 @@ export class CreateComputerDto {
     @IsString({each: true})
     @ArrayMinSize(1)
     readonly sessions: string[];
-
-    @IsString()
-    @MaxLength(50)
-    @MinLength(5)
-    @IsNotEmpty()
-    readonly usedBy: string;
 
     @IsArray()
     @IsEnum(SOFTWARES, { each: true })

@@ -26,14 +26,14 @@ export class Computer {
     @Prop({default: TYPE.DESKTOP, type: String, enum: TYPE, required: true})
     type;
 
+    @Prop({ required: true })
+    usedBy: string;
+    
     @Prop({default: STATUS.RUNNING, type: String, enum: STATUS, required: true})
     status;
 
     @Prop({ required: true })
     sessions: string[];
-
-    @Prop({ required: true })
-    usedBy: string;
 
     @Prop({ required: true })
     softwares: SOFTWARES[]
