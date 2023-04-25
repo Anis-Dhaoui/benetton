@@ -19,6 +19,7 @@ export const fetchComputers = () => {
             });
 
         } catch (err: any) {
+            console.log(err)
             dispatch({
                 type: ComputerActionsTypes.COMPUTER_FAILED,
                 payload: err.message
