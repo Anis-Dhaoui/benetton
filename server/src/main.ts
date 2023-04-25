@@ -8,6 +8,7 @@ async function bootstrap() {
   
   //Without the following line DTO will never work
   app.useGlobalPipes(new ValidationPipe());
+  app.enableCors();
   await app.listen(3000);
 }
 bootstrap();
