@@ -40,7 +40,6 @@ function RenderComputers() {
       </>
     )
   }
-
 }
 
 export default RenderComputers
