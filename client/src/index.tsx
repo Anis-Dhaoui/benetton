@@ -21,11 +21,6 @@ import './assets/js/plugins/chartjs.min.js';
 
 
 
-
-
-
-
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function sidebarMenu() {
+export default function SideNav() {
   return (
     <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div className="sidenav-header">
