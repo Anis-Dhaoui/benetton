@@ -1,5 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Plugins.js';
+import { darkMode } from './Plugins.js';
+
+const handleDarkMode = (el: any) => {
+    darkMode(el)
+}
+
+// useEffect(() => {
+
+// }, [])
 
 function Navbar() {
     return (
@@ -47,7 +56,7 @@ function Navbar() {
                             </a>
                         </li>
 
-{/* NOTIFICATION DROPDOWN MENU */}
+                        {/* NOTIFICATION DROPDOWN MENU */}
                         <li className="nav-item dropdown pe-2 d-flex align-items-center">
                             <a href="javascript:;" className="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -96,7 +105,7 @@ function Navbar() {
                             </ul>
 
 
-{/* CONFIGURATION RIGHT SIDE MENU */}
+                            {/* CONFIGURATION RIGHT SIDE MENU */}
 
                             <div className="fixed-plugin">
                                 <a className="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -132,7 +141,7 @@ function Navbar() {
                                         <div className="mt-2 d-flex">
                                             <h6 className="mb-0">Light / Dark</h6>
                                             <div className="form-check form-switch ps-0 ms-auto my-auto">
-                                                {/* <input className="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onClick="darkMode(this)" /> */}
+                                                <input className="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onClick={handleDarkMode} />
                                             </div>
                                         </div>
                                         <hr className="horizontal dark my-sm-4" />
@@ -147,4 +156,4 @@ function Navbar() {
     )
 }
 
-export default Navbar
+export default Navbar;

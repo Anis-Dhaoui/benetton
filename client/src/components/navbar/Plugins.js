@@ -1,5 +1,7 @@
 // Light Mode / Dark Mode
-function darkMode(el) {
+export const darkMode = (el) => {
+    console.log("handleDarkMode invoked...");
+    console.log(el.target.checked)
     const body = document.getElementsByTagName('body')[0];
     const hr = document.querySelectorAll('div:not(.sidenav) > hr');
     const hr_card = document.querySelectorAll('div:not(.bg-gradient-dark) hr');
@@ -20,7 +22,7 @@ function darkMode(el) {
 
     const svg = document.querySelectorAll('g');
 
-    if (!el.getAttribute("checked")) {
+    if (el.target.checked) {
         body.classList.add('dark-version');
         for (var i = 0; i < hr.length; i++) {
             if (hr[i].classList.contains('dark')) {
@@ -84,7 +86,7 @@ function darkMode(el) {
         for (var i = 0; i < card_border.length; i++) {
             card_border[i].classList.add('border-dark');
         }
-        el.setAttribute("checked", "true");
+        // el.setAttribute("checked", "true");
     } else {
         body.classList.remove('dark-version');
         for (var i = 0; i < hr.length; i++) {
@@ -150,11 +152,13 @@ function darkMode(el) {
         for (var i = 0; i < card_border_dark.length; i++) {
             card_border_dark[i].classList.remove('border-dark');
         }
-        el.removeAttribute("checked");
+        // el.removeAttribute("checked");
     }
+
 };
 
-document.onreadystatechange = () =>{
+// CONFIGURATION RIGHT SIDE MENU
+document.onreadystatechange = () => {
 
     if (document.querySelector('.fixed-plugin')) {
 
@@ -166,7 +170,7 @@ document.onreadystatechange = () =>{
         var fixedPluginCloseButton = document.querySelectorAll('.fixed-plugin-close-button');
         var navbar = document.getElementById('navbarBlur');
         var buttonNavbarFixed = document.getElementById('navbarFixed');
-    
+
         if (fixedPluginButton) {
             fixedPluginButton.onclick = function () {
                 if (!fixedPlugin.classList.contains('show')) {
@@ -176,7 +180,7 @@ document.onreadystatechange = () =>{
                 }
             }
         }
-    
+
         if (fixedPluginButtonNav) {
             fixedPluginButtonNav.onclick = function () {
                 if (!fixedPlugin.classList.contains('show')) {
@@ -186,29 +190,26 @@ document.onreadystatechange = () =>{
                 }
             }
         }
-    
-    
+
+
         fixedPluginCloseButton.forEach(function (el) {
             el.onclick = function () {
                 fixedPlugin.classList.remove('show');
             }
         })
-    
+
         document.querySelector('body').onclick = function (e) {
             if (e.target != fixedPluginButton && e.target != fixedPluginButtonNav && e.target.closest('.fixed-plugin .card') != fixedPluginCard) {
                 fixedPlugin.classList.remove('show');
             }
         }
-    
+
         if (navbar) {
             if (navbar.getAttribute('data-scroll') == 'true' && buttonNavbarFixed) {
                 buttonNavbarFixed.setAttribute("checked", "true");
             }
         }
-    
+
     }
 
 }
-
-// Fixed Plugin
-console.log(document.querySelector('.fixed-plugin'))
