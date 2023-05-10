@@ -1,0 +1,6 @@
+.fixed-navbar{
+    background-color: #4141493d;
+    position: fixed !important;
+    top: 0 !important;
+    width: -webkit-fill-available !important;
+}
