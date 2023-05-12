@@ -10,7 +10,8 @@ function Navbar() {
 
     useEffect(() => {
         localStorage.setItem('navbarStatus', JSON.stringify(isNavbarFixed));
-      }, [isNavbarFixed]);
+        navbarFixed(isNavbarFixed);
+    }, [isNavbarFixed]);
 
     const handleFixedNavbar = (el: any) => {
         setisNavbarFixed(!isNavbarFixed);

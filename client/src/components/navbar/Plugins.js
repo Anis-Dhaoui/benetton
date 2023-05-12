@@ -215,14 +215,11 @@ export const darkMode = (el) => {
 };
 
 //  FIXED NAVBAR
-export function navbarFixed(el) {
-    // console.log(isNavbarFixed)
+export function navbarFixed(isNavbarFixed) {
     const navbar = document.getElementById('navbarBlur');
-    if(el.target.checked){
+    if(isNavbarFixed){
         navbar.classList.add('fixed-navbar');
-        // el.target.checked = true;
     }else{
         navbar.classList.remove('fixed-navbar');
-        // el.target.checked = false;
     }
 };
