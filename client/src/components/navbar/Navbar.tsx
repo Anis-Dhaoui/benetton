@@ -1,22 +1,28 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Plugins.js';
 import './style.css'
 import { darkMode, navbarFixed } from './Plugins.js';
 
-const handleDarkMode = (el: any) => {
-    darkMode(el)
-}
-
-const handleFixedNavbar = (el: any) => {
-    console.log("Fixed Navbar invoked...")
-    navbarFixed(el)
-}
-
-// useEffect(() => {
-
-// }, [])
-
 function Navbar() {
+
+    // useEffect(() => {
+    //     navbarFixed(isNavbarFixed)
+    // }, [])
+
+    const [isNavbarFixed, setisNavbarFixed] = useState(JSON.parse(localStorage.getItem('navbarStatus')!))
+
+    const handleFixedNavbar = (el: any) => {
+        //When fixed navbar button clicked save it to localStorage
+        setisNavbarFixed(!isNavbarFixed);
+        localStorage.setItem('navbarStatus', JSON.stringify(isNavbarFixed));
+
+        // Call the navbarFixed method in Plugins.js file to fix navbar on top
+        navbarFixed(el)
+    }
+
+    const handleDarkMode = (el: any) => {
+        darkMode(el)
+    }
     return (
         <main className="main-content">
             <nav className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
@@ -144,7 +150,7 @@ function Navbar() {
                         <div className="mt-3 d-flex">
                             <h6 className="mb-0">Navbar Fixed</h6>
                             <div className="form-check form-switch ps-0 ms-auto my-auto">
-                                <input className="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onClick={handleFixedNavbar} />
+                                <input className="form-check-input mt-1 ms-auto" onChange={(el) => handleFixedNavbar(el)} checked={JSON.parse(localStorage.getItem('navbarStatus')!)} type="checkbox" id="navbarFixed" />
                             </div>
                         </div>
 
