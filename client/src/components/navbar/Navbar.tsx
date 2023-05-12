@@ -18,9 +18,18 @@ function Navbar() {
     };
     // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN FIXED NAVBAR BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
 
+
+
     // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN FIXED DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
+    const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || false);
+
+    useEffect(() => {
+        localStorage.setItem('darkModeStatus', JSON.stringify(isDarkMode));
+        // darkMode(isDarkMode);
+    }, [isDarkMode]);
+
     const handleDarkMode = (el: any) => {
-        darkMode(el)
+        setisDarkMode(!isDarkMode);
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN FIXED DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
 
@@ -150,7 +159,7 @@ function Navbar() {
                         <div className="mt-3 d-flex">
                             <h6 className="mb-0">Navbar Fixed</h6>
                             <div className="form-check form-switch ps-0 ms-auto my-auto">
-                                <input className="form-check-input mt-1 ms-auto" onChange={(el) => handleFixedNavbar(el)} checked={isNavbarFixed} type="checkbox" id="navbarFixed" />
+                                <input className="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onChange={(el) => handleFixedNavbar(el)} checked={isNavbarFixed} />
                             </div>
                         </div>
 
@@ -158,7 +167,7 @@ function Navbar() {
                         <div className="mt-2 d-flex">
                             <h6 className="mb-0">Light / Dark</h6>
                             <div className="form-check form-switch ps-0 ms-auto my-auto">
-                                <input className="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onClick={handleDarkMode} />
+                                <input className="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onChange={(el) => handleDarkMode(el)} checked={isDarkMode}/>
                             </div>
                         </div>
                         <hr className="horizontal dark my-sm-4" />
