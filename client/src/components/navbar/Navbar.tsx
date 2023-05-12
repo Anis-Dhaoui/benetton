@@ -5,24 +5,24 @@ import { darkMode, navbarFixed } from './Plugins.js';
 
 function Navbar() {
 
-    // useEffect(() => {
-    //     navbarFixed(isNavbarFixed)
-    // }, [])
+    // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN FIXED NAVBAR BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
+    const [isNavbarFixed, setisNavbarFixed] = useState(() => JSON.parse(localStorage.getItem('navbarStatus')!) || false);
 
-    const [isNavbarFixed, setisNavbarFixed] = useState(JSON.parse(localStorage.getItem('navbarStatus')!))
+    useEffect(() => {
+        localStorage.setItem('navbarStatus', JSON.stringify(isNavbarFixed));
+      }, [isNavbarFixed]);
 
     const handleFixedNavbar = (el: any) => {
-        //When fixed navbar button clicked save it to localStorage
         setisNavbarFixed(!isNavbarFixed);
-        localStorage.setItem('navbarStatus', JSON.stringify(isNavbarFixed));
+    };
+    // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN FIXED NAVBAR BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
 
-        // Call the navbarFixed method in Plugins.js file to fix navbar on top
-        navbarFixed(el)
-    }
-
+    // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN FIXED DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
     const handleDarkMode = (el: any) => {
         darkMode(el)
     }
+    // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN FIXED DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
+
     return (
         <main className="main-content">
             <nav className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
@@ -122,7 +122,6 @@ function Navbar() {
                 </div>
             </nav>
 
-
             {/* CONFIGURATION RIGHT SIDE MENU */}
             <div className="fixed-plugin">
                 <a className="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -150,7 +149,7 @@ function Navbar() {
                         <div className="mt-3 d-flex">
                             <h6 className="mb-0">Navbar Fixed</h6>
                             <div className="form-check form-switch ps-0 ms-auto my-auto">
-                                <input className="form-check-input mt-1 ms-auto" onChange={(el) => handleFixedNavbar(el)} checked={JSON.parse(localStorage.getItem('navbarStatus')!)} type="checkbox" id="navbarFixed" />
+                                <input className="form-check-input mt-1 ms-auto" onChange={(el) => handleFixedNavbar(el)} checked={isNavbarFixed} type="checkbox" id="navbarFixed" />
                             </div>
                         </div>
 

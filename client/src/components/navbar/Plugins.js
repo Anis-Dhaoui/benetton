@@ -216,12 +216,13 @@ export const darkMode = (el) => {
 
 //  FIXED NAVBAR
 export function navbarFixed(el) {
+    // console.log(isNavbarFixed)
     const navbar = document.getElementById('navbarBlur');
     if(el.target.checked){
         navbar.classList.add('fixed-navbar');
-        el.target.checked = true;
+        // el.target.checked = true;
     }else{
         navbar.classList.remove('fixed-navbar');
-        el.target.checked = false;
+        // el.target.checked = false;
     }
 };
