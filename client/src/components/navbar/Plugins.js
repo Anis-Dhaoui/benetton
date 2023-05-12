@@ -33,11 +33,11 @@ document.onreadystatechange = () => {
         }
 
 
-        fixedPluginCloseButton.forEach(function (el) {
-            el.onclick = function () {
-                fixedPlugin.classList.remove('show');
-            }
-        })
+        // fixedPluginCloseButton.forEach(function (el) {
+        //     el.onclick = function () {
+        //         fixedPlugin.classList.remove('show');
+        //     }
+        // })
 
         document.querySelector('body').onclick = function (e) {
             if (e.target != fixedPluginButton && e.target != fixedPluginButtonNav && e.target.closest('.fixed-plugin .card') != fixedPluginCard) {
@@ -56,9 +56,7 @@ document.onreadystatechange = () => {
 }
 
 // Light Mode / Dark Mode
-export const darkMode = (el) => {
-    console.log("handleDarkMode invoked...");
-    console.log(el.target.checked)
+export const darkMode = (isDarkMode) => {
     const body = document.getElementsByTagName('body')[0];
     const hr = document.querySelectorAll('div:not(.sidenav) > hr');
     const hr_card = document.querySelectorAll('div:not(.bg-gradient-dark) hr');
@@ -79,7 +77,7 @@ export const darkMode = (el) => {
 
     const svg = document.querySelectorAll('g');
 
-    if (el.target.checked) {
+    if (isDarkMode) {
         body.classList.add('dark-version');
         for (var i = 0; i < hr.length; i++) {
             if (hr[i].classList.contains('dark')) {
@@ -143,7 +141,6 @@ export const darkMode = (el) => {
         for (var i = 0; i < card_border.length; i++) {
             card_border[i].classList.add('border-dark');
         }
-        // el.setAttribute("checked", "true");
     } else {
         body.classList.remove('dark-version');
         for (var i = 0; i < hr.length; i++) {
@@ -209,7 +206,6 @@ export const darkMode = (el) => {
         for (var i = 0; i < card_border_dark.length; i++) {
             card_border_dark[i].classList.remove('border-dark');
         }
-        // el.removeAttribute("checked");
     }
 
 };

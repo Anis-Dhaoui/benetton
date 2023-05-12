@@ -25,7 +25,7 @@ function Navbar() {
 
     useEffect(() => {
         localStorage.setItem('darkModeStatus', JSON.stringify(isDarkMode));
-        // darkMode(isDarkMode);
+        darkMode(isDarkMode);
     }, [isDarkMode]);
 
     const handleDarkMode = (el: any) => {
