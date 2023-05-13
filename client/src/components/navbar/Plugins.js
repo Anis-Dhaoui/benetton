@@ -33,11 +33,11 @@ document.onreadystatechange = () => {
         }
 
 
-        // fixedPluginCloseButton.forEach(function (el) {
-        //     el.onclick = function () {
-        //         fixedPlugin.classList.remove('show');
-        //     }
-        // })
+        fixedPluginCloseButton.forEach(function (el) {
+            el.onclick = function () {
+                fixedPlugin.classList.remove('show');
+            }
+        })
 
         document.querySelector('body').onclick = function (e) {
             if (e.target != fixedPluginButton && e.target != fixedPluginButtonNav && e.target.closest('.fixed-plugin .card') != fixedPluginCard) {
