@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-// import RenderComputers from './computers/renderComputers.computers'
 import Navbar from './navbar/Navbar'
 import SideNav from './sidenav/SideNav'
+import TableComputer from './computers/computers-table/Table.computers'
 
 function Main() {
   console.log(process.env.REACT_APP_BASE_URL)
@@ -13,9 +13,15 @@ function Main() {
       </div>
       <div className='col-md-10 col-sm-9'>
         <div className='row'>
+
           <div className='col-md-12'>
             <Navbar />
           </div>
+
+          <div className='col-md-12 mt-5'>
+            <TableComputer />
+          </div>
+
         </div>
       </div>
     </div>
