@@ -1,6 +1,6 @@
 import React from 'react'
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table'
-import './style.computer-table.css';
+import './style.computer-table.scss';
 
 function TableComputer() {
   var accounts = [{

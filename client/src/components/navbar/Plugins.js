@@ -85,7 +85,6 @@ export const darkMode = (isDarkMode) => {
                 hr[i].classList.add('light');
             }
         }
-
         for (var i = 0; i < hr_card.length; i++) {
             if (hr_card[i].classList.contains('dark')) {
                 hr_card[i].classList.remove('dark');

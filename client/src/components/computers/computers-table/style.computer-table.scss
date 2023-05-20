@@ -1,0 +1,22 @@
+.pagination{
+    margin-top: 0px !important;
+    float: right !important;
+}
+
+.page-link, #pageDropDown{
+    background-color: #e53270 !important;
+    color: white !important;
+}
+
+.pagination .active .page-link {
+    background-color: #46061c8c !important;
+}
+
+// .xxx{
+//     background-color: red;
+// }
+
+
+.sort-column{
+    cursor: pointer;
+}
