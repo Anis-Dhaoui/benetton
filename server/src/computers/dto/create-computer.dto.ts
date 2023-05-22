@@ -22,19 +22,27 @@ export class CreateComputerDto {
     readonly os: string;
 
     @IsEnum(TYPE)
-    readonly type : string;
+    readonly type: string;
 
+    @IsString()
+    @MaxLength(30)
+    @MinLength(3)
+    readonly cpu: string;
+
+    @IsEnum(STATUS)
+    readonly status: string;
+
+
+
+    
     @IsString()
     @MaxLength(50)
     @MinLength(5)
     @IsNotEmpty()
     readonly usedBy: string;
-    
-    @IsEnum(STATUS)
-    readonly status: string;
 
     @IsArray()
-    @IsString({each: true})
+    @IsString({ each: true })
     @ArrayMinSize(1)
     readonly sessions: string[];
 
@@ -42,4 +50,14 @@ export class CreateComputerDto {
     @IsEnum(SOFTWARES, { each: true })
     @ArrayMinSize(1)
     readonly softwares: SOFTWARES[];
+
+    @IsString()
+    @MaxLength(45)
+    @IsNotEmpty()
+    readonly networkDriveAccess: string;
+
+    @IsString()
+    @MaxLength(45)
+    @IsNotEmpty()
+    readonly group: string;
 }

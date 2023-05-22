@@ -27,16 +27,28 @@ export class Computer {
     type;
 
     @Prop({ required: true })
-    usedBy: string;
+    cpu: string;
     
     @Prop({default: STATUS.RUNNING, type: String, enum: STATUS, required: true})
     status;
+
+
+
+
+    @Prop({ required: true })
+    usedBy: string;
 
     @Prop({ required: true })
     sessions: string[];
 
     @Prop({ required: true })
-    softwares: SOFTWARES[]
+    softwares: SOFTWARES[];
+
+    @Prop({ required: true })
+    networkDriveAccess: string;
+
+    @Prop({ required: true })
+    group: string;
 }
 export const ComputerSchema = SchemaFactory.createForClass(Computer);
 // ComputerSchema.index({ ref: 1 }, { unique: true });

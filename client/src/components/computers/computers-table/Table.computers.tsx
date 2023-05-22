@@ -385,7 +385,7 @@ function TableComputer() {
   return (
     <div>
     <BootstrapTable data={accounts} striped hover condensed pagination={true} search >
-      <TableHeaderColumn dataField="id" isKey dataAlign="center" width="50" dataSort>ID </TableHeaderColumn>   
+      <TableHeaderColumn dataField="id" isKey dataAlign="center" width="50" dataSort>ID</TableHeaderColumn>   
       <TableHeaderColumn dataField="type" dataAlign="center" filterFormatted dataSort>Type</TableHeaderColumn>
       <TableHeaderColumn dataField="accountingTime" dataAlign="center" dataSort>Accounting Time</TableHeaderColumn>
       <TableHeaderColumn dataField="moveTime" dataAlign="center" dataSort>Move Time</TableHeaderColumn>
