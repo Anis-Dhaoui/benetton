@@ -12,11 +12,23 @@
     background-color: #46061c8c !important;
 }
 
-// .xxx{
-//     background-color: red;
-// }
-
-
 .sort-column{
     cursor: pointer;
 }
+
+// #computer-table td{
+//     white-space: normal;
+//     word-wrap: break-word;
+// }
+
+// #computer-table table{
+//     table-layout: fixed;
+//     td, th{
+//       overflow: hidden;
+//       white-space: nowrap;
+//       -moz-text-overflow: ellipsis;        
+//          -ms-text-overflow: ellipsis;
+//           -o-text-overflow: ellipsis;
+//              text-overflow: ellipsis;
+//     }
+//   }
