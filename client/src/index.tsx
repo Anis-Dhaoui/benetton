@@ -11,7 +11,7 @@ import $ from 'jquery';
 
 import './assets/css/nucleo-icons.css';
 import './assets/css/nucleo-svg.css';
-import './assets/css/material-dashboard.css?v=3.0.5'
+import './assets/css/material-dashboard.css'
 
 import './assets/js/core/popper.min.js';
 import './assets/js/plugins/perfect-scrollbar.min.js';

@@ -1,9 +1,10 @@
-.pagination{
+.pagination {
     margin-top: 0px !important;
     float: right !important;
 }
 
-.page-link, #pageDropDown{
+.page-link,
+#pageDropDown {
     background-color: #e53270 !important;
     color: white !important;
 }
@@ -12,23 +13,19 @@
     background-color: #46061c8c !important;
 }
 
-.sort-column{
+.sort-column {
     cursor: pointer;
 }
 
-// #computer-table td{
-//     white-space: normal;
-//     word-wrap: break-word;
-// }
-
-// #computer-table table{
-//     table-layout: fixed;
-//     td, th{
-//       overflow: hidden;
-//       white-space: nowrap;
-//       -moz-text-overflow: ellipsis;        
-//          -ms-text-overflow: ellipsis;
-//           -o-text-overflow: ellipsis;
-//              text-overflow: ellipsis;
-//     }
-//   }
+table {
+    table-layout: fixed !important;
+    tr,
+    th {
+        overflow: hidden !important;
+        white-space: nowrap !important;
+        -moz-text-overflow: ellipsis !important;
+        -ms-text-overflow: ellipsis !important;
+        -o-text-overflow: ellipsis !important;
+        text-overflow: ellipsis !important;
+    }
+}

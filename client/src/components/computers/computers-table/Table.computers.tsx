@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 import './style.computer-table.scss';
 
 function TableComputer() {
+
     var accounts = [
         {
             "_id": "646b8eb966c560690bb4d4c4",
@@ -103,10 +104,24 @@ function TableComputer() {
             "__v": 0
         }
     ];
-let x = { whiteSpace: 'normal', wordWrap: 'break-word' };
+
+    const cellEdit: any = {
+        mode: 'dbclick', // click cell to edit
+      };
     return (
         <div id='computer-table'>
-            <BootstrapTable data={accounts} striped hover condensed pagination={true} search>
+            <BootstrapTable data={accounts} striped hover condensed pagination={true}
+                options={{withoutNoDataText: true, clearSearch: true}}
+
+                search
+                searchPlaceholder='Chercher nimporte quoi...'
+
+                exportCSV
+                csvFileName='Computers List'
+
+                cellEdit={cellEdit}
+                tableContainerClass='my-custom-class'
+            >
                 <TableHeaderColumn className="resize" dataField="ref" dataAlign="center" dataSort expandable={true} isKey>REF</TableHeaderColumn>
                 <TableHeaderColumn dataField="usedBy" dataAlign="center" dataSort width='200'>UTILISÉ PAR</TableHeaderColumn>
                 <TableHeaderColumn dataField="group" dataAlign="center" dataSort>GPE</TableHeaderColumn>
