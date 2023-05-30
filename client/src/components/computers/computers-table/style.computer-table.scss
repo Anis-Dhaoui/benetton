@@ -17,15 +17,7 @@
     cursor: pointer;
 }
 
-table {
-    table-layout: fixed !important;
-    tr,
-    th {
-        overflow: hidden !important;
-        white-space: nowrap !important;
-        -moz-text-overflow: ellipsis !important;
-        -ms-text-overflow: ellipsis !important;
-        -o-text-overflow: ellipsis !important;
-        text-overflow: ellipsis !important;
-    }
+#computer-table tr > td:hover {
+    overflow: visible;
+    white-space: unset;
 }

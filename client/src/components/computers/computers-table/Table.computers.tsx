@@ -17,8 +17,8 @@ function TableComputer() {
             "status": "running",
             "usedBy": "Mabrouk",
             "sessions": [
-                "Mabrouk",
-                "Sahraoui",
+                "Mabrouk ",
+                "Sahraoui ",
                 "Mouez"
             ],
             "softwares": [
@@ -114,15 +114,14 @@ function TableComputer() {
                 options={{withoutNoDataText: true, clearSearch: true}}
 
                 search
-                searchPlaceholder='Chercher nimporte quoi...'
+                searchPlaceholder="Que cherchez-vous?..."
 
                 exportCSV
                 csvFileName='Computers List'
 
-                cellEdit={cellEdit}
-                tableContainerClass='my-custom-class'
+                // cellEdit={cellEdit}
             >
-                <TableHeaderColumn className="resize" dataField="ref" dataAlign="center" dataSort expandable={true} isKey>REF</TableHeaderColumn>
+                <TableHeaderColumn dataField="ref" dataAlign="center" dataSort isKey>REF</TableHeaderColumn>
                 <TableHeaderColumn dataField="usedBy" dataAlign="center" dataSort width='200'>UTILISÉ PAR</TableHeaderColumn>
                 <TableHeaderColumn dataField="group" dataAlign="center" dataSort>GPE</TableHeaderColumn>
                 <TableHeaderColumn dataField="sessions" dataAlign="center" dataSort>SESSIONS</TableHeaderColumn>
