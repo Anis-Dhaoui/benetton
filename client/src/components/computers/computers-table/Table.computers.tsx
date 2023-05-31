@@ -41,16 +41,16 @@ function TableComputer() {
             "type": "desktop",
             "cpu": "i5-12500",
             "status": "running",
-            "usedBy": "ussj / Dhaoui anis",
+            "usedBy": "ussj/Dhaoui anis",
             "sessions": [
-                "ust6 / Zid Safa",
-                "u09k / Zaag Hamadi",
-                "uspw / gazzah ghada"
+                "ust6/Zid Safa ",
+                "u09k/Zaag Hamadi ",
+                "uspw/gazzah ghada "
             ],
             "softwares": [
-                "tims",
-                "citrix",
-                "abaco"
+                "tims ",
+                "citrix ",
+                "abaco "
             ],
             "networkDriveAccess": "T:/U:/F:",
             "group": "Service-IT",
@@ -67,9 +67,9 @@ function TableComputer() {
             "type": "laptop",
             "cpu": "i7-1265U",
             "status": "running",
-            "usedBy": "nbouhlel / Bouhlel Nabil",
+            "usedBy": "nbouhlel/Bouhlel Nabil",
             "sessions": [
-                "uspx / bel hadj majdi"
+                "uspx/bel hadj majdi "
             ],
             "softwares": [
                 "tims"
@@ -89,13 +89,13 @@ function TableComputer() {
             "type": "desktop",
             "cpu": "i5-10500T",
             "status": "running",
-            "usedBy": "upvy / Skhiri Wiem",
+            "usedBy": "upvy/Skhiri Wiem",
             "sessions": [
-                "upvy / Skhiri Wiem",
-                "u09k / Zaag Hamadi"
+                "upvy/Skhiri Wiem ",
+                "u09k/Zaag Hamadi "
             ],
             "softwares": [
-                "abaco"
+                "abaco "
             ],
             "networkDriveAccess": "T:",
             "group": "Programmation",
@@ -104,14 +104,14 @@ function TableComputer() {
             "__v": 0
         }
     ];
-
+    const x: any = ['aaaa', 'bbbb']
     const cellEdit: any = {
         mode: 'dbclick', // click cell to edit
-      };
+    };
     return (
         <div id='computer-table'>
             <BootstrapTable data={accounts} striped hover condensed pagination={true}
-                options={{withoutNoDataText: true, clearSearch: true}}
+                options={{ withoutNoDataText: true, clearSearch: true }}
 
                 search
                 searchPlaceholder="Que cherchez-vous?..."
@@ -119,7 +119,7 @@ function TableComputer() {
                 exportCSV
                 csvFileName='Computers List'
 
-                // cellEdit={cellEdit}
+            // cellEdit={cellEdit}
             >
                 <TableHeaderColumn dataField="ref" dataAlign="center" dataSort isKey>REF</TableHeaderColumn>
                 <TableHeaderColumn dataField="usedBy" dataAlign="center" dataSort width='200'>UTILISÉ PAR</TableHeaderColumn>

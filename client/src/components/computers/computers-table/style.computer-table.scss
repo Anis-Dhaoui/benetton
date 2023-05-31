@@ -20,4 +20,6 @@
 #computer-table tr > td:hover {
     overflow: visible;
     white-space: unset;
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: crosshair;
 }
