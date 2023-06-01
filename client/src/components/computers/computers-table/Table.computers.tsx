@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
+import { BootstrapTable, TableHeaderColumn, ExportCSVButton } from 'react-bootstrap-table'
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 import './style.computer-table.scss';
+
 
 function TableComputer({ computersList }: any) {
 
@@ -105,22 +106,46 @@ function TableComputer({ computersList }: any) {
     //     }
     // ];
 
-    const cellEdit: any = {
-        mode: 'dbclick', // double click cell to edit
-    };
+
+    // const cellEdit: any = {
+    //     mode: 'dbclick', // double click cell to edit
+    // };
+
+    // const selectRow: any = {
+    //     mode: 'checkbox' // or radio
+    // };
+
+
+    const handleExportCSVButtonClick = (onclick: any) => {
+        onclick();
+    }
+
+    const createCustomExportCSVButton = (onClick: any) => {
+        return (
+            <ExportCSVButton
+                btnText='Télécharger la liste'
+                onClick={() => handleExportCSVButtonClick(onClick)} />
+        );
+    }
 
     return (
         <div id='computer-table'>
             <BootstrapTable data={computersList} striped hover condensed pagination={true}
-                options={{ withoutNoDataText: true, clearSearch: true, noDataText: 'Tableau est vide' }}
+                options={{
+                    withoutNoDataText: true,
+                    clearSearch: true,
+                    noDataText: 'Tableau est vide',
+                    exportCSVBtn: createCustomExportCSVButton
+                }}
 
                 search
                 searchPlaceholder="Que cherchez-vous?..."
 
                 exportCSV
-                csvFileName='Computers List'
+                csvFileName='Computers List.csv'
 
             // cellEdit={cellEdit}
+            // selectRow={selectRow}
             >
                 <TableHeaderColumn dataField="ref" dataAlign="center" dataSort isKey>REF</TableHeaderColumn>
                 <TableHeaderColumn dataField="usedBy" dataAlign="center" dataSort width='200'>UTILISÉ PAR</TableHeaderColumn>
