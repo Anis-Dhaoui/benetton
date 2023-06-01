@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../state/store.state';
 import { fetchComputers } from '../../state/actions-creators/computer.actions-creators';
+import TableComputer from './computers-table/Table.computers';
 
 function RenderComputers() {
 
@@ -19,25 +20,9 @@ function RenderComputers() {
         {error}
       </div>
     )
-  }
-  if (computers?.length !== 0) {
-    return (
-      <>
-        {
-          computers?.map((item) => {
-            return (
-              <h1> {item._id} </h1>
-            )
-          })
-        }
-      </>
-    )
   } else {
     return (
-      <>
-        <h3>Your computer list is empty!</h3>
-        <button className='btn btn-success'>Add new computer</button>
-      </>
+      <TableComputer computersList={computers} />
     )
   }
 }

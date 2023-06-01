@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Navbar from './navbar/Navbar'
 import SideNav from './sidenav/SideNav'
 import TableComputer from './computers/computers-table/Table.computers'
+import RenderComputers from './computers/renderComputers.computers'
 
 function Main() {
   console.log(process.env.REACT_APP_BASE_URL)
@@ -19,7 +20,7 @@ function Main() {
           </div>
 
           <div className='col-md-12 mt-5' style={{marginLeft: '-33px'}}>
-            <TableComputer />
+            <RenderComputers />
           </div>
 
         </div>
