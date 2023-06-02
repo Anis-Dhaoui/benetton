@@ -5,15 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
+import 'popper.js'
 import $ from 'jquery';
-// import Popper from 'popper.js';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import './assets/css/nucleo-icons.css';
 import './assets/css/nucleo-svg.css';
 import './assets/css/material-dashboard.css'
-
-import './assets/js/core/popper.min.js';
 
 
 
