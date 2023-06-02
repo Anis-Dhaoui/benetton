@@ -1,14 +1,14 @@
 interface IComputer {
-    _id: string,
     ref: string,
     brandName: string,
     model: string,
     os: string,
     type: string,
+    cpu: string,
     status: string,
-    sessions: string[],
     usedBy: string,
+    sessions: string[],
+    networkDriveAccess: string,
     softwares: string[],
-    createdAt: string,
-    updatedAt: string,
+    group: string
 }

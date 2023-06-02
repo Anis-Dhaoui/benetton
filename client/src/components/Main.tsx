@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './navbar/Navbar'
 import SideNav from './sidenav/SideNav'
-import TableComputer from './computers/computers-table/Table.computers'
 import RenderComputers from './computers/renderComputers.computers'
 
 function Main() {
@@ -19,7 +18,7 @@ function Main() {
             <Navbar />
           </div>
 
-          <div className='col-md-12 mt-5' style={{marginLeft: '-33px'}}>
+          <div className='col-md-12 mt-5' style={{ marginLeft: '-33px' }}>
             <RenderComputers />
           </div>
 
