@@ -8,8 +8,6 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import 'popper.js'
 import $ from 'jquery';
 
-import './assets/css/nucleo-icons.css';
-import './assets/css/nucleo-svg.css';
 import './assets/css/material-dashboard.css'
 
 
