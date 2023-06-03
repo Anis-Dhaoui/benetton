@@ -3,15 +3,21 @@ import { ComputerActionsTypes } from "../actions-types/computer.action-types"
 interface STATE {
     loading: boolean,
     computers?: IComputer[],
+    error?: string | null,
+
+    creating?: boolean,
     createdComputer?: IComputer,
-    error?: string | null
+    createError?: string | null
 }
 
 const initialState = {
     loading: false,
     computers: undefined,
+    error: null,
+
+    creating: false,
     createdComputer: undefined,
-    error: null
+    createError: null
 }
 
 export const ComputerRed = (state: STATE = initialState, action: any): STATE => {
@@ -29,15 +35,15 @@ export const ComputerRed = (state: STATE = initialState, action: any): STATE => 
 
         case ComputerActionsTypes.CREATE_COMPUTER_REQUEST:
             console.log("CREATE_COMPUTER_REQUEST")
-            return { ...state, loading: true, error: null }
+            return { ...state, creating: true, createError: null }
 
         case ComputerActionsTypes.CREATE_COMPUTER_SUCCESS:
             console.log("CREATE_COMPUTER_SUCCESS")
-            return { ...state, loading: false, createdComputer: action.payload }
+            return { ...state, creating: false, createdComputer: action.payload }
 
         case ComputerActionsTypes.CREATE_COMPUTER_FAILURE:
             console.log("CREATE_COMPUTER_FAILURE")
-            return { ...state, loading: false, error: action.payload }
+            return { ...state, creating: false, createError: action.payload }
 
         default:
             return state;
