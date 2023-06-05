@@ -4,10 +4,10 @@ import { createComputer } from '../../state/actions-creators/computer.actions-cr
 
 function ComputerForm() {
     const dispatch = useAppDispatch();
-    const { loading, computers, error } = useAppSelector(state => state.computers);
+    let { computers, creating, createdComputer, createError } = useAppSelector(state => state.computers);
 
     var x = {
-        ref: "PC0418-G4H6BL3",
+        ref: "SSSSSSSSSSSS",
         brandName: "Dell",
         model: "OptiPlex 3090",
         os: "win10",
@@ -27,9 +27,23 @@ function ComputerForm() {
       }
 
     const handleCreateNewComputer = () =>{
-        console.log("handleCreateNewComputer invoked...")
         dispatch(createComputer(x))
     }
+
+    if (creating) {
+      return <h1>Loading...</h1>
+    }
+    if (createError) {
+      return (
+        <div className="alert alert-danger my-5 mx-5" role="alert">
+          {createError}
+        </div>
+      )
+    } else if(createdComputer != undefined) {
+      console.log("COMPUTER CREATED...");
+      console.log(createdComputer);
+    }
+
   return (
     <>
     <div>Computerform</div>

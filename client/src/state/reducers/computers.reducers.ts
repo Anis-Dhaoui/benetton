@@ -6,7 +6,7 @@ interface STATE {
     error?: string | null,
 
     creating?: boolean,
-    createdComputer?: IComputer,
+    createdComputer?: any,
     createError?: string | null
 }
 
@@ -39,7 +39,7 @@ export const ComputerRed = (state: STATE = initialState, action: any): STATE => 
 
         case ComputerActionsTypes.CREATE_COMPUTER_SUCCESS:
             console.log("CREATE_COMPUTER_SUCCESS")
-            return { ...state, creating: false, createdComputer: action.payload }
+            return { ...state, creating: false, createdComputer: action.payload, computers: [action.payload.computer, ...state.computers!] }
 
         case ComputerActionsTypes.CREATE_COMPUTER_FAILURE:
             console.log("CREATE_COMPUTER_FAILURE")
