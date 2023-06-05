@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import * as ACTIONS from '../actions/computer.actions';
+import { toast } from 'react-toastify';
 
 export const fetchComputers = () => {
 
@@ -46,15 +47,18 @@ export const fetchComputers = () => {
 export const createComputer = (data: IComputer) => {
     return(dispatch: Dispatch) =>{
         dispatch(ACTIONS.createComputersRequest());
+        const toastId = toast.loading('Please wait...')
 
         axios
         .post(`${process.env.REACT_APP_BASE_URL}/computers`, data )
         .then((res) =>{
             dispatch(ACTIONS.createComputersSuccess(res.data));
+            toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
         })
         .catch((err) =>{
             console.log(err.response.data.message)
             dispatch(ACTIONS.createComputersFailure(err.response.data.message));
+            toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
         })
     }
 }
