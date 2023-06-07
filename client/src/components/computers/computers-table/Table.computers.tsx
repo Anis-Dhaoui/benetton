@@ -3,7 +3,6 @@ import { BootstrapTable, TableHeaderColumn, ExportCSVButton } from 'react-bootst
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 import './style.computer-table.scss';
 
-
 function TableComputer({ computersList }: any) {
 
     // var accounts = [

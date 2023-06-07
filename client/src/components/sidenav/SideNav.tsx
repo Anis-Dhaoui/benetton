@@ -1,11 +1,12 @@
 import React from 'react'
+import '../../assets/css/material-dashboard.css';
 
 export default function SideNav() {
   return (
     <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div className="sidenav-header">
       <i className="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a className="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard" target="_blank">
+      <a className="navbar-brand m-0" href="/">
         <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAJFBMVEVMaXEAmUYAmUYAmUYAmUYAmUYAmUYAmUYAmUYAmUYAmUYAmUbxgxxeAAAADHRSTlMAL2WgtxmE5P9J9dLvxwmjAAAA8UlEQVR4Aa1QJVsDUBQ904pbwiHi1nAruLtbwh9xfr6HS4KITSr+59j23jzvtmvHkL7KbuwqTewnBenZiPeWfk99uXAOxwYm1gE5rI0NHsNLS78vNtj2qbEjNug/BoA5Z3zwqQbnw8kXU/GLbbvCcMdZzlNYTOwAcmM6Voct/eclxh/nsKVKDVoHMOZ9GZRNeNCw27IN1eQBcrxa2uiPbNsi3+7FeWXUvOThFr2xACzbZNMY6Y4qffAGvOc/8k8O6D7He175RJ6FsDo07XmlZhn90SwtGzCIrz1PJiaP1OAWsHpuDGIZKIIuGJuBtRKkq4IKHEfwsaigsQAAAABJRU5ErkJggg==' className="navbar-brand-img h-100" alt="main_logo" />
         <span className="ms-1 font-weight-bold text-white">United Colors of Benetton</span>
       </a>

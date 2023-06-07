@@ -48,24 +48,19 @@ function Navbar() {
                     </nav>
                     <div className="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                         <div className="ms-md-auto pe-md-3 d-flex align-items-center">
-
                             <div className="input-group input-group-outline">
-                                <label className="form-label">Type here...</label>
-                                <input type="text" className="form-control" />
+                                <input type="text" className="form-control" placeholder='Chercher...' />
                             </div>
-
                         </div>
                         <ul className="navbar-nav  justify-content-end">
                             <li className="nav-item d-flex align-items-center">
-                                <a href="./pages/sign-in.html" className="nav-link text-body font-weight-bold px-0">
+                                <a href="./pages/sign-in.html" className="nav-link top-right-nav-btn font-weight-bold px-0">
                                     <i className="fa fa-user me-sm-1"></i>
-
                                     <span className="d-sm-inline d-none">Sign In</span>
-
                                 </a>
                             </li>
                             <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
-                                <a href="#!" className="nav-link text-body p-0" id="iconNavbarSidenav">
+                                <a href="#!" className="nav-link p-0 top-right-nav-btn" id="iconNavbarSidenav">
                                     <div className="sidenav-toggler-inner">
                                         <i className="sidenav-toggler-line"></i>
                                         <i className="sidenav-toggler-line"></i>
@@ -74,14 +69,14 @@ function Navbar() {
                                 </a>
                             </li>
                             <li className="nav-item px-3 d-flex align-items-center">
-                                <a href="javascript:void(0);" className="nav-link text-body p-0">
+                                <a href="javascript:void(0);" className="nav-link p-0 top-right-nav-btn">
                                     <i className="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                                 </a>
                             </li>
 
                             {/* NOTIFICATION DROPDOWN MENU */}
                             <li className="nav-item dropdown pe-2 d-flex align-items-center">
-                                <a href="javascript:;" className="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                <a href="javascript:;" className="nav-link p-0 top-right-nav-btn" id="dropdownMenuButton" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <i className="fa fa-bell cursor-pointer"></i>
                                 </a>
@@ -131,6 +126,13 @@ function Navbar() {
                     </div>
                 </div>
             </nav>
+
+
+
+
+
+
+
 
             {/* CONFIGURATION RIGHT SIDE MENU */}
             <div className="fixed-plugin">

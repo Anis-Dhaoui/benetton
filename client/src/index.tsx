@@ -8,7 +8,7 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import 'popper.js'
 import $ from 'jquery';
 
-import './assets/css/material-dashboard.css'
+// import './assets/css/material-dashboard.css';
 
 
 

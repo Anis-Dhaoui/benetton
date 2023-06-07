@@ -23,3 +23,15 @@
     background-color: rgba(0, 0, 0, 0.2);
     cursor: crosshair;
 }
+
+#computer-table .form-control{
+    background-color: #293049 !important;
+    color: white !important;
+    height: 43px;
+}
+
+#computer-table .input-group-btn{
+    position: absolute;
+    right: -1px;
+    top: 2px;
+}
