@@ -27,11 +27,26 @@
 #computer-table .form-control{
     background-color: #293049 !important;
     color: white !important;
-    height: 43px;
+    height: 47px;
 }
 
 #computer-table .input-group-btn{
     position: absolute;
-    right: -1px;
-    top: 2px;
+    right: 4px;
+    top: 4px;
+}
+
+#computer-table .react-bs-table-search-clear-btn{
+    margin-top: 1px;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    transition: border-bottom 0.9s;
+}
+
+#computer-table .react-bs-table-search-clear-btn:hover{
+    margin-top: 0px;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
 }
