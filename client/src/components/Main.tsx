@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 function Main() {
   console.log(process.env.REACT_APP_BASE_URL)
   return (
-    <div className='row'>
+    <div className='row' style={{width: '100%'}}>
       <ToastContainer
         position="top-right"
         autoClose={3000}
