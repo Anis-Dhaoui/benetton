@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../state/store.state';
-import { createComputer } from '../../state/actions-creators/computer.actions-creators';
+import './style.computer-form.css';
+import { useAppDispatch, useAppSelector } from '../../../state/store.state';
+import { createComputer } from '../../../state/actions-creators/computer.actions-creators';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, Row, Col, FormGroup, Label, Input } from 'reactstrap';
 
 
@@ -36,13 +37,20 @@ function ComputerForm() {
   }
 
   return (
-    <>
-      <div>Computerform</div>
+    <div id='add-new-pc'>
       {/* <button onClick={handleCreateNewComputer}>Create</button> */}
-      <Button color="danger" onClick={toggle}>
-        Click Me
-      </Button>
-      <Modal isOpen={modal} toggle={toggle} style={{ minWidth: '700px'}}>
+      {/* <Button color="primary" onClick={toggle}>
+        Ajouter Nouveau PC
+      </Button> */}
+      <div className="btn-group btn-group-sm" role="group">
+        <button onClick={toggle} type="button" className="btn btn-success react-bs-table-csv-btn  hidden-print">
+        <span>
+          <i className="fa fa-plus"></i> 
+          &nbsp; Ajouter Nouveau PC
+        </span>
+      </button>
+      </div>
+      <Modal isOpen={modal} toggle={toggle} style={{ minWidth: '700px' }}>
         <ModalHeader toggle={toggle}>Modal title</ModalHeader>
         <ModalBody style={{ width: '700px' }}>
           <Form>
@@ -156,7 +164,7 @@ function ComputerForm() {
           </Button>
         </ModalFooter>
       </Modal>
-    </>
+    </div>
   )
 }
 

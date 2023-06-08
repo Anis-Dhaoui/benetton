@@ -1,0 +1,18 @@
+#add-new-pc{
+    position: absolute;
+    left: 476px;
+    top: 116px;
+    
+}
+
+/* #add-new-pc .react-bs-table-csv-btn{
+    background-color: red;
+} */
+
+/* #add-new-pc .fa::before{
+    font-size: 15px;
+} */
+
+.btn-group-sm>.btn i {
+    font-size: 15px;
+}

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../state/store.state';
 import { fetchComputers } from '../../state/actions-creators/computer.actions-creators';
 import TableComputer from './computers-table/Table.computers';
-import ComputerForm from './Form.computers';
+import ComputerForm from './computer-form/Form.computers';
 
 function RenderComputers() {
 
