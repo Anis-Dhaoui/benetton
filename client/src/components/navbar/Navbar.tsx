@@ -29,7 +29,7 @@ function Navbar() {
     }, [isDarkMode]);
 
     const handleDarkMode = (el: any) => {
-        setisDarkMode(!isDarkMode);
+        setisDarkMode(!isDarkMode);  
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN FIXED DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
 

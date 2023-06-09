@@ -3,9 +3,13 @@ import './style.computer-form.css';
 import { useAppDispatch, useAppSelector } from '../../../state/store.state';
 import { createComputer } from '../../../state/actions-creators/computer.actions-creators';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, Row, Col, FormGroup, Label, Input } from 'reactstrap';
+import Multiselect from 'multiselect-react-dropdown';
 
 
 function ComputerForm() {
+  const darkMode = localStorage.getItem('darkModeStatus');
+  console.log(darkMode)
+
   const dispatch = useAppDispatch();
   let { computers, creating, createdComputer, createError } = useAppSelector(state => state.computers);
 
@@ -32,6 +36,9 @@ function ComputerForm() {
     group: "Programmation"
   }
 
+  const drivesList = ['T:', 'A:', 'U:', 'X:']
+  const softList = ['Iris', 'Citrix', 'Abaco', 'Terminal', 'Beta', 'Aive', 'Ideale', 'Intranet', 'MicroStartegy', 'OpenBee', 'Orgatex', 'TIM']
+
   const handleCreateNewComputer = () => {
     dispatch(createComputer(x))
   }
@@ -44,123 +51,237 @@ function ComputerForm() {
       </Button> */}
       <div className="btn-group btn-group-sm" role="group">
         <button onClick={toggle} type="button" className="btn btn-success react-bs-table-csv-btn  hidden-print">
-        <span>
-          <i className="fa fa-plus"></i> 
-          &nbsp; Ajouter Nouveau PC
-        </span>
-      </button>
+          <span>
+            <i className="fa fa-plus"></i>
+            &nbsp; Ajouter Nouveau PC
+          </span>
+        </button>
       </div>
-      <Modal isOpen={modal} toggle={toggle} style={{ minWidth: '700px' }}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+      <Modal isOpen={modal} toggle={toggle} style={{ minWidth: '700px'}}>
+        <ModalHeader toggle={toggle}>Ajouter nouveau PC</ModalHeader>
         <ModalBody style={{ width: '700px' }}>
           <Form>
             <Row>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="exampleEmail">
-                    Email
+                  <Label for="reference">
+                    REF
                   </Label>
                   <Input
-                    id="exampleEmail"
-                    name="email"
-                    placeholder="with a placeholder"
-                    type="email"
+                    id="ref"
+                    name="ref"
+                    placeholder="Référence PC"
+                    type="text"
                   />
                 </FormGroup>
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="examplePassword">
-                    Password
+                  <Label for="Brand-name">
+                    Marque
                   </Label>
                   <Input
-                    id="examplePassword"
-                    name="password"
-                    placeholder="password placeholder"
-                    type="password"
-                  />
+                    id="brandName"
+                    name="brandName"
+                    type="select"
+                  >
+                    <option disabled selected>Choisir la marque du PC</option>
+                    <option>DELL</option>
+                    <option>HP</option>
+                    <option>TOSHIBA</option>
+                    <option>ASUS</option>
+                    <option>ACER</option>
+                    <option>LENOVO</option>
+                  </Input>
                 </FormGroup>
               </Col>
             </Row>
-            <FormGroup>
-              <Label for="exampleAddress">
-                Address
-              </Label>
-              <Input
-                id="exampleAddress"
-                name="address"
-                placeholder="1234 Main St"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="exampleAddress2">
-                Address 2
-              </Label>
-              <Input
-                id="exampleAddress2"
-                name="address2"
-                placeholder="Apartment, studio, or floor"
-              />
-            </FormGroup>
+
             <Row>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="exampleCity">
-                    City
+                  <Label for="model">
+                    MODEL
                   </Label>
                   <Input
-                    id="exampleCity"
-                    name="city"
+                    id="model"
+                    name="model"
+                    placeholder="Modèle PC"
+                    type="text"
                   />
                 </FormGroup>
               </Col>
-              <Col md={4}>
+              <Col md={6}>
                 <FormGroup>
-                  <Label for="exampleState">
-                    State
+                  <Label for="os">
+                    Operating System
                   </Label>
                   <Input
-                    id="exampleState"
-                    name="state"
+                    id="os"
+                    name="os"
+                    type="select"
+                  >
+                    <option disabled selected>Choisir OS</option>
+                    <option>WIN-XP</option>
+                    <option>WIN-7</option>
+                    <option>WIN-10</option>
+                    <option>WIN-11</option>
+                    <option>LINUX</option>
+                  </Input>
+                </FormGroup>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="cpu">
+                    CPU
+                  </Label>
+                  <Input
+                    id="cpu"
+                    name="cpu"
+                    placeholder="Processeur"
+                    type="text"
                   />
                 </FormGroup>
               </Col>
-              <Col md={2}>
+              <Col md={6}>
                 <FormGroup>
-                  <Label for="exampleZip">
-                    Zip
+                  <Label for="status">
+                    Status
                   </Label>
                   <Input
-                    id="exampleZip"
-                    name="zip"
+                    id="status"
+                    name="status"
+                    type="select"
+                  >
+                    <option disabled selected>Choisir status</option>
+                    <option>En panne</option>
+                    <option>Inactive</option>
+                    <option>Active</option>
+                  </Input>
+                </FormGroup>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="usedBy">
+                    Usager
+                  </Label>
+                  <Input
+                    id="usedBy"
+                    name="usedBy"
+                    placeholder="Utilisé par"
+                    type="text"
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="type">
+                    Type
+                  </Label>
+                  <Input
+                    id="type"
+                    name="type"
+                    type="select"
+                  >
+                    <option disabled selected>Choisir type</option>
+                    <option>Desktop</option>
+                    <option>Laptop</option>
+                  </Input>
+                </FormGroup>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="sessions">
+                    Sessions
+                  </Label>
+                  <Input
+                    id="sessions"
+                    name="sessions"
+                    placeholder="Sessions"
+                    type="text"
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="netDrives">
+                    Lecteurs Réseau
+                  </Label>
+                  <Multiselect
+                    // onRemove={(items: INTERESTS[]) => { setSelectedItems([...items]) }}
+                    // onSelect={(items: INTERESTS[]) => { setSelectedItems([...items]) }}
+                    isObject={false}
+                    options={drivesList}
+                    showArrow
+                    showCheckbox
+                    hidePlaceholder
+                    placeholder='Choisir les lecteurs réseau'
+                    avoidHighlightFirstOption={true}
                   />
                 </FormGroup>
               </Col>
             </Row>
-            <FormGroup check>
-              <Input
-                id="exampleCheck"
-                name="check"
-                type="checkbox"
-              />
-              <Label
-                check
-                for="exampleCheck"
-              >
-                Check me out
-              </Label>
-            </FormGroup>
-            <Button>
-              Sign in
-            </Button>
+
+            <Row>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="group">
+                    Groupe
+                  </Label>
+                  <Input
+                    id="group"
+                    name="group"
+                    type="select"
+                  >
+                    <option disabled selected>Choisir groupe</option>
+                    <option>Programmation</option>
+                    <option>Modelery</option>
+                    <option>Qualité</option>
+                    <option>UTM</option>
+                    <option>Administration</option>
+                    <option>Contabilité</option>
+                  </Input>
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="netDrives">
+                    Logiciels
+                  </Label>
+                  <Multiselect style={{cursor: 'pointer'}}
+                    // onRemove={(items: INTERESTS[]) => { setSelectedItems([...items]) }}
+                    // onSelect={(items: INTERESTS[]) => { setSelectedItems([...items]) }}
+                    isObject={false}
+                    options={softList}
+                    showArrow
+                    showCheckbox
+                    hidePlaceholder
+                    placeholder='Choisir les logiciels'
+                    avoidHighlightFirstOption={true}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
           </Form>
         </ModalBody>
+
+
+
         <ModalFooter>
           <Button color="primary" onClick={toggle}>
-            Do Something
+            Ajouter
           </Button>{' '}
           <Button color="secondary" onClick={toggle}>
-            Cancel
+            Annuler
           </Button>
         </ModalFooter>
       </Modal>

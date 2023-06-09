@@ -16,3 +16,13 @@
 .btn-group-sm>.btn i {
     font-size: 15px;
 }
+
+.modal-content ul, .dark-version .form-control{
+    color: rgb(0, 0, 0) !important;
+}
+.modal-content{
+    background-color: #252c43 !important;
+}
+/* #add-new-pc > input[type="text"]{
+    color: blue !important;
+} */
