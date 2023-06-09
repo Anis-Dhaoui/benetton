@@ -7,8 +7,6 @@ import Multiselect from 'multiselect-react-dropdown';
 
 
 function ComputerForm() {
-  const darkMode = localStorage.getItem('darkModeStatus');
-  console.log(darkMode)
 
   const dispatch = useAppDispatch();
   let { computers, creating, createdComputer, createError } = useAppSelector(state => state.computers);
@@ -45,10 +43,6 @@ function ComputerForm() {
 
   return (
     <div id='add-new-pc'>
-      {/* <button onClick={handleCreateNewComputer}>Create</button> */}
-      {/* <Button color="primary" onClick={toggle}>
-        Ajouter Nouveau PC
-      </Button> */}
       <div className="btn-group btn-group-sm" role="group">
         <button onClick={toggle} type="button" className="btn btn-success react-bs-table-csv-btn  hidden-print">
           <span>
@@ -57,7 +51,7 @@ function ComputerForm() {
           </span>
         </button>
       </div>
-      <Modal isOpen={modal} toggle={toggle} style={{ minWidth: '700px'}}>
+      <Modal id='modal-add-new' isOpen={modal} toggle={toggle} style={{ minWidth: '700px' }}>
         <ModalHeader toggle={toggle}>Ajouter nouveau PC</ModalHeader>
         <ModalBody style={{ width: '700px' }}>
           <Form>
@@ -257,7 +251,7 @@ function ComputerForm() {
                   <Label for="netDrives">
                     Logiciels
                   </Label>
-                  <Multiselect style={{cursor: 'pointer'}}
+                  <Multiselect
                     // onRemove={(items: INTERESTS[]) => { setSelectedItems([...items]) }}
                     // onSelect={(items: INTERESTS[]) => { setSelectedItems([...items]) }}
                     isObject={false}
@@ -277,10 +271,10 @@ function ComputerForm() {
 
 
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
+          <Button id='add-new-pc-btn' color="success" onClick={toggle}>
             Ajouter
           </Button>{' '}
-          <Button color="secondary" onClick={toggle}>
+          <Button id='cancel-add-new-pc-btn' color="danger" onClick={toggle}>
             Annuler
           </Button>
         </ModalFooter>

@@ -20,7 +20,7 @@ function Navbar() {
 
 
 
-    // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN FIXED DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
+    // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
     const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || false);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ function Navbar() {
     const handleDarkMode = (el: any) => {
         setisDarkMode(!isDarkMode);  
     }
-    // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN FIXED DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
+    // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
 
     return (
         <main className="main-content">

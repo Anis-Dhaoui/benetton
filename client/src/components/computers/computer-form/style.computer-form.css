@@ -26,3 +26,32 @@
 /* #add-new-pc > input[type="text"]{
     color: blue !important;
 } */
+
+#multiselectContainerReact{
+    background-color: white !important;
+}
+
+#cancel-add-new-pc-btn {
+    background: linear-gradient(13deg, #ff000000 0%, #ff00002f 50%, #ff0000b7 50%, #ff0000 100%);
+    background-size: 200% auto;
+    transition: background-position 0.5s;
+
+    margin-top: -1px;
+    box-shadow: none !important;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    transition: border-bottom 0.9s;
+    transition: background-position 0.9s;
+}
+
+#cancel-add-new-pc-btn:hover {
+    background-position: -300% 0;
+    /* Shift background position to the left */
+    margin-top: 0px;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+}
+
+#modal-add-new label, h5{
+    color: white !important;
+}
