@@ -11,7 +11,7 @@ function ComputerForm() {
   const dispatch = useAppDispatch();
   let { computers, creating, createdComputer, createError } = useAppSelector(state => state.computers);
 
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
   var x = {

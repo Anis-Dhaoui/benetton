@@ -75,9 +75,14 @@ export const darkMode = (isDarkMode) => {
     const card_border = document.querySelectorAll('.card.border');
     const card_border_dark = document.querySelectorAll('.card.border.border-dark');
 
+    const computer_search = document.querySelector('#computer-table input');
+    computer_search.classList.add('ligth-table-search-input');
+
     const svg = document.querySelectorAll('g');
 
     if (isDarkMode) {
+        computer_search.classList.remove('ligth-table-search-input');
+
         body.classList.add('dark-version');
         for (var i = 0; i < hr.length; i++) {
             if (hr[i].classList.contains('dark')) {
@@ -142,6 +147,8 @@ export const darkMode = (isDarkMode) => {
         }
     } else {
         body.classList.remove('dark-version');
+        computer_search.classList.add('ligth-table-search-input');
+
         for (var i = 0; i < hr.length; i++) {
             if (hr[i].classList.contains('light')) {
                 hr[i].classList.add('dark');
@@ -212,9 +219,9 @@ export const darkMode = (isDarkMode) => {
 //  FIXED NAVBAR
 export function navbarFixed(isNavbarFixed) {
     const navbar = document.getElementById('navbarBlur');
-    if(isNavbarFixed){
+    if (isNavbarFixed) {
         navbar.classList.add('fixed-navbar');
-    }else{
+    } else {
         navbar.classList.remove('fixed-navbar');
     }
 };
