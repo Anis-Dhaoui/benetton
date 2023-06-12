@@ -1,0 +1,2 @@
+export const networkDrivesList = ['T:', 'A:', 'U:', 'X:']
+export const softwaresList = ['Iris', 'Citrix', 'Abaco', 'Terminal', 'Beta', 'Aive', 'Ideale', 'Intranet', 'MicroStartegy', 'OpenBee', 'Orgatex', 'TIM']
