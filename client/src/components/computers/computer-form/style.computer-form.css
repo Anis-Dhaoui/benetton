@@ -55,3 +55,25 @@
 #modal-add-new label, h5{
     color: white !important;
 }
+
+#new-input-form-btn, #close-input-form-btn{
+    margin-top: 31px;
+    margin-left: -40px;
+}
+
+#new-input-form-btn button, #close-input-form-btn button{
+    background-color: white;
+    color: #252c43;
+    box-shadow: none;
+    height: 38px;
+}
+
+#new-input-form-btn button:hover{
+    background-color: #657fd3;
+    color: white;
+}
+
+#close-input-form-btn button:hover{
+    background-color: #ff0000;
+    color: white;
+}

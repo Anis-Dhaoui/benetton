@@ -14,24 +14,42 @@ function ComputerForm() {
   // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE ADD NEW COMPUTER FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
   let { register, handleSubmit, watch, formState: { errors } } = useForm<any>({ mode: 'all' });
   const onSubmit: SubmitHandler<any> = (data) => {
-    data.usedBy = data.usedBy + ' / ' + data.usedByFirstLastName;
-    delete data.usedByFirstLastName;
-    data.sessions = [data.sessionUtenty + ' / ' + data.sessionFirstLastName]
-    delete data.sessionUtenty;
-    delete data.sessionFirstLastName;
+    data.usedBy = data.usedBy + ' / ' + data.usedByFullname;
+    delete data.usedByFullname;
 
     data.softwares = softList;
     data.networkDriveAccess = netDrivesList;
-    // data.interests = selectedItems;
-    // dispatch(handleRegister(data));
+    data.sessions = inputValues;
+
     console.log(data)
   }
 
   const [netDrivesList, setNetDrivesList] = useState<string[]>([]);
   const [softList, setSoftList] = useState<string[]>([]);
 
+  const [inputCount, setInputCount] = useState(1);
   // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE ADD NEW COMPUTER FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
+  // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ START HANDLE GET SESSIONS INPUTS VALUES AND ADD THEM INTO AN ARRAY $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+  const [inputValues, setInputValues] = useState<string[]>([]);
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>, index: number) => {
+    const temp = [...inputValues];
+    if (event.key === " " && !inputValues[index].includes("/")) {
+      temp[index] = temp[index] + " /";
+      setInputValues(temp);
+    } else if (event.key === " ") {
+      temp[index] = temp[index] + " ";
+      setInputValues(temp);
+    }
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const newValues = [...inputValues];
+    newValues[index] = event.target.value;
+    setInputValues(newValues);
+  };
+
+  // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END HANDLE GET SESSIONS INPUTS VALUES AND ADD THEM INTO AN ARRAY $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
   const dispatch = useAppDispatch();
   let { computers, creating, createdComputer, createError } = useAppSelector(state => state.computers);
 
@@ -57,8 +75,6 @@ function ComputerForm() {
     ],
     group: "Programmation"
   }
-
-
 
   const handleCreateNewComputer = () => {
     dispatch(createComputer(x))
@@ -265,10 +281,10 @@ function ComputerForm() {
                   <Col md={8} style={{ marginTop: '31px' }}>
                     <FormGroup>
                       <input className='form-control'
-                        id="usedByFirstLastName"
-                        placeholder="Nom/Prénom"
+                        id="usedByFullname"
+                        placeholder="Nom Prénom"
                         type="text"
-                        {...register("usedByFirstLastName",
+                        {...register("usedByFullname",
                           {
                             required: "Required field",
                             minLength: {
@@ -281,7 +297,7 @@ function ComputerForm() {
                             }
                           })
                         }
-                        name="usedByFirstLastName"
+                        name="usedByFullname"
                       />
                     </FormGroup>
                   </Col>
@@ -311,57 +327,34 @@ function ComputerForm() {
 
             <Row>
               <Col md={6}>
-                <Row>
-                  <Col md={4}>
-                    <FormGroup>
-                      <Label for="utenty">
-                        Sessions
-                      </Label>
-                      <input className='form-control'
-                        id="sessionUtenty"
-                        placeholder="Utenty"
-                        type="text"
-                        {...register("sessionUtenty",
-                          {
-                            required: "Required field",
-                            minLength: {
-                              value: 4,
-                              message: "Minimum 4 caractères long SVP"
-                            },
-                            maxLength: {
-                              value: 10,
-                              message: "Maximum 10 caractères long SVP"
-                            }
-                          })
-                        }
-                        name="sessionUtenty"
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col md={8} style={{ marginTop: '31px' }}>
-                    <FormGroup>
-                      <input className='form-control'
-                        id="sessionFirstLastName"
-                        placeholder="Nom/Prénom"
-                        type="text"
-                        {...register("sessionFirstLastName",
-                          {
-                            required: "Required field",
-                            minLength: {
-                              value: 6,
-                              message: "Minimum 6 caractères long SVP"
-                            },
-                            maxLength: {
-                              value: 25,
-                              message: "Maximum 25 caractères long SVP"
-                            }
-                          })
-                        }
-                        name="sessionFirstLastName"
-                      />
-                    </FormGroup>
-                  </Col>
-                </Row>
+                {
+                  [...Array(inputCount)].map((_, index) => (
+                    <Row key={index} style={index !== 0 ? { marginTop: '-12px' } : {}}>
+                      <Col md={11}>
+                        <FormGroup>
+                          {index === 0 ? <Label for="Session utenty"> Sessions </Label> : null}
+                          <Input className='form-control'
+                            id={`sessionUtenty${index}`}
+                            placeholder="Utenty / Nom Prénom"
+                            type="text"
+                            value={inputValues[index]}
+                            onChange={(e) => handleChange(e, index)}
+                            onKeyDown={(e) => handleKeyPress(e, index)}
+                            name={`sessionUtenty${index}`}
+                            required
+                          />
+                        </FormGroup>
+                      </Col>
+                      {
+
+                        index === 0 ? <Col md={1} id='new-input-form-btn'> <Button onClick={() => setInputCount(inputCount + 1)}> <i className="fa fa-user-plus" aria-hidden="true"></i> </Button> </Col>
+                          :
+                          <Col md={1} id='close-input-form-btn'> <Button style={{ marginTop: '-37px', marginLeft: '8px' }} onClick={() => setInputCount(inputCount - 1)}> <i className="fa fa-times" aria-hidden="true"></i> </Button> </Col>
+
+                      }
+                    </Row>
+                  ))
+                }
               </Col>
               <Col md={6}>
                 <FormGroup>
@@ -429,7 +422,6 @@ function ComputerForm() {
             </Row>
           </Form>
         </ModalBody>
-
 
 
         <ModalFooter>
