@@ -26,12 +26,14 @@ function ComputerForm() {
 
   const [netDrivesList, setNetDrivesList] = useState<string[]>([]);
   const [softList, setSoftList] = useState<string[]>([]);
-
-  const [inputCount, setInputCount] = useState(1);
   // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE ADD NEW COMPUTER FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-  // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ START HANDLE GET SESSIONS INPUTS VALUES AND ADD THEM INTO AN ARRAY $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+  // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ START HANDLE SESSIONS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
   const [inputValues, setInputValues] = useState<string[]>([]);
+  const [inputCount, setInputCount] = useState(1);
+
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>, index: number) => {
     const temp = [...inputValues];
     if (event.key === " " && !inputValues[index].includes("/")) {
@@ -49,7 +51,16 @@ function ComputerForm() {
     setInputValues(newValues);
   };
 
-  // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END HANDLE GET SESSIONS INPUTS VALUES AND ADD THEM INTO AN ARRAY $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+  const handleAddNewInput = (op: string, index: number) => {
+    if (op === 'add') {
+      setInputCount(inputCount + 1);
+    } else {
+      inputValues.splice(index, 1);
+      document.getElementById(`sessionContainer${index}`)?.remove();
+    }
+  }
+  // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END HANDLE SESSIONS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
   const dispatch = useAppDispatch();
   let { computers, creating, createdComputer, createError } = useAppSelector(state => state.computers);
 
@@ -329,28 +340,26 @@ function ComputerForm() {
               <Col md={6}>
                 {
                   [...Array(inputCount)].map((_, index) => (
-                    <Row key={index} style={index !== 0 ? { marginTop: '-12px' } : {}}>
+                    <Row id={`sessionContainer${index}`} key={index} style={index !== 0 ? { marginTop: '-12px' } : {}}>
                       <Col md={11}>
                         <FormGroup>
                           {index === 0 ? <Label for="Session utenty"> Sessions </Label> : null}
                           <Input className='form-control'
-                            id={`sessionUtenty${index}`}
+                            id={`session${index}`}
                             placeholder="Utenty / Nom Prénom"
                             type="text"
                             value={inputValues[index]}
                             onChange={(e) => handleChange(e, index)}
                             onKeyDown={(e) => handleKeyPress(e, index)}
-                            name={`sessionUtenty${index}`}
+                            name={`session${index}`}
                             required
                           />
                         </FormGroup>
                       </Col>
                       {
-
-                        index === 0 ? <Col md={1} id='new-input-form-btn'> <Button onClick={() => setInputCount(inputCount + 1)}> <i className="fa fa-user-plus" aria-hidden="true"></i> </Button> </Col>
+                        index === 0 ? <Col md={1} id='new-input-form-btn'> <Button onClick={() => handleAddNewInput('add', index)}> <i className="fa fa-user-plus" aria-hidden="true"></i> </Button> </Col>
                           :
-                          <Col md={1} id='close-input-form-btn'> <Button style={{ marginTop: '-37px', marginLeft: '8px' }} onClick={() => setInputCount(inputCount - 1)}> <i className="fa fa-times" aria-hidden="true"></i> </Button> </Col>
-
+                          <Col md={1} id='close-input-form-btn'> <Button style={{ marginTop: '-37px', marginLeft: '8px' }} onClick={() => handleAddNewInput('remove', index)}> <i className="fa fa-times" aria-hidden="true"></i> </Button> </Col>
                       }
                     </Row>
                   ))
