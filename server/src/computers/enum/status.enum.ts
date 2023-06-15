@@ -1,5 +1,5 @@
 export enum STATUS {
-    BROKEN = 'broken',
-    UNUSED = 'unused',
-    RUNNING = 'running'
+    BROKEN = 'En panne',
+    UNUSED = 'Inactive',
+    RUNNING = 'Active'
 }

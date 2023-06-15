@@ -1,5 +1,6 @@
 export enum OS {
-    WIN7 = 'win7',
-    WIN10 = 'win10',
-    WIN11 = 'win11'
+    WINXP = 'WIN-XP',
+    WIN7 = 'WIN-7',
+    WIN10 = 'WIN-10',
+    WIN11 = 'WIN-11'
 }

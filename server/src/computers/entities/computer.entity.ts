@@ -18,6 +18,6 @@ export interface IComputer extends Document {
     readonly usedBy: string;
     readonly sessions: string[];
     readonly softwares: SOFTWARES[];
-    readonly networkDriveAccess: string;
+    readonly networkDriveAccess: string[];
     readonly group: string;
 }

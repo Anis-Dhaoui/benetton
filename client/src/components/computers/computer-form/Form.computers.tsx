@@ -21,7 +21,8 @@ function ComputerForm() {
     data.networkDriveAccess = netDrivesList;
     data.sessions = inputValues;
 
-    console.log(data)
+    console.log(data);
+    dispatch(createComputer(data))
   }
 
   const [netDrivesList, setNetDrivesList] = useState<string[]>([]);
@@ -67,29 +68,36 @@ function ComputerForm() {
   const [modal, setModal] = useState(true);
   const toggle = () => setModal(!modal);
 
-  var x = {
-    ref: "VVVVVVVVVVV",
-    brandName: "Dell",
-    model: "OptiPlex 3090",
-    os: "win10",
-    type: "desktop",
-    cpu: "i5-10500T",
-    status: "running",
-    usedBy: "upvy / Skhiri Wiem",
-    sessions: [
-      "upvy / Skhiri Wiem",
-      "u09k / Zaag Hamadi"
-    ],
-    networkDriveAccess: "T:",
-    softwares: [
-      "abaco"
-    ],
-    group: "Programmation"
-  }
+  // var x = {
+  //   ref: "VVVVVVVVVVV",
+  //   brandName: "Dell",
+  //   model: "OptiPlex 3090",
+  //   os: "win10",
+  //   type: "desktop",
+  //   cpu: "i5-10500T",
+  //   status: "running",
+  //   usedBy: "upvy / Skhiri Wiem",
+  //   sessions: [
+  //     "upvy / Skhiri Wiem",
+  //     "u09k / Zaag Hamadi"
+  //   ],
+  //   networkDriveAccess: "T:",
+  //   softwares: [
+  //     "abaco"
+  //   ],
+  //   group: "Programmation"
+  // }
 
-  const handleCreateNewComputer = () => {
-    dispatch(createComputer(x))
-  }
+
+
+
+
+
+
+
+
+
+
 
   return (
     <div id='add-new-pc'>

@@ -51,10 +51,10 @@ export class CreateComputerDto {
     @ArrayMinSize(1)
     readonly softwares: SOFTWARES[];
 
-    @IsString()
-    @MaxLength(45)
-    @IsNotEmpty()
-    readonly networkDriveAccess: string;
+    @IsArray()
+    @IsString({ each: true })
+    @ArrayMinSize(1)
+    readonly networkDriveAccess: string[];
 
     @IsString()
     @MaxLength(45)

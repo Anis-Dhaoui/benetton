@@ -2,13 +2,38 @@ interface IComputer {
     ref: string,
     brandName: string,
     model: string,
-    os: string,
-    type: string,
+    os: OS,
+    type: TYPE,
     cpu: string,
-    status: string,
+    status: STATUS,
     usedBy: string,
     sessions: string[],
     networkDriveAccess: string,
-    softwares: string[],
+    softwares: SOFTWARES[],
     group: string
+}
+
+enum TYPE {
+    LAPTOP = 'Laptop',
+    DESKTOP = 'Desktop'
+}
+
+enum OS {
+    WINXP = 'WIN-XP',
+    WIN7 = 'WIN-7',
+    WIN10 = 'WIN-10',
+    WIN11 = 'WIN-11'
+}
+
+enum SOFTWARES {
+    ABACO = 'abaco',
+    CITRIX = 'citrix',
+    IRIS = 'iris',
+    TIMS = 'tims'
+}
+
+enum STATUS {
+    BROKEN = 'broken',
+    UNUSED = 'unused',
+    RUNNING = 'running'
 }

@@ -45,7 +45,7 @@ export class Computer {
     softwares: SOFTWARES[];
 
     @Prop({ required: true })
-    networkDriveAccess: string;
+    networkDriveAccess: string[];
 
     @Prop({ required: true })
     group: string;

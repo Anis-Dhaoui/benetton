@@ -1,4 +1,4 @@
 export enum TYPE {
-    LAPTOP = 'laptop',
-    DESKTOP = 'desktop'
+    LAPTOP = 'Laptop',
+    DESKTOP = 'Desktop'
 }
