@@ -6,7 +6,6 @@ import './style.computer-table.scss';
 function TableComputer({ computersList }: any) {
 
     function addSpaceToArrayitems(arr: string[]) {
-        console.log(arr)
         return arr.map((item: string) => item = item + " ");
     }
 

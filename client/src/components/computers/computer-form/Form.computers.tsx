@@ -16,7 +16,7 @@ function ComputerForm() {
     data.usedBy = data.usedBy + ' / ' + data.usedByFullname;
     delete data.usedByFullname;
 
-    data.softwares = softList;
+    data.softwares = softList;    
     data.networkDriveAccess = netDrivesList;
     data.sessions = inputValues;
 
@@ -66,37 +66,6 @@ function ComputerForm() {
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-
-  // var x = {
-  //   ref: "VVVVVVVVVVV",
-  //   brandName: "Dell",
-  //   model: "OptiPlex 3090",
-  //   os: "win10",
-  //   type: "desktop",
-  //   cpu: "i5-10500T",
-  //   status: "running",
-  //   usedBy: "upvy / Skhiri Wiem",
-  //   sessions: [
-  //     "upvy / Skhiri Wiem",
-  //     "u09k / Zaag Hamadi"
-  //   ],
-  //   networkDriveAccess: "T:",
-  //   softwares: [
-  //     "abaco"
-  //   ],
-  //   group: "Programmation"
-  // }
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <div id='add-new-pc'>

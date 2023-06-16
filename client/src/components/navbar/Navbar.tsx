@@ -69,14 +69,14 @@ function Navbar() {
                                 </a>
                             </li>
                             <li className="nav-item px-3 d-flex align-items-center">
-                                <a href="javascript:void(0);" className="nav-link p-0 top-right-nav-btn">
+                                <a href="#" className="nav-link p-0 top-right-nav-btn">
                                     <i className="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                                 </a>
                             </li>
 
                             {/* NOTIFICATION DROPDOWN MENU */}
                             <li className="nav-item dropdown pe-2 d-flex align-items-center">
-                                <a href="javascript:;" className="nav-link p-0 top-right-nav-btn" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                <a href="#" className="nav-link p-0 top-right-nav-btn" id="dropdownMenuButton" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <i className="fa fa-bell cursor-pointer"></i>
                                 </a>
