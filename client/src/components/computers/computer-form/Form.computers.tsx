@@ -10,10 +10,9 @@ import { networkDrivesList, softwaresList } from "./defaultData";
 
 
 function ComputerForm() {
-
   // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE ADD NEW COMPUTER FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
   let { register, handleSubmit, watch, formState: { errors } } = useForm<any>({ mode: 'all' });
-  const onSubmit: SubmitHandler<any> = (data) => {
+  const onSubmit: SubmitHandler<any> = (data: IComputer | any) => {
     data.usedBy = data.usedBy + ' / ' + data.usedByFullname;
     delete data.usedByFullname;
 
@@ -65,7 +64,7 @@ function ComputerForm() {
   const dispatch = useAppDispatch();
   let { computers, creating, createdComputer, createError } = useAppSelector(state => state.computers);
 
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
   // var x = {

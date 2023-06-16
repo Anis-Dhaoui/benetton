@@ -8,8 +8,8 @@ interface IComputer {
     status: STATUS,
     usedBy: string,
     sessions: string[],
-    networkDriveAccess: string,
-    softwares: SOFTWARES[],
+    networkDriveAccess: string[],
+    softwares: string[],
     group: string
 }
 
