@@ -1,0 +1,13 @@
+#edit-remove{
+  margin-left: -25px;
+}
+#edit-remove .fa-edit{
+  color: #e53471;
+  cursor: pointer;
+  margin-right: -28px;
+}
+
+#edit-remove .fa-trash{
+  color: #ff0000;
+  cursor: pointer;
+}
