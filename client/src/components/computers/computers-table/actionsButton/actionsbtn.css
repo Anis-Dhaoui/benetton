@@ -11,3 +11,7 @@
   color: #ff0000;
   cursor: pointer;
 }
+
+#edit-remove .fa-edit:hover, #edit-remove .fa-trash:hover{
+  opacity: 0.7;
+}
