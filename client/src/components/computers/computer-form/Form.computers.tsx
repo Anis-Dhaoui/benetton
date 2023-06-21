@@ -10,6 +10,13 @@ import { networkDrivesList, softwaresList } from "./defaultData";
 
 
 function ComputerForm() {
+
+  const dispatch = useAppDispatch();
+  let { computers, creating, createdComputer, createError } = useAppSelector(state => state.computers);
+
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+  
   // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE ADD NEW COMPUTER FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
   let { register, handleSubmit, watch, formState: { errors } } = useForm<any>({ mode: 'all' });
   const onSubmit: SubmitHandler<any> = (data: IComputer | any) => {
@@ -60,12 +67,6 @@ function ComputerForm() {
     }
   }
   // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END HANDLE SESSIONS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-  const dispatch = useAppDispatch();
-  let { computers, creating, createdComputer, createError } = useAppSelector(state => state.computers);
-
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
 
   return (
     <div id='add-new-pc'>

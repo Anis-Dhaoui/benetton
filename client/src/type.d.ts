@@ -1,4 +1,5 @@
 interface IComputer {
+    _id: string,
     ref: string,
     brandName: string,
     model: string,

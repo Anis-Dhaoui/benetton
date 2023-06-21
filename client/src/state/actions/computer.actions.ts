@@ -15,6 +15,7 @@ export const fetchComputersFailure = (errMsg: string) => ({
 })
 
 
+
 export const createComputersRequest = () => ({
     type: ComputerActionsTypes.CREATE_COMPUTER_REQUEST
 })
@@ -26,5 +27,21 @@ export const createComputersSuccess = (computer: IComputer) => ({
 
 export const createComputersFailure = (errMsg: string) => ({
     type: ComputerActionsTypes.CREATE_COMPUTER_FAILURE,
+    payload: errMsg
+})
+
+
+
+export const deleteComputersRequest = () => ({
+    type: ComputerActionsTypes.DELETE_COMPUTER_REQUEST
+})
+
+export const deleteComputersSuccess = (deletedComputer: IComputer) => ({
+    type: ComputerActionsTypes.DELETE_COMPUTER_SUCCESS,
+    payload: deletedComputer
+})
+
+export const deleteComputersFailure = (errMsg: string) => ({
+    type: ComputerActionsTypes.DELETE_COMPUTER_FAILURE,
     payload: errMsg
 })

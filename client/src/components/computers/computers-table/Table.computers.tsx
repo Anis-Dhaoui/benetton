@@ -13,12 +13,12 @@ function TableComputer({ computersList }: any) {
     if (computersList != undefined) {
         var manipulatedComputersList = computersList.map((obj: IComputer) => {
             return {
-              ...obj,
-              softwares: addSpaceToArrayitems(obj.softwares),
-              networkDriveAccess: addSpaceToArrayitems(obj.networkDriveAccess),
-              sessions: addSpaceToArrayitems(obj.sessions)
+                ...obj,
+                softwares: addSpaceToArrayitems(obj.softwares),
+                networkDriveAccess: addSpaceToArrayitems(obj.networkDriveAccess),
+                sessions: addSpaceToArrayitems(obj.sessions)
             };
-          });
+        });
     }
 
 
@@ -43,10 +43,9 @@ function TableComputer({ computersList }: any) {
         );
     }
 
-    const actionsColumns = (cell?: any, row?: any) =>{
-        console.log(cell)
-        return(
-            <ActionsBtn />
+    const actionsColumns = (cell?: any, row?: IComputer) => {
+        return (
+            <ActionsBtn computer={row} />
         )
     }
 
@@ -81,7 +80,7 @@ function TableComputer({ computersList }: any) {
                 <TableHeaderColumn dataField="type" dataAlign="center" dataSort>TYPE</TableHeaderColumn>
                 <TableHeaderColumn dataField="cpu" dataAlign="center" dataSort>CPU</TableHeaderColumn>
                 <TableHeaderColumn dataField="status" dataAlign="center" dataSort>STATUS</TableHeaderColumn>
-                <TableHeaderColumn dataField="_id" dataFormat={actionsColumns} dataAlign="center" width='50px'><i className="fa fa-cog" style={{fontSize: '17px', marginLeft: '-10px'}} aria-hidden="true"></i></TableHeaderColumn>
+                <TableHeaderColumn dataField="_id" dataFormat={actionsColumns} dataAlign="center" width='50px'><i className="fa fa-cog" style={{ fontSize: '17px', marginLeft: '-10px' }}></i></TableHeaderColumn>
             </BootstrapTable>
         </div>
     )

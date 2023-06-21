@@ -8,6 +8,10 @@ interface STATE {
     creating?: boolean,
     createdComputer?: any,
     createError?: string | null
+
+    deleting?: boolean,
+    deletedComputer?: any,
+    deleteError?: string | null
 }
 
 const initialState = {
@@ -17,7 +21,11 @@ const initialState = {
 
     creating: false,
     createdComputer: undefined,
-    createError: null
+    createError: null,
+
+    deleting: false,
+    deletedComputer: undefined,
+    deleteError: null
 }
 
 export const ComputerRed = (state: STATE = initialState, action: any): STATE => {
@@ -44,6 +52,17 @@ export const ComputerRed = (state: STATE = initialState, action: any): STATE => 
         case ComputerActionsTypes.CREATE_COMPUTER_FAILURE:
             console.log("CREATE_COMPUTER_FAILURE")
             return { ...state, creating: false, createError: action.payload }
+
+
+
+        case ComputerActionsTypes.DELETE_COMPUTER_REQUEST:
+            return { ...state, deleting: true, deleteError: null }
+
+        case ComputerActionsTypes.DELETE_COMPUTER_SUCCESS:
+            return { ...state, deleting: false, deletedComputer: action.payload, computers: state.computers!.filter((item: any) => item._id !== action.payload.deletedcomputer._id) }
+
+        case ComputerActionsTypes.DELETE_COMPUTER_FAILURE:
+            return { ...state, deleting: false, deleteError: action.payload }
 
         default:
             return state;
