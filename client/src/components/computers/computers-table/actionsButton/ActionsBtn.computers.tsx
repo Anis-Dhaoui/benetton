@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './actionsbtn.scss'
 import { deleteComputer } from '../../../../state/actions-creators/computer.actions-creators';
 import { useAppDispatch, useAppSelector } from '../../../../state/store.state';
+import ComputerForm from '../../computer-form/Form.computers';
 
 
 function ActionsBtn({ computer }: IComputer | any) {
@@ -14,6 +15,10 @@ function ActionsBtn({ computer }: IComputer | any) {
 
     const handleDelConfAlert = () => {
         setDelConfAlert(!delConfAlert);
+    }
+
+    const handleEdit = (pc: IComputer) =>{
+        console.log(pc);
     }
 
     return (
@@ -31,7 +36,7 @@ function ActionsBtn({ computer }: IComputer | any) {
                     :
                     <div id='edit-remove' className='row'>
                         <div className='col-6'>
-                            <i className="fa fa-edit"></i>
+                            <i className="fa fa-edit" onClick={() => handleEdit(computer)}></i>
                         </div>
                         <div className='col-6'>
                             <i className="fa fa-trash" onClick={handleDelConfAlert}></i>
