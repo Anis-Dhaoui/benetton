@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import './style.computer-form.css';
 import ModalComputerForm from './Modal.computer-form';
 
-function ComputerForm() {
+function AddNewPCButton() {
 
   const [showModal, setShowModal] = useState(false);
-  const handleShowModal = () =>{
+  const handleShowModal = () => {
     setShowModal(!showModal);
   }
 
@@ -24,4 +24,4 @@ function ComputerForm() {
   )
 }
 
-export default ComputerForm
+export default AddNewPCButton

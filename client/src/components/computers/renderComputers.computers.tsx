@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../state/store.state';
 import { fetchComputers } from '../../state/actions-creators/computer.actions-creators';
 import TableComputer from './computers-table/Table.computers';
-import ComputerForm from './computer-form/Form.computers';
+import AddNewPCButton from './computer-form/AddNewPCButton';
+import { Loading } from '../Loading/loading';
 
 function RenderComputers() {
 
@@ -13,19 +14,27 @@ function RenderComputers() {
   }, [])
 
   if (loading) {
-    return <h1>Loading...</h1>
+    return (
+      <Loading />
+    )
   }
   if (error) {
     return (
-      <div className="alert alert-danger my-5 mx-5" role="alert">
-        {error}
-      </div>
+      <>
+        <AddNewPCButton />
+        <TableComputer computersList={[]} />
+        <hr />
+        <div className="alert alert-danger my-5 mx-5" role="alert">
+          {error}
+        </div>
+      </>
+
     )
   } else {
     return (
       <>
-      <ComputerForm />
-      <TableComputer computersList={computers} />
+        <AddNewPCButton />
+        <TableComputer computersList={computers} />
       </>
     )
   }
