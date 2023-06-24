@@ -45,3 +45,17 @@ export const deleteComputersFailure = (errMsg: string) => ({
     type: ComputerActionsTypes.DELETE_COMPUTER_FAILURE,
     payload: errMsg
 })
+
+export const getSingleComputerRequest = () => ({
+    type: ComputerActionsTypes.GET_SINGLE_COMPUTER_REQUEST
+})
+
+export const getSingleComputerSuccess = (computer: IComputer) => ({
+    type: ComputerActionsTypes.GET_SINGLE_COMPUTER_SUCCESS,
+    payload: computer
+})
+
+export const getSingleComputerFailure = (errMsg: string) => ({
+    type: ComputerActionsTypes.GET_SINGLE_COMPUTER_FAILURE,
+    payload: errMsg
+})

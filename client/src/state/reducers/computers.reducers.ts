@@ -2,7 +2,7 @@ import { ComputerActionsTypes } from "../actions-types/computer.action-types"
 
 interface STATE {
     loading: boolean,
-    computers?: IComputer[],
+    computers?: IComputer[] | IComputer,
     error?: string | null,
 
     creating?: boolean,
@@ -47,7 +47,7 @@ export const ComputerRed = (state: STATE = initialState, action: any): STATE => 
 
         case ComputerActionsTypes.CREATE_COMPUTER_SUCCESS:
             console.log("CREATE_COMPUTER_SUCCESS")
-            return { ...state, creating: false, createdComputer: action.payload, computers: [action.payload.computer, ...state.computers!] }
+            return { ...state, creating: false, createdComputer: action.payload, computers: [action.payload.computer, ...(state.computers as IComputer[])!] }
 
         case ComputerActionsTypes.CREATE_COMPUTER_FAILURE:
             console.log("CREATE_COMPUTER_FAILURE")
@@ -59,10 +59,21 @@ export const ComputerRed = (state: STATE = initialState, action: any): STATE => 
             return { ...state, deleting: true, deleteError: null }
 
         case ComputerActionsTypes.DELETE_COMPUTER_SUCCESS:
-            return { ...state, deleting: false, deletedComputer: action.payload, computers: state.computers!.filter((item: any) => item._id !== action.payload.deletedcomputer._id) }
+            return { ...state, deleting: false, deletedComputer: action.payload, computers: (state.computers as IComputer[])!.filter((item: any) => item._id !== action.payload.deletedcomputer._id) }
 
         case ComputerActionsTypes.DELETE_COMPUTER_FAILURE:
             return { ...state, deleting: false, deleteError: action.payload }
+
+
+
+        case ComputerActionsTypes.GET_SINGLE_COMPUTER_REQUEST:
+            return { ...state, loading: true, error: null }
+
+        case ComputerActionsTypes.GET_SINGLE_COMPUTER_SUCCESS:
+            return { ...state, loading: false, computers: action.payload }
+
+        case ComputerActionsTypes.GET_SINGLE_COMPUTER_FAILURE:
+            return { ...state, loading: false, error: action.payload }
 
         default:
             return state;

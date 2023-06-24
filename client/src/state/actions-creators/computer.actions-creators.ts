@@ -46,42 +46,62 @@ export const fetchComputers = () => {
 // }
 
 export const createComputer = (data: IComputer) => {
-    return(dispatch: Dispatch) =>{
+    return (dispatch: Dispatch) => {
         dispatch(ACTIONS.createComputersRequest());
         const toastId = toast.loading('Please wait...')
 
         axios
-        .post(`${process.env.REACT_APP_BASE_URL}/computers`, data )
-        .then((res) =>{
-            dispatch(ACTIONS.createComputersSuccess(res.data));
-            toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
-        })
-        .catch((err) =>{
-            console.log(err.response.data.message)
-            dispatch(ACTIONS.createComputersFailure(err.response.data.message));
-            toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
-        })
+            .post(`${process.env.REACT_APP_BASE_URL}/computers`, data)
+            .then((res) => {
+                dispatch(ACTIONS.createComputersSuccess(res.data));
+                toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
+            })
+            .catch((err) => {
+                console.log(err.response.data.message)
+                dispatch(ACTIONS.createComputersFailure(err.response.data.message));
+                toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
+            })
     }
 }
 
 
 
 export const deleteComputer = (id: any) => {
-    return(dispatch: Dispatch) =>{
+    return (dispatch: Dispatch) => {
         dispatch(ACTIONS.deleteComputersRequest());
         const toastId = toast.loading('Please wait...')
 
         axios
-        .delete(`${process.env.REACT_APP_BASE_URL}/computers/${id}`)
-        .then((res) =>{
-            console.log(res);
-            dispatch(ACTIONS.deleteComputersSuccess(res.data));
-            toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
-        })
-        .catch((err) =>{
-            console.log(err.response.data.message);
-            dispatch(ACTIONS.deleteComputersFailure(err.response.data.message));
-            toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
-        })
+            .delete(`${process.env.REACT_APP_BASE_URL}/computers/${id}`)
+            .then((res) => {
+                console.log(res);
+                dispatch(ACTIONS.deleteComputersSuccess(res.data));
+                toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
+            })
+            .catch((err) => {
+                console.log(err.response.data.message);
+                dispatch(ACTIONS.deleteComputersFailure(err.response.data.message));
+                toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
+            })
+    }
+}
+
+
+
+
+export const getSingleComputer = (computerID: IComputer) => {
+
+    return (dispatch: Dispatch) => {
+        dispatch(ACTIONS.getSingleComputerRequest());
+
+        axios
+            .get(`${process.env.REACT_APP_BASE_URL}/computers/${computerID}`)
+            .then((res) => {
+                dispatch(ACTIONS.getSingleComputerSuccess(res.data));
+            })
+            .catch((err) => {
+                console.log(err)
+                dispatch(ACTIONS.getSingleComputerFailure(err.response.data.message))
+            })
     }
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './actionsbtn.scss'
 import { deleteComputer } from '../../../../state/actions-creators/computer.actions-creators';
 import { useAppDispatch, useAppSelector } from '../../../../state/store.state';
+import { getSingleComputer } from '../../../../state/actions-creators/computer.actions-creators';
 import ComputerForm from '../../computer-form/AddNewPCButton';
 import ModalComputerForm from '../../computer-form/AddEditFormModal';
 
@@ -9,6 +10,8 @@ import ModalComputerForm from '../../computer-form/AddEditFormModal';
 function ActionsBtn({ computer }: IComputer | any) {
     const dispatch = useAppDispatch();
     const [delConfAlert, setDelConfAlert] = useState(false)
+
+    const { loading, computers, error } = useAppSelector(state => state.computers);
 
     const handleDelete = (pc: IComputer) => {
         dispatch(deleteComputer(pc._id))
@@ -25,8 +28,9 @@ function ActionsBtn({ computer }: IComputer | any) {
     const [showModal, setShowModal] = useState(false);
     const handleShowModal = () => {
         setShowModal(!showModal);
+        dispatch(getSingleComputer(computer._id))
     }
-
+    console.log(computers)
 
     return (
         <>
