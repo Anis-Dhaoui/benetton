@@ -14,7 +14,8 @@ export const fetchComputers = () => {
                 dispatch(ACTIONS.fetchComputersSuccess(res.data));
             })
             .catch((err) => {
-                dispatch(ACTIONS.fetchComputersFailure(err.message))
+                console.log(err)
+                dispatch(ACTIONS.fetchComputersFailure(err.response.data.message))
             })
     }
 }

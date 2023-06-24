@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import './actionsbtn.scss'
 import { deleteComputer } from '../../../../state/actions-creators/computer.actions-creators';
 import { useAppDispatch, useAppSelector } from '../../../../state/store.state';
-import ComputerForm from '../../computer-form/Form.computers';
+import ComputerForm from '../../computer-form/AddNewPCButton';
+import ModalComputerForm from '../../computer-form/AddEditFormModal';
 
 
 function ActionsBtn({ computer }: IComputer | any) {
@@ -17,9 +18,15 @@ function ActionsBtn({ computer }: IComputer | any) {
         setDelConfAlert(!delConfAlert);
     }
 
-    const handleEdit = (pc: IComputer) =>{
-        console.log(pc);
+    // const handleEdit = (pc: IComputer) =>{
+    //     console.log(pc);
+    // }
+
+    const [showModal, setShowModal] = useState(false);
+    const handleShowModal = () => {
+        setShowModal(!showModal);
     }
+
 
     return (
         <>
@@ -36,7 +43,7 @@ function ActionsBtn({ computer }: IComputer | any) {
                     :
                     <div id='edit-remove' className='row'>
                         <div className='col-6'>
-                            <i className="fa fa-edit" onClick={() => handleEdit(computer)}></i>
+                            <i className="fa fa-edit" onClick={handleShowModal}></i>
                         </div>
                         <div className='col-6'>
                             <i className="fa fa-trash" onClick={handleDelConfAlert}></i>
@@ -44,6 +51,12 @@ function ActionsBtn({ computer }: IComputer | any) {
                     </div>
             }
 
+            {
+                showModal ?
+                    <ModalComputerForm show={showModal} onClose={handleShowModal} targetPC={computer} editMode={true} />
+                    :
+                    null
+            }
 
 
         </>
