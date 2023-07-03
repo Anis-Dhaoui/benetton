@@ -5,18 +5,18 @@ import { UpdateComputerDto } from './dto/update-computer.dto';
 
 @Controller('computers')
 export class ComputersController {
-  constructor(private readonly computersService: ComputersService) {}
+  constructor(private readonly computersService: ComputersService) { }
 
   @Post()
   async create(@Res() res, @Req() req, @Body() createComputerDto: CreateComputerDto) {
 
     try {
       const newCmp = await this.computersService.create(createComputerDto);
-      return(
+      return (
         res.status(HttpStatus.CREATED).json({
           message: 'Computer created',
           computer: newCmp
-        }) 
+        })
       )
     } catch (err) {
       if (err && err.code == 11000) {
@@ -39,6 +39,22 @@ export class ComputersController {
     return await this.computersService.findAll();
   }
 
+  @Get(':cmpId')
+  async findOne(@Res() res, @Param('cmpId') cmpId: string) {
+    try {
+      const cmp = await this.computersService.findOne(cmpId);
+      return res.status(HttpStatus.OK).json({ cmp });
+    } catch (err) {
+      if (err.name == 'CastError') {
+        return res.status(HttpStatus.NOT_FOUND).json({
+          statusCode: 404,
+          error: 'Conputer Not Found'
+        });
+      }
+      return res.json(err.response);
+    }
+  }
+
   @Put(':cmpId')
   async update(@Res() res, @Param('cmpId') cmpId: string, @Body() UpdateComputerDto: UpdateComputerDto) {
     try {
@@ -48,7 +64,7 @@ export class ComputersController {
         cmp,
       });
     } catch (err) {
-      if(err.name == 'CastError'){
+      if (err.name == 'CastError') {
         return res.status(HttpStatus.NOT_FOUND).json({
           statusCode: 404,
           error: 'Not Found'
@@ -67,7 +83,7 @@ export class ComputersController {
         deletedcomputer,
       });
     } catch (err) {
-      if(err.name == 'CastError'){
+      if (err.name == 'CastError') {
         return res.status(HttpStatus.NOT_FOUND).json({
           statusCode: 404,
           error: 'Not Found'
@@ -78,7 +94,7 @@ export class ComputersController {
   }
 
   @Get('/search')
-  async search(@Res() res, @Req() req, @Query() query){
+  async search(@Res() res, @Req() req, @Query() query) {
     try {
       const fetchedData = await this.computersService.search(query);
       return res.status(HttpStatus.OK).json({

@@ -22,9 +22,9 @@ export class ComputersService {
     return computers;
   }
 
-  async findOne(cmpId: string): Promise<IComputer>{
+  async findOne(cmpId: string): Promise<IComputer> {
     const cmp = await this.computerModel.findById(cmpId);
-    if(!cmp){
+    if (!cmp) {
       throw new NotFoundException('No data found');
     }
     return cmp;
@@ -46,24 +46,24 @@ export class ComputersService {
     return deletedComputer;
   }
 
-  async search(query: any): Promise<IComputer[]>{
+  async search(query: any): Promise<IComputer[]> {
     const customQuery = Object.fromEntries(Object.entries(query).filter(([key, value]) => key !== 'soft' && key !== 'session'));
     Logger.warn(query)
     Logger.log(customQuery)
 
     let computers: IComputer[] = [];
-    if(!query.ref){
-      computers = await this.computerModel.find({ 
-        $and:[
+    if (!query.ref) {
+      computers = await this.computerModel.find({
+        $and: [
           query.soft ? { softwares: { $in: [query.soft] } } : {},
           query.session ? { sessions: { $in: [query.session] } } : {},
           customQuery
-        ] 
+        ]
       }).exec();
-    }else{
-      computers = await this.computerModel.find({ref: query.ref})
+    } else {
+      computers = await this.computerModel.find({ ref: query.ref })
     }
-    if(!computers || computers.length == 0){
+    if (!computers || computers.length == 0) {
       throw new NotFoundException("No data found");
     }
     return computers;
