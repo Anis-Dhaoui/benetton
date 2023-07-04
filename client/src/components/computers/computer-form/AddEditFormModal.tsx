@@ -34,7 +34,7 @@ function ModalForm(props: PROPSTYPE) {
         data.softwares = softList;
         data.networkDriveAccess = netDrivesList;
         data.sessions = inputValues;
-        
+
         if (!editMode) {
             data.sessions.unshift(data.usedBy);
         }
@@ -332,7 +332,7 @@ function ModalForm(props: PROPSTYPE) {
                                                     id={`session${index}`}
                                                     placeholder="Utenty / Nom Prénom"
                                                     type="text"
-                                                    value={inputValues[index]}
+                                                    // value={inputValues[index]}
                                                     onChange={(e) => handleChange(e, index)}
                                                     onKeyDown={(e) => handleKeyPress(e, index)}
                                                     name={`session${index}`}
