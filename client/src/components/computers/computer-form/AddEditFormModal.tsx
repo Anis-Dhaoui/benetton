@@ -9,7 +9,7 @@ import { networkDrivesList, softwaresList } from './defaultData';
 type PROPSTYPE = {
     show: boolean,
     onClose: () => void,
-    targetPC?: IComputer,
+    targetPC?: any,
     editMode?: boolean
 }
 
@@ -25,12 +25,13 @@ function ModalForm(props: PROPSTYPE) {
     let { register, handleSubmit, watch, formState: { errors } } = useForm<any>({ mode: 'all' });
 
     const { targetPC, editMode } = props;
+    console.log(targetPC)
 
     // $$$$$$$$$$$$$$$$$$$$$ EDIT MODE $$$$$$$$$$$$$$$$$$$$$
     // if (editMode) {
     //     setNetDrivesList([...targetPC!.networkDriveAccess])
     // }
-    
+
 
 
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE ADD NEW COMPUTER FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$

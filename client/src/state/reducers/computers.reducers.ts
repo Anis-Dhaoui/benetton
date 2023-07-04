@@ -2,7 +2,7 @@ import { ComputerActionsTypes } from "../actions-types/computer.action-types"
 
 interface STATE {
     loading: boolean,
-    computers?: IComputer[] | IComputer,
+    computers?: IComputer[],
     error?: string | null,
 
     creating?: boolean,
@@ -11,7 +11,11 @@ interface STATE {
 
     deleting?: boolean,
     deletedComputer?: any,
-    deleteError?: string | null
+    deleteError?: string | null,
+
+    onePCLoading?: boolean,
+    pc?: IComputer,
+    onePCError?: string | null,
 }
 
 const initialState = {
@@ -25,7 +29,11 @@ const initialState = {
 
     deleting: false,
     deletedComputer: undefined,
-    deleteError: null
+    deleteError: null,
+
+    onePCLoading: false,
+    pc: undefined,
+    onePCError: null,
 }
 
 export const ComputerRed = (state: STATE = initialState, action: any): STATE => {
@@ -67,13 +75,13 @@ export const ComputerRed = (state: STATE = initialState, action: any): STATE => 
 
 
         case ComputerActionsTypes.GET_SINGLE_COMPUTER_REQUEST:
-            return { ...state, loading: true, error: null }
+            return { ...state, onePCLoading: true, onePCError: null }
 
         case ComputerActionsTypes.GET_SINGLE_COMPUTER_SUCCESS:
-            return { ...state, loading: false, computers: action.payload }
+            return { ...state, onePCLoading: false, pc: action.payload }
 
         case ComputerActionsTypes.GET_SINGLE_COMPUTER_FAILURE:
-            return { ...state, loading: false, error: action.payload }
+            return { ...state, onePCLoading: false, onePCError: action.payload }
 
         default:
             return state;

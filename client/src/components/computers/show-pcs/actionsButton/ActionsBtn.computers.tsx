@@ -5,13 +5,14 @@ import { useAppDispatch, useAppSelector } from '../../../../state/store.state';
 import { getSingleComputer } from '../../../../state/actions-creators/computer.actions-creators';
 import ComputerForm from '../../computer-form/AddNewPCButton';
 import ModalComputerForm from '../../computer-form/AddEditFormModal';
+import { Loading } from '../../../Loading/loading';
 
 
 function ActionsBtn({ computer }: IComputer | any) {
     const dispatch = useAppDispatch();
     const [delConfAlert, setDelConfAlert] = useState(false)
 
-    const { loading, computers, error } = useAppSelector(state => state.computers);
+    const { onePCLoading, pc, onePCError } = useAppSelector(state => state.computers);
 
     const handleDelete = (pc: IComputer) => {
         dispatch(deleteComputer(pc._id))
@@ -30,7 +31,6 @@ function ActionsBtn({ computer }: IComputer | any) {
         setShowModal(!showModal);
         dispatch(getSingleComputer(computer._id))
     }
-    console.log(computers)
 
     return (
         <>
@@ -56,10 +56,13 @@ function ActionsBtn({ computer }: IComputer | any) {
             }
 
             {
-                showModal ?
-                    <ModalComputerForm show={showModal} onClose={handleShowModal} targetPC={computer} editMode={true} />
-                    :
+                onePCLoading ?
                     null
+                    :
+                    showModal ?
+                        <ModalComputerForm show={showModal} onClose={handleShowModal} targetPC={pc} editMode={true} />
+                        :
+                        null
             }
 
 

@@ -89,7 +89,7 @@ export const deleteComputer = (id: any) => {
 
 
 
-export const getSingleComputer = (computerID: IComputer) => {
+export const getSingleComputer = (computerID: any) => {
 
     return (dispatch: Dispatch) => {
         dispatch(ACTIONS.getSingleComputerRequest());
@@ -100,7 +100,6 @@ export const getSingleComputer = (computerID: IComputer) => {
                 dispatch(ACTIONS.getSingleComputerSuccess(res.data));
             })
             .catch((err) => {
-                console.log(err)
                 dispatch(ACTIONS.getSingleComputerFailure(err.response.data.message))
             })
     }

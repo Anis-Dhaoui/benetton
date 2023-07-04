@@ -43,7 +43,7 @@ export class ComputersController {
   async findOne(@Res() res, @Param('cmpId') cmpId: string) {
     try {
       const cmp = await this.computersService.findOne(cmpId);
-      return res.status(HttpStatus.OK).json({ cmp });
+      return res.status(HttpStatus.OK).json(cmp);
     } catch (err) {
       if (err.name == 'CastError') {
         return res.status(HttpStatus.NOT_FOUND).json({
