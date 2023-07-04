@@ -16,16 +16,15 @@ type PROPSTYPE = {
 function ModalForm(props: PROPSTYPE) {
     const dispatch = useAppDispatch();
     let { computers, creating, createdComputer, createError } = useAppSelector(state => state.computers);
+    const { targetPC, editMode } = props;
 
-    const [netDrivesList, setNetDrivesList] = useState<string[]>([]);
-    const [softList, setSoftList] = useState<string[]>([]);
+    const [netDrivesList, setNetDrivesList] = useState<string[]>(editMode ? targetPC!.networkDriveAccess : []);
+    const [softList, setSoftList] = useState<string[]>(editMode ? targetPC.softwares : []);
     const [inputValues, setInputValues] = useState<string[]>([]);
     const [inputCount, setInputCount] = useState(1);
 
     let { register, handleSubmit, watch, formState: { errors } } = useForm<any>({ mode: 'all' });
 
-    const { targetPC, editMode } = props;
-    console.log(targetPC)
 
     // $$$$$$$$$$$$$$$$$$$$$ EDIT MODE $$$$$$$$$$$$$$$$$$$$$
     // if (editMode) {
@@ -44,7 +43,7 @@ function ModalForm(props: PROPSTYPE) {
         data.sessions = inputValues;
 
         console.log(data);
-        dispatch(createComputer(data))
+        // dispatch(createComputer(data))
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE ADD NEW COMPUTER FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
@@ -368,7 +367,7 @@ function ModalForm(props: PROPSTYPE) {
                                     hidePlaceholder
                                     placeholder='Choisir les lecteurs réseau'
                                     avoidHighlightFirstOption={true}
-                                    selectedValues={editMode ? [...targetPC!.networkDriveAccess] : null}
+                                    selectedValues={netDrivesList}
                                 />
                             </FormGroup>
                         </Col>
@@ -415,7 +414,7 @@ function ModalForm(props: PROPSTYPE) {
                                     hidePlaceholder
                                     placeholder='Choisir les logiciels'
                                     avoidHighlightFirstOption={true}
-                                    selectedValues={editMode ? [...targetPC!.softwares] : null}
+                                    selectedValues={softList}
 
                                 />
                             </FormGroup>
