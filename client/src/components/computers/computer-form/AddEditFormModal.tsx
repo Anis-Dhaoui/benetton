@@ -20,8 +20,8 @@ function ModalForm(props: PROPSTYPE) {
 
     const [netDrivesList, setNetDrivesList] = useState<string[]>(editMode ? targetPC!.networkDriveAccess : []);
     const [softList, setSoftList] = useState<string[]>(editMode ? targetPC.softwares : []);
-    const [inputValues, setInputValues] = useState<string[]>([]);
-    const [inputCount, setInputCount] = useState(1);
+    const [inputValues, setInputValues] = useState<string[]>(editMode ? [...targetPC.sessions] : []);
+    const [inputCount, setInputCount] = useState(editMode ? targetPC.sessions.length : 1);
 
     let { register, handleSubmit, watch, formState: { errors } } = useForm<any>({ mode: 'all' });
 
@@ -332,11 +332,10 @@ function ModalForm(props: PROPSTYPE) {
                                                     id={`session${index}`}
                                                     placeholder="Utenty / Nom Prénom"
                                                     type="text"
-                                                    // value={inputValues[index]}
+                                                    value={inputValues[index] || ''}
                                                     onChange={(e) => handleChange(e, index)}
                                                     onKeyDown={(e) => handleKeyPress(e, index)}
                                                     name={`session${index}`}
-                                                    required
                                                 />
                                             </FormGroup>
                                         </Col>
