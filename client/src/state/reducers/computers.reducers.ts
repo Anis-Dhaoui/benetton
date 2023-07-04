@@ -16,6 +16,10 @@ interface STATE {
     onePCLoading?: boolean,
     pc?: IComputer,
     onePCError?: string | null,
+
+    updating?: boolean,
+    updatedComputer?: any,
+    updateError: string | null
 }
 
 const initialState = {
@@ -34,6 +38,10 @@ const initialState = {
     onePCLoading: false,
     pc: undefined,
     onePCError: null,
+
+    updating: false,
+    updatedComputer: undefined,
+    updateError: null
 }
 
 export const ComputerRed = (state: STATE = initialState, action: any): STATE => {
@@ -83,8 +91,18 @@ export const ComputerRed = (state: STATE = initialState, action: any): STATE => 
         case ComputerActionsTypes.GET_SINGLE_COMPUTER_FAILURE:
             return { ...state, onePCLoading: false, onePCError: action.payload }
 
+
+
+        case ComputerActionsTypes.UPDATE_COMPUTER_REQUEST:
+            return { ...state, updating: true }
+
+        case ComputerActionsTypes.UPDATE_COMPUTER_SUCCESS:
+            return { ...state, updating: false, updatedComputer: action.payload }
+
+        case ComputerActionsTypes.UPDATE_COMPUTER_FAILURE:
+            return { ...state, updating: false, updateError: action.payload }
+
         default:
             return state;
     }
 }
-

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, Row, Col, FormGroup, Label, Input } from 'reactstrap';
 import { useAppDispatch, useAppSelector } from '../../../state/store.state';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { createComputer } from '../../../state/actions-creators/computer.actions-creators';
+import { createComputer, updateComputer } from '../../../state/actions-creators/computer.actions-creators';
 import Multiselect from 'multiselect-react-dropdown';
 import { networkDrivesList, softwaresList } from './defaultData';
 
@@ -15,7 +15,7 @@ type PROPSTYPE = {
 
 function ModalForm(props: PROPSTYPE) {
     const dispatch = useAppDispatch();
-    let { computers, creating, createdComputer, createError } = useAppSelector(state => state.computers);
+    let { computers, creating, createdComputer, createError, updating, updatedComputer, updateError } = useAppSelector(state => state.computers);
     const { targetPC, editMode } = props;
 
     const [netDrivesList, setNetDrivesList] = useState<string[]>(editMode ? targetPC!.networkDriveAccess : []);
@@ -39,11 +39,13 @@ function ModalForm(props: PROPSTYPE) {
             data.sessions.unshift(data.usedBy);
         }
 
-        console.log(data);
-        // dispatch(createComputer(data))
+        if (!editMode) {
+            dispatch(createComputer(data));
+        } else {
+            dispatch(updateComputer(data, targetPC._id));
+        }
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE ADD NEW COMPUTER FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
 
 
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ START HANDLE SESSIONS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -422,7 +424,7 @@ function ModalForm(props: PROPSTYPE) {
 
             <ModalFooter>
                 <Button form='new_pc_form' id='add-new-pc-btn' color="success" onClick={handleSubmit(onSubmit)}>
-                    Ajouter
+                    { editMode ? 'MODIFIER' : 'AJOUTER'}
                 </Button>{' '}
                 <Button id='cancel-add-new-pc-btn' color="danger" onClick={props.onClose}>
                     Annuler

@@ -64,6 +64,25 @@ export const createComputer = (data: IComputer) => {
     }
 }
 
+export const updateComputer = (data: IComputer, id: string) => {
+    return (dispatch: Dispatch) => {
+        dispatch(ACTIONS.updateComputersRequest());
+        const toastId = toast.loading('Please wait...')
+
+        axios
+            .put(`${process.env.REACT_APP_BASE_URL}/computers/${id}`, data)
+            .then((res) => {
+                dispatch(ACTIONS.updateComputersSuccess(res.data));
+                toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
+            })
+            .catch((err) => {
+                console.log(err.response.data.message)
+                dispatch(ACTIONS.updateComputersFailure(err.response.data.message));
+                toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
+            })
+    }
+}
+
 
 
 export const deleteComputer = (id: any) => {
