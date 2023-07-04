@@ -26,13 +26,6 @@ function ModalForm(props: PROPSTYPE) {
     let { register, handleSubmit, watch, formState: { errors } } = useForm<any>({ mode: 'all' });
 
 
-    // $$$$$$$$$$$$$$$$$$$$$ EDIT MODE $$$$$$$$$$$$$$$$$$$$$
-    // if (editMode) {
-    //     setNetDrivesList([...targetPC!.networkDriveAccess])
-    // }
-
-
-
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE ADD NEW COMPUTER FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     const onSubmit: SubmitHandler<any> = (data: IComputer | any) => {
         data.usedBy = data.usedBy + ' / ' + data.usedByFullname;
@@ -41,6 +34,10 @@ function ModalForm(props: PROPSTYPE) {
         data.softwares = softList;
         data.networkDriveAccess = netDrivesList;
         data.sessions = inputValues;
+        
+        if (!editMode) {
+            data.sessions.unshift(data.usedBy);
+        }
 
         console.log(data);
         // dispatch(createComputer(data))
