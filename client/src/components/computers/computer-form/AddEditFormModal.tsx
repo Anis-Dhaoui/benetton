@@ -37,9 +37,6 @@ function ModalForm(props: PROPSTYPE) {
 
         if (!editMode) {
             data.sessions.unshift(data.usedBy);
-        }
-
-        if (!editMode) {
             dispatch(createComputer(data));
         } else {
             dispatch(updateComputer(data, targetPC._id));
