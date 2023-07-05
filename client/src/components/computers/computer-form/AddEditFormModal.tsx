@@ -75,7 +75,7 @@ function ModalForm(props: PROPSTYPE) {
         }
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END HANDLE SESSIONS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-console.log(errors)
+    console.log(errors)
     return (
         <Modal id='modal-add-new' isOpen={props.show} style={{ minWidth: '700px' }}>
             <ModalHeader toggle={props.onClose}>Ajouter nouveau PC</ModalHeader>
@@ -87,7 +87,7 @@ console.log(errors)
                                 <Label for="reference">
                                     REF
                                 </Label>
-                                <input className='form-control is-invalid'
+                                <input className={errors.ref ? 'form-control is-invalid' : 'form-control'}
                                     id="ref"
                                     placeholder="Référence PC"
                                     type="text"
@@ -107,6 +107,13 @@ console.log(errors)
                                     name="ref"
                                     defaultValue={editMode ? targetPC?.ref : undefined}
                                 />
+                                {
+                                    errors.ref &&
+                                    <div className="invalid-feedback">
+                                        {errors.ref?.message?.toString()}
+                                    </div>
+                                }
+
                             </FormGroup>
                         </Col>
                         <Col md={6}>
@@ -142,7 +149,7 @@ console.log(errors)
                                 <Label for="model">
                                     MODEL
                                 </Label>
-                                <input className='form-control'
+                                <input className={errors.model ? 'form-control is-invalid' : 'form-control'}
                                     id="model"
                                     placeholder="Modèle PC"
                                     type="text"
@@ -162,6 +169,12 @@ console.log(errors)
                                     name="model"
                                     defaultValue={editMode ? targetPC?.model : undefined}
                                 />
+                                {
+                                    errors.model &&
+                                    <div className="invalid-feedback">
+                                        {errors.model?.message?.toString()}
+                                    </div>
+                                }
                             </FormGroup>
                         </Col>
                         <Col md={6}>
@@ -197,7 +210,7 @@ console.log(errors)
                                 <Label for="cpu">
                                     CPU
                                 </Label>
-                                <input className='form-control'
+                                <input className={errors.cpu ? 'form-control is-invalid' : 'form-control'}
                                     id="cpu"
                                     placeholder="Processeur"
                                     type="text"
@@ -217,6 +230,12 @@ console.log(errors)
                                     defaultValue={editMode ? targetPC?.cpu : undefined}
                                     name="cpu"
                                 />
+                                {
+                                    errors.cpu &&
+                                    <div className="invalid-feedback">
+                                        {errors.cpu?.message?.toString()}
+                                    </div>
+                                }
                             </FormGroup>
                         </Col>
                         <Col md={6}>
@@ -251,7 +270,7 @@ console.log(errors)
                                         <Label for="idUsedBy">
                                             Usager
                                         </Label>
-                                        <input className='form-control'
+                                        <input className={errors.usedBy ? 'form-control is-invalid' : 'form-control'}
                                             id="idUsedBy"
                                             placeholder="Utenty"
                                             type="text"
@@ -271,11 +290,17 @@ console.log(errors)
                                             defaultValue={editMode ? targetPC?.usedBy.split(" / ")[0] : undefined}
                                             name="usedBy"
                                         />
+                                        {
+                                            errors.usedBy &&
+                                            <div className="invalid-feedback">
+                                                {errors.usedBy?.message?.toString()}
+                                            </div>
+                                        }
                                     </FormGroup>
                                 </Col>
                                 <Col md={8} style={{ marginTop: '31px' }}>
                                     <FormGroup>
-                                        <input className='form-control'
+                                        <input className={errors.usedByFullname ? 'form-control is-invalid' : 'form-control'}
                                             id="usedByFullname"
                                             placeholder="Nom Prénom"
                                             type="text"
@@ -295,6 +320,12 @@ console.log(errors)
                                             defaultValue={editMode ? targetPC?.usedBy.split(" / ")[1] : undefined}
                                             name="usedByFullname"
                                         />
+                                        {
+                                            errors.usedByFullname &&
+                                            <div className="invalid-feedback">
+                                                {errors.usedByFullname?.message?.toString()}
+                                            </div>
+                                        }
                                     </FormGroup>
                                 </Col>
                             </Row>
@@ -330,7 +361,7 @@ console.log(errors)
                                         <Col md={11}>
                                             <FormGroup>
                                                 {index === 0 ? <Label for="Session utenty"> Sessions </Label> : null}
-                                                <Input className='form-control'
+                                                <Input className={errors.session ? 'form-control is-invalid' : 'form-control'}
                                                     id={`session${index}`}
                                                     placeholder="Utenty / Nom Prénom"
                                                     type="text"
@@ -339,6 +370,12 @@ console.log(errors)
                                                     onKeyDown={(e) => handleKeyPress(e, index)}
                                                     name={`session${index}`}
                                                 />
+                                                {
+                                                    errors.session &&
+                                                    <div className="invalid-feedback">
+                                                        {errors.usedByFullname?.message?.toString()}
+                                                    </div>
+                                                }
                                             </FormGroup>
                                         </Col>
                                         {
@@ -424,7 +461,7 @@ console.log(errors)
 
             <ModalFooter>
                 <Button disabled={creating || updating} form='new_pc_form' id='add-new-pc-btn' color="success" onClick={handleSubmit(onSubmit)}>
-                    { editMode ? 'MODIFIER' : 'AJOUTER'}  { creating || updating ? <i className="fa fa-spinner fa-spin"></i> : null}
+                    {editMode ? 'MODIFIER' : 'AJOUTER'}  {creating || updating ? <i className="fa fa-spinner fa-spin"></i> : null}
                 </Button>{' '}
                 <Button id='cancel-add-new-pc-btn' color="danger" onClick={props.onClose}>
                     Annuler
