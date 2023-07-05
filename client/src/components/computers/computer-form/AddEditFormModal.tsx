@@ -16,7 +16,7 @@ type PROPSTYPE = {
 function ModalForm(props: PROPSTYPE) {
     const dispatch = useAppDispatch();
     let { computers, creating, createdComputer, createError, updating, updatedComputer, updateError } = useAppSelector(state => state.computers);
-    const { targetPC, editMode } = props;
+    const { targetPC, editMode, show, onClose } = props;
 
     const [netDrivesList, setNetDrivesList] = useState<string[]>(editMode ? targetPC!.networkDriveAccess : []);
     const [softList, setSoftList] = useState<string[]>(editMode ? targetPC.softwares : []);
@@ -75,7 +75,7 @@ function ModalForm(props: PROPSTYPE) {
         }
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END HANDLE SESSIONS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
+console.log(errors)
     return (
         <Modal id='modal-add-new' isOpen={props.show} style={{ minWidth: '700px' }}>
             <ModalHeader toggle={props.onClose}>Ajouter nouveau PC</ModalHeader>
@@ -87,7 +87,7 @@ function ModalForm(props: PROPSTYPE) {
                                 <Label for="reference">
                                     REF
                                 </Label>
-                                <input className='form-control'
+                                <input className='form-control is-invalid'
                                     id="ref"
                                     placeholder="Référence PC"
                                     type="text"
@@ -423,8 +423,8 @@ function ModalForm(props: PROPSTYPE) {
 
 
             <ModalFooter>
-                <Button form='new_pc_form' id='add-new-pc-btn' color="success" onClick={handleSubmit(onSubmit)}>
-                    { editMode ? 'MODIFIER' : 'AJOUTER'}
+                <Button disabled={creating || updating} form='new_pc_form' id='add-new-pc-btn' color="success" onClick={handleSubmit(onSubmit)}>
+                    { editMode ? 'MODIFIER' : 'AJOUTER'}  { creating || updating ? <i className="fa fa-spinner fa-spin"></i> : null}
                 </Button>{' '}
                 <Button id='cancel-add-new-pc-btn' color="danger" onClick={props.onClose}>
                     Annuler
