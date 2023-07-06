@@ -10,5 +10,6 @@ export enum SOFTWARES {
     INTRANET = 'Intranet',
     MICROSTRATEGY = 'MicroStartegy',
     OPENBEE = 'OpenBee',
-    ORGATEX = 'Orgatex'
+    ORGATEX = 'Orgatex',
+    EASYMAG = 'EasyMag'
 }

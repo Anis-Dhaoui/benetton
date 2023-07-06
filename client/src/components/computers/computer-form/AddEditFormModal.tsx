@@ -253,7 +253,7 @@ function ModalForm(props: PROPSTYPE) {
                                     <option disabled>Choisir status</option>
                                     <option>Active</option>
                                     <option>En panne</option>
-                                    <option>Inactive</option>
+                                    <option>Inactif</option>
                                 </select>
                             </FormGroup>
                         </Col>
@@ -461,7 +461,7 @@ function ModalForm(props: PROPSTYPE) {
                     {editMode ? 'MODIFIER' : 'AJOUTER'}  {creating || updating ? <i className="fa fa-spinner fa-spin"></i> : null}
                 </Button>{' '}
                 <Button id='cancel-add-new-pc-btn' color="danger" onClick={props.onClose}>
-                    Annuler
+                    FERMER
                 </Button>
             </ModalFooter>
         </Modal>

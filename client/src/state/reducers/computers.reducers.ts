@@ -97,7 +97,9 @@ export const ComputerRed = (state: STATE = initialState, action: any): STATE => 
             return { ...state, updating: true }
 
         case ComputerActionsTypes.UPDATE_COMPUTER_SUCCESS:
-            return { ...state, updating: false, updatedComputer: action.payload }
+            console.log(action.payload);
+            console.log(state.computers)
+            return { ...state, updating: false, updatedComputer: action.payload, computers: (state.computers as IComputer[])!.map((item: any) => item._id == action.payload.cmp._id ? action.payload.cmp : item) }
 
         case ComputerActionsTypes.UPDATE_COMPUTER_FAILURE:
             return { ...state, updating: false, updateError: action.payload }
