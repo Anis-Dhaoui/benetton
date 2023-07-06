@@ -457,10 +457,10 @@ function ModalForm(props: PROPSTYPE) {
 
 
             <ModalFooter>
-                <Button disabled={creating || updating} form='new_pc_form' id='add-new-pc-btn' color="success" onClick={handleSubmit(onSubmit)}>
+                <Button disabled={creating || updating} form='new_pc_form' id='add-new-pc-btn' onClick={handleSubmit(onSubmit)}>
                     {editMode ? 'MODIFIER' : 'AJOUTER'}  {creating || updating ? <i className="fa fa-spinner fa-spin"></i> : null}
                 </Button>{' '}
-                <Button id='cancel-add-new-pc-btn' color="danger" onClick={props.onClose}>
+                <Button id='cancel-add-new-pc-btn' onClick={props.onClose}>
                     FERMER
                 </Button>
             </ModalFooter>

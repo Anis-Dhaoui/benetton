@@ -11,5 +11,6 @@ export enum SOFTWARES {
     MICROSTRATEGY = 'MicroStartegy',
     OPENBEE = 'OpenBee',
     ORGATEX = 'Orgatex',
-    EASYMAG = 'EasyMag'
+    EASYMAG = 'EasyMag',
+    SAP = 'SAP'
 }

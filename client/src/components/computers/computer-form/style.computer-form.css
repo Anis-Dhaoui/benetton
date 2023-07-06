@@ -2,41 +2,25 @@
     position: absolute;
     left: 476px;
     top: 116px;
-    
 }
-
-/* #add-new-pc .react-bs-table-csv-btn{
-    background-color: red;
-} */
-
-/* #add-new-pc .fa::before{
-    font-size: 15px;
-} */
 
 .btn-group-sm>.btn i {
     font-size: 15px;
 }
 
-.modal-content ul, .dark-version .form-control{
-    color: rgb(0, 0, 0) !important;
-}
 .modal-content{
     background-color: #252c43 !important;
 }
-/* #add-new-pc > input[type="text"]{
-    color: blue !important;
-} */
 
 #multiselectContainerReact{
     background-color: white !important;
 }
 
 #cancel-add-new-pc-btn {
-    background: linear-gradient(13deg, #ff000000 0%, #ff00002f 50%, #ff0000b7 50%, #ff0000 100%);
+    background: linear-gradient(13deg, #ff000000 0%, #ff00002f 48%, #ff0000b7 50%, #ff0000 100%);
     background-size: 200% auto;
     transition: background-position 0.5s;
 
-    margin-top: -1px;
     box-shadow: none !important;
     border-left: 1px solid red;
     border-right: 1px solid red;
@@ -46,10 +30,22 @@
 
 #cancel-add-new-pc-btn:hover {
     background-position: -300% 0;
-    /* Shift background position to the left */
-    margin-top: 0px;
-    border-top: 1px solid red;
-    border-bottom: 1px solid red;
+}
+
+#add-new-pc-btn {
+    background: linear-gradient(13deg, #ff000000 0%, #ff00002f 48%, #00ff00b7 50%, #09ff00 100%);
+    background-size: 200% auto;
+    transition: background-position 0.5s;
+
+    box-shadow: none !important;
+    border-left: 1px solid green;
+    border-right: 1px solid green;
+    transition: border-bottom 0.9s;
+    transition: background-position 0.9s;
+}
+
+#add-new-pc-btn:hover {
+    background-position: -300% 0;
 }
 
 #modal-add-new label, h5{

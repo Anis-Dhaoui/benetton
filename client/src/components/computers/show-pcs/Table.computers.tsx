@@ -1,10 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BootstrapTable, TableHeaderColumn, ExportCSVButton } from 'react-bootstrap-table'
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 import './style.computer-table.scss';
 import ActionsBtn from './actionsButton/ActionsBtn.computers';
+import { darkMode } from '../../navbar/Plugins';
 
 function TableComputer({ computersList }: any) {
+
+    const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || false);
+
+    useEffect(() => {
+        localStorage.setItem('darkModeStatus', JSON.stringify(isDarkMode));
+        darkMode(isDarkMode);
+    }, [isDarkMode]);
 
     function addSpaceToArrayitems(arr: string[]) {
         return arr.map((item: string) => item = item + " ");

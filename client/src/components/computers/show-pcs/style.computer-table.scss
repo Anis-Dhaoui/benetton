@@ -10,7 +10,7 @@
 }
 
 .pagination .active .page-link {
-    background-color: #46061c8c !important;
+    background-color: #ffffff8c !important;
 }
 
 .sort-column {
@@ -23,10 +23,18 @@
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-#computer-table input {
-    background-color: #293049;
-    color: white;
+.light-input-search {
+    background-color: #ffffff !important;
+    color: #000000 !important;
     height: 47px;
+    font-size: 18px !important;
+}
+
+.dark-input-search {
+    background-color: rgb(26 31 53) !important;
+    color: #ffffff !important;
+    height: 47px;
+    font-size: 18px !important;
 }
 
 #computer-table .input-group-btn {
@@ -55,9 +63,4 @@
     margin-top: 0px;
     border-top: 1px solid red;
     border-bottom: 1px solid red;
-}
-
-.ligth-table-search-input {
-    background-color: white !important;
-    color: black !important;
 }

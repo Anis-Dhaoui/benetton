@@ -74,6 +74,7 @@ export const darkMode = (isDarkMode) => {
     const btn_text_white = document.querySelectorAll('.btn.btn-link.text-white, .material-icons.text-white');
     const card_border = document.querySelectorAll('.card.border');
     const card_border_dark = document.querySelectorAll('.card.border.border-dark');
+    const input_search = document.querySelectorAll('#computer-table input')
 
     const computer_search = document.querySelector('#computer-table input');
     computer_search.classList.add('ligth-table-search-input');
@@ -81,9 +82,12 @@ export const darkMode = (isDarkMode) => {
     const svg = document.querySelectorAll('g');
 
     if (isDarkMode) {
-        computer_search.classList.remove('ligth-table-search-input');
-
         body.classList.add('dark-version');
+
+        
+        input_search[0].classList.remove('light-input-search')
+        input_search[0].classList.add('dark-input-search')
+
         for (var i = 0; i < hr.length; i++) {
             if (hr[i].classList.contains('dark')) {
                 hr[i].classList.remove('dark');
@@ -147,7 +151,9 @@ export const darkMode = (isDarkMode) => {
         }
     } else {
         body.classList.remove('dark-version');
-        computer_search.classList.add('ligth-table-search-input');
+
+        input_search[0].classList.remove('dark-input-search');
+        input_search[0].classList.add('light-input-search');
 
         for (var i = 0; i < hr.length; i++) {
             if (hr[i].classList.contains('light')) {
