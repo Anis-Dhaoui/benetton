@@ -5,21 +5,6 @@ import { darkMode, navbarFixed } from './Plugins.js';
 
 function Navbar() {
 
-    // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN FIXED NAVBAR BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
-    const [isNavbarFixed, setisNavbarFixed] = useState(() => JSON.parse(localStorage.getItem('navbarStatus')!) || false);
-
-    useEffect(() => {
-        localStorage.setItem('navbarStatus', JSON.stringify(isNavbarFixed));
-        navbarFixed(isNavbarFixed);
-    }, [isNavbarFixed]);
-
-    const handleFixedNavbar = (el: any) => {
-        setisNavbarFixed(!isNavbarFixed);
-    };
-    // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN FIXED NAVBAR BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
-
-
-
     // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
     const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || false);
 
@@ -157,15 +142,7 @@ function Navbar() {
                     <div className="card-body pt-sm-3 pt-0">
                         <p className="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
 
-                        {/* <!-- Navbar Fixed --> */}
-                        <div className="mt-3 d-flex">
-                            <h6 className="mb-0">Navbar Fixed</h6>
-                            <div className="form-check form-switch ps-0 ms-auto my-auto">
-                                <input className="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onChange={(el) => handleFixedNavbar(el)} checked={isNavbarFixed} />
-                            </div>
-                        </div>
-
-                        <hr className="horizontal dark my-3" />
+                        {/* <hr className="horizontal dark my-3" /> */}
                         <div className="mt-2 d-flex">
                             <h6 className="mb-0">Light / Dark</h6>
                             <div className="form-check form-switch ps-0 ms-auto my-auto">

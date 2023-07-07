@@ -25,8 +25,8 @@ export class CreateComputerDto {
     readonly type: string;
 
     @IsString()
-    @MaxLength(30)
-    @MinLength(3)
+    @MaxLength(50)
+    @MinLength(2)
     readonly cpu: string;
 
     @IsEnum(STATUS)

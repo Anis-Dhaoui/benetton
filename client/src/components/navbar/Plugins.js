@@ -75,6 +75,7 @@ export const darkMode = (isDarkMode) => {
     const card_border = document.querySelectorAll('.card.border');
     const card_border_dark = document.querySelectorAll('.card.border.border-dark');
     const input_search = document.querySelectorAll('#computer-table input')
+    const clear_search_btn = document.querySelectorAll('.react-bs-table-search-clear-btn');
 
     const computer_search = document.querySelector('#computer-table input');
     computer_search.classList.add('ligth-table-search-input');
@@ -85,8 +86,10 @@ export const darkMode = (isDarkMode) => {
         body.classList.add('dark-version');
 
         
-        input_search[0].classList.remove('light-input-search')
-        input_search[0].classList.add('dark-input-search')
+        input_search[0].classList.remove('light-input-search');
+        input_search[0].classList.add('dark-input-search');
+
+        clear_search_btn[0].style.color = 'white';
 
         for (var i = 0; i < hr.length; i++) {
             if (hr[i].classList.contains('dark')) {
@@ -154,6 +157,8 @@ export const darkMode = (isDarkMode) => {
 
         input_search[0].classList.remove('dark-input-search');
         input_search[0].classList.add('light-input-search');
+
+        clear_search_btn[0].style.color = 'black';
 
         for (var i = 0; i < hr.length; i++) {
             if (hr[i].classList.contains('light')) {

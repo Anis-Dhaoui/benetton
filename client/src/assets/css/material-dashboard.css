@@ -21296,9 +21296,9 @@ fieldset:disabled .btn {
   color: #f0f2f5;
 }
 
-.dark-version .form-control {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
+/* .dark-version .form-control {
+  color: black !important;
+} */
 
 body.dark-version {
   color: rgba(255, 255, 255, 0.8) !important;

@@ -220,7 +220,7 @@ function ModalForm(props: PROPSTYPE) {
                                             },
                                             maxLength: {
                                                 value: 20,
-                                                message: "Maximum 20 caractères long SVP"
+                                                message: "Maximum 50 caractères long SVP"
                                             }
                                         })
                                     }
