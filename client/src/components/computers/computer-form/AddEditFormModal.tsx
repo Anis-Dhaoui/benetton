@@ -23,7 +23,7 @@ function ModalForm(props: PROPSTYPE) {
     const [inputValues, setInputValues] = useState<string[]>(editMode ? [...targetPC.sessions] : []);
     const [inputCount, setInputCount] = useState(editMode ? targetPC.sessions.length : 1);
 
-    let { register, handleSubmit, watch, formState: { errors } } = useForm<any>({ mode: 'all' });
+    let { register, handleSubmit, watch, formState: { errors }, reset } = useForm<any>({ mode: 'all' });
 
 
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE ADD NEW COMPUTER FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -36,10 +36,9 @@ function ModalForm(props: PROPSTYPE) {
         data.sessions = inputValues;
 
         if (!editMode) {
-            data.sessions.unshift(data.usedBy);
-            dispatch(createComputer(data));
+            dispatch(createComputer(data, reset));
         } else {
-            dispatch(updateComputer(data, targetPC._id));
+            dispatch(updateComputer(data, targetPC._id, reset));
         }
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE ADD NEW COMPUTER FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -219,8 +218,8 @@ function ModalForm(props: PROPSTYPE) {
                                                 message: "Minimum 2 caractères long SVP"
                                             },
                                             maxLength: {
-                                                value: 20,
-                                                message: "Maximum 50 caractères long SVP"
+                                                value: 30,
+                                                message: "Maximum 30 caractères long SVP"
                                             }
                                         })
                                     }
@@ -421,13 +420,21 @@ function ModalForm(props: PROPSTYPE) {
                                     name="group"
                                     defaultValue={editMode ? targetPC?.group : undefined}
                                 >
-                                    <option disabled>Choisir groupe</option>
+                                    <option disabled selected>Choisir groupe</option>
+                                    <option>IT</option>
                                     <option>Programmation</option>
                                     <option>Modelery</option>
                                     <option>Qualité</option>
                                     <option>UTM</option>
                                     <option>Administration</option>
-                                    <option>Contabilité</option>
+                                    <option>MAG MP</option>
+                                    <option>Mag Accessoire</option>
+                                    <option>Comptabilité</option>
+                                    <option>RH</option>
+                                    <option>Industrie </option>
+                                    <option>C.Qualité</option>
+                                    <option>Qualité Textile</option>
+                                    <option>G.Gafsa</option>
                                 </select>
                             </FormGroup>
                         </Col>

@@ -10,6 +10,10 @@ export class ComputersService {
   constructor(@InjectModel('Computer') public computerModel: Model<IComputer>) { }
 
   async create(createComputerDto: CreateComputerDto): Promise<IComputer> {
+    Logger.warn(createComputerDto);
+    createComputerDto.sessions.unshift(createComputerDto.usedBy);
+    Logger.error(createComputerDto);
+    
     const newComputer = await new this.computerModel(createComputerDto);
     return newComputer.save();
   }

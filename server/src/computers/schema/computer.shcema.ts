@@ -41,10 +41,10 @@ export class Computer {
     @Prop({ required: true })
     sessions: string[];
 
-    @Prop({ required: true })
+    @Prop()
     softwares: SOFTWARES[];
 
-    @Prop({ required: true })
+    @Prop()
     networkDriveAccess: string[];
 
     @Prop({ required: true })

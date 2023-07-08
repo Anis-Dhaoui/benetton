@@ -25,7 +25,7 @@ export class CreateComputerDto {
     readonly type: string;
 
     @IsString()
-    @MaxLength(50)
+    @MaxLength(30)
     @MinLength(2)
     readonly cpu: string;
 
@@ -43,17 +43,17 @@ export class CreateComputerDto {
 
     @IsArray()
     @IsString({ each: true })
-    @ArrayMinSize(1)
+    @ArrayMinSize(0)
     readonly sessions: string[];
 
     @IsArray()
     @IsEnum(SOFTWARES, { each: true })
-    @ArrayMinSize(1)
+    @ArrayMinSize(0)
     readonly softwares: SOFTWARES[];
 
     @IsArray()
     @IsString({ each: true })
-    @ArrayMinSize(1)
+    @ArrayMinSize(0)
     readonly networkDriveAccess: string[];
 
     @IsString()
