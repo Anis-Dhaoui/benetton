@@ -9,13 +9,13 @@ export class CreateComputerDto {
     readonly ref: string;
 
     @IsString()
-    @MaxLength(30)
+    @MaxLength(50)
     @IsNotEmpty()
     readonly brandName: string;
 
     @IsString()
     @MaxLength(30)
-    @MinLength(3)
+    @MinLength(2)
     readonly model: string;
 
     @IsEnum(OS)
@@ -25,7 +25,7 @@ export class CreateComputerDto {
     readonly type: string;
 
     @IsString()
-    @MaxLength(30)
+    @MaxLength(60)
     @MinLength(2)
     readonly cpu: string;
 
@@ -36,8 +36,8 @@ export class CreateComputerDto {
 
     
     @IsString()
-    @MaxLength(50)
-    @MinLength(5)
+    @MaxLength(60)
+    @MinLength(2)
     @IsNotEmpty()
     readonly usedBy: string;
 

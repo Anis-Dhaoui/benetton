@@ -46,7 +46,7 @@ export const fetchComputers = () => {
 //     }
 // }
 
-export const createComputer = (data: IComputer, reset: UseFormReset<any>) => {
+export const createComputer = (data: IComputer, reset: UseFormReset<any>, setNetDriveList: any, setSoftList: any) => {
     return (dispatch: Dispatch) => {
         dispatch(ACTIONS.createComputersRequest());
         const toastId = toast.loading('Please wait...')
@@ -57,6 +57,8 @@ export const createComputer = (data: IComputer, reset: UseFormReset<any>) => {
                 dispatch(ACTIONS.createComputersSuccess(res.data));
                 toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
                 reset();
+                setNetDriveList([]);
+                setSoftList([]);
             })
             .catch((err) => {
                 console.log(err.response.data.message)
