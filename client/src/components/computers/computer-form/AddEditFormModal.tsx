@@ -91,12 +91,12 @@ function ModalForm(props: PROPSTYPE) {
                                         {
                                             required: "Required field",
                                             minLength: {
-                                                value: 6,
-                                                message: "Minimum 6 caractères long SVP"
+                                                value: 3,
+                                                message: "Minimum 3 caractères long SVP"
                                             },
                                             maxLength: {
-                                                value: 20,
-                                                message: "Maximum 20 caractères long SVP"
+                                                value: 50,
+                                                message: "Maximum 50 caractères long SVP"
                                             }
                                         })
                                     }
@@ -218,8 +218,8 @@ function ModalForm(props: PROPSTYPE) {
                                                 message: "Minimum 2 caractères long SVP"
                                             },
                                             maxLength: {
-                                                value: 60,
-                                                message: "Maximum 60 caractères long SVP"
+                                                value: 50,
+                                                message: "Maximum 50 caractères long SVP"
                                             }
                                         })
                                     }
@@ -278,8 +278,8 @@ function ModalForm(props: PROPSTYPE) {
                                                         message: "Minimum 2 caractères long SVP"
                                                     },
                                                     maxLength: {
-                                                        value: 20,
-                                                        message: "Maximum 20 caractères long SVP"
+                                                        value: 50,
+                                                        message: "Maximum 50 caractères long SVP"
                                                     }
                                                 })
                                             }
@@ -304,12 +304,12 @@ function ModalForm(props: PROPSTYPE) {
                                                 {
                                                     required: "Required field",
                                                     minLength: {
-                                                        value: 6,
-                                                        message: "Minimum 6 caractères long SVP"
+                                                        value: 2,
+                                                        message: "Minimum 2 caractères long SVP"
                                                     },
                                                     maxLength: {
-                                                        value: 30,
-                                                        message: "Maximum 30 caractères long SVP"
+                                                        value: 50,
+                                                        message: "Maximum 50 caractères long SVP"
                                                     }
                                                 })
                                             }

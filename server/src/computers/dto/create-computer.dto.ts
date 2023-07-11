@@ -14,7 +14,7 @@ export class CreateComputerDto {
     readonly brandName: string;
 
     @IsString()
-    @MaxLength(30)
+    @MaxLength(50)
     @MinLength(2)
     readonly model: string;
 
@@ -25,7 +25,7 @@ export class CreateComputerDto {
     readonly type: string;
 
     @IsString()
-    @MaxLength(60)
+    @MaxLength(50)
     @MinLength(2)
     readonly cpu: string;
 
@@ -36,7 +36,7 @@ export class CreateComputerDto {
 
     
     @IsString()
-    @MaxLength(60)
+    @MaxLength(50)
     @MinLength(2)
     @IsNotEmpty()
     readonly usedBy: string;
@@ -57,7 +57,7 @@ export class CreateComputerDto {
     readonly networkDriveAccess: string[];
 
     @IsString()
-    @MaxLength(45)
+    @MaxLength(50)
     @IsNotEmpty()
     readonly group: string;
 }
