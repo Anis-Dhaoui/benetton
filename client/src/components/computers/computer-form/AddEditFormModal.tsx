@@ -15,7 +15,8 @@ type PROPSTYPE = {
 
 function ModalForm(props: PROPSTYPE) {
     const dispatch = useAppDispatch();
-    let { computers, creating, createdComputer, createError, updating, updatedComputer, updateError } = useAppSelector(state => state.computers);
+    /* eslint-disable @typescript-eslint/no-unused-vars */
+    let { creating, createdComputer, createError, updating, updatedComputer, updateError } = useAppSelector(state => state.computers);
     const { targetPC, editMode, show, onClose } = props;
 
     const [netDrivesList, setNetDrivesList] = useState<string[]>(editMode ? targetPC!.networkDriveAccess : []);
@@ -24,7 +25,7 @@ function ModalForm(props: PROPSTYPE) {
     const [inputCount, setInputCount] = useState(editMode ? targetPC.sessions.length : 1);
 
     let { register, handleSubmit, watch, formState: { errors }, reset } = useForm<any>({ mode: 'all' });
-
+    /* eslint-disable @typescript-eslint/no-unused-vars */
 
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE ADD NEW COMPUTER FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     const onSubmit: SubmitHandler<any> = (data: IComputer | any) => {
