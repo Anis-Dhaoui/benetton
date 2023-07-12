@@ -34,7 +34,7 @@ function Main() {
             <Navbar />
           </div>
 
-          <div className='col-md-12 mt-5' style={{ marginLeft: '-33px' }}>
+          <div className='col-md-12' style={{ marginLeft: '-33px' }}>
             <RenderComputers />
           </div>
 

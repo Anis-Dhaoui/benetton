@@ -1,0 +1,11 @@
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1600px) {
+    #sidenav-main{
+    max-width: 213px !important;
+    margin-left: 5px !important;
+    }
+
+    #add-new-pc{
+        left: 420px !important;
+    }
+  }
