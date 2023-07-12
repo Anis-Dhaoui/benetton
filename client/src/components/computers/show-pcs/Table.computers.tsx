@@ -57,6 +57,22 @@ function TableComputer({ computersList }: any) {
         )
     }
 
+    const softColumn = (cell?: any, row?: any) => {
+        if (cell.length !== 0) {
+            return cell
+        } else {
+            return <span style={{fontWeight: '500'}}>none</span>
+        }
+    }
+
+    const netDrivesColumn = (cell?: any, row?: any) => {
+        if (cell.length !== 0) {
+            return cell
+        } else {
+            return <span style={{fontWeight: '500'}}>none</span>
+        }
+    }
+
     return (
         <div id='computer-table'>
             <BootstrapTable data={manipulatedComputersList} striped hover condensed pagination={true}
@@ -80,8 +96,8 @@ function TableComputer({ computersList }: any) {
                 <TableHeaderColumn dataField="usedBy" dataAlign="center" dataSort width='200'>UTILISÉ PAR</TableHeaderColumn>
                 <TableHeaderColumn dataField="group" dataAlign="center" dataSort>GPE</TableHeaderColumn>
                 <TableHeaderColumn dataField="sessions" dataAlign="center" dataSort width='130px'>SESSIONS</TableHeaderColumn>
-                <TableHeaderColumn dataField="softwares" dataAlign="center" dataSort width='170px'>PROGS-UTILISÉ</TableHeaderColumn>
-                <TableHeaderColumn dataField="networkDriveAccess" dataAlign="center" dataSort>A.L.R</TableHeaderColumn>
+                <TableHeaderColumn dataField="softwares" dataFormat={softColumn} dataAlign="center" dataSort width='170px'>PROGS-UTILISÉ</TableHeaderColumn>
+                <TableHeaderColumn dataField="networkDriveAccess" dataFormat={netDrivesColumn} dataAlign="center" dataSort>A.L.R</TableHeaderColumn>
                 <TableHeaderColumn dataField="brandName" dataAlign="center" dataSort>MARQ</TableHeaderColumn>
                 <TableHeaderColumn dataField="model" dataAlign="center" dataSort>MODEL</TableHeaderColumn>
                 <TableHeaderColumn dataField="os" dataAlign="center" dataSort>OS</TableHeaderColumn>

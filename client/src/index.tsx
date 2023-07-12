@@ -6,9 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'popper.js'
-import $ from 'jquery';
-
-// import './assets/css/material-dashboard.css';
+// import $ from 'jquery';
 
 
 
