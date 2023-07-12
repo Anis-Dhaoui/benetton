@@ -1,11 +1,18 @@
 /* On screens that are 992px or less, set the background color to blue */
 @media screen and (max-width: 1600px) {
-    #sidenav-main{
-    max-width: 213px !important;
-    margin-left: 5px !important;
+    #sidenav-main {
+        max-width: 213px !important;
+        margin-left: 5px !important;
     }
 
-    #add-new-pc{
+    #add-new-pc {
         left: 420px !important;
     }
-  }
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (min-width: 1200px) and (max-width: 1518px) {
+    .react-bs-table-csv-btn {
+        margin-left: 63px !important;
+    }
+}
