@@ -10,9 +10,14 @@
     }
 }
 
-/* On screens that are 992px or less, set the background color to blue */
 @media screen and (min-width: 1200px) and (max-width: 1518px) {
     .react-bs-table-csv-btn {
         margin-left: 63px !important;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .react-bs-table table {
+        table-layout: auto !important;
     }
 }
