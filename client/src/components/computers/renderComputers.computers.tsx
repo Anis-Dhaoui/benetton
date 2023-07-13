@@ -11,7 +11,7 @@ function RenderComputers() {
   const { loading, computers, error } = useAppSelector(state => state.computers);
   useEffect(() => {
     dispatch(fetchComputers());
-  }, [])
+  }, [dispatch])
 
   if (loading) {
     return (

@@ -1,9 +1,9 @@
 // CONFIGURATION RIGHT SIDE MENU
+// eslint-disable
 document.onreadystatechange = () => {
 
     if (document.querySelector('.fixed-plugin')) {
 
-        var fixedPlugin = document.querySelector('.fixed-plugin');
         var fixedPlugin = document.querySelector('.fixed-plugin');
         var fixedPluginButton = document.querySelector('.fixed-plugin-button');
         var fixedPluginButtonNav = document.querySelector('.fixed-plugin-button-nav');
@@ -40,13 +40,13 @@ document.onreadystatechange = () => {
         })
 
         document.querySelector('body').onclick = function (e) {
-            if (e.target != fixedPluginButton && e.target != fixedPluginButtonNav && e.target.closest('.fixed-plugin .card') != fixedPluginCard) {
+            if (e.target !== fixedPluginButton && e.target !== fixedPluginButtonNav && e.target.closest('.fixed-plugin .card') !== fixedPluginCard) {
                 fixedPlugin.classList.remove('show');
             }
         }
 
         if (navbar) {
-            if (navbar.getAttribute('data-scroll') == 'true' && buttonNavbarFixed) {
+            if (navbar.getAttribute('data-scroll') === 'true' && buttonNavbarFixed) {
                 buttonNavbarFixed.setAttribute("checked", "true");
             }
         }

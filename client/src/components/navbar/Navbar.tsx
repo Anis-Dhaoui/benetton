@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Plugins.js';
 import './style.css'
-import { darkMode, navbarFixed } from './Plugins.js';
+import { darkMode } from './Plugins.js';
 
 function Navbar() {
 
@@ -45,6 +45,7 @@ function Navbar() {
                                 </a>
                             </li>
                             <li className="nav-item px-3 d-flex align-items-center">
+                                {/* eslint-disable */}
                                 <a href="#" className="nav-link p-0 top-right-nav-btn">
                                     <i className="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                                 </a>

@@ -18,7 +18,7 @@ function TableComputer({ computersList }: any) {
         return arr.map((item: string) => item = item + " ");
     }
 
-    if (computersList != undefined) {
+    if (computersList !== undefined) {
         var manipulatedComputersList = computersList.map((obj: IComputer) => {
             return {
                 ...obj,
