@@ -15,7 +15,6 @@ export const fetchComputers = () => {
                 dispatch(ACTIONS.fetchComputersSuccess(res.data));
             })
             .catch((err) => {
-                console.log(err)
                 dispatch(ACTIONS.fetchComputersFailure(err.response.data.message))
             })
     }
@@ -61,7 +60,6 @@ export const createComputer = (data: IComputer, reset: UseFormReset<any>, setNet
                 setSoftList([]);
             })
             .catch((err) => {
-                console.log(err.response.data.message)
                 dispatch(ACTIONS.createComputersFailure(err.response.data.message));
                 toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
             })
@@ -81,7 +79,6 @@ export const updateComputer = (data: IComputer, id: string, reset: UseFormReset<
                 reset();
             })
             .catch((err) => {
-                console.log(err.response.data.message)
                 dispatch(ACTIONS.updateComputersFailure(err.response.data.message));
                 toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
             })
@@ -98,12 +95,10 @@ export const deleteComputer = (id: any) => {
         axios
             .delete(`${process.env.REACT_APP_BASE_URL}/computers/${id}`)
             .then((res) => {
-                console.log(res);
                 dispatch(ACTIONS.deleteComputersSuccess(res.data));
                 toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
             })
             .catch((err) => {
-                console.log(err.response.data.message);
                 dispatch(ACTIONS.deleteComputersFailure(err.response.data.message));
                 toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
             })

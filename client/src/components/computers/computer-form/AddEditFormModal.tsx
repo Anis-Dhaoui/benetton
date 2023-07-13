@@ -72,7 +72,6 @@ function ModalForm(props: PROPSTYPE) {
         }
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END HANDLE SESSIONS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-    console.log(errors)
     return (
         <Modal id='modal-add-new' isOpen={props.show} style={{ minWidth: '700px' }}>
             <ModalHeader toggle={props.onClose}>Ajouter nouveau PC</ModalHeader>

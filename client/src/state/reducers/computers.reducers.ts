@@ -58,15 +58,12 @@ export const ComputerRed = (state: STATE = initialState, action: any): STATE => 
 
 
         case ComputerActionsTypes.CREATE_COMPUTER_REQUEST:
-            console.log("CREATE_COMPUTER_REQUEST")
             return { ...state, creating: true, createError: null }
 
         case ComputerActionsTypes.CREATE_COMPUTER_SUCCESS:
-            console.log("CREATE_COMPUTER_SUCCESS")
             return { ...state, creating: false, createdComputer: action.payload, computers: [action.payload.computer, ...(state.computers as IComputer[])!] }
 
         case ComputerActionsTypes.CREATE_COMPUTER_FAILURE:
-            console.log("CREATE_COMPUTER_FAILURE")
             return { ...state, creating: false, createError: action.payload }
 
 
@@ -97,8 +94,6 @@ export const ComputerRed = (state: STATE = initialState, action: any): STATE => 
             return { ...state, updating: true }
 
         case ComputerActionsTypes.UPDATE_COMPUTER_SUCCESS:
-            console.log(action.payload);
-            console.log(state.computers)
             return { ...state, updating: false, updatedComputer: action.payload, computers: (state.computers as IComputer[])!.map((item: any) => item._id === action.payload.cmp._id ? action.payload.cmp : item) }
 
         case ComputerActionsTypes.UPDATE_COMPUTER_FAILURE:
