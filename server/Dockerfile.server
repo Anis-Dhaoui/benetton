@@ -1,10 +1,10 @@
 #  Dockerfile for Node Express Backend
 
-FROM node:14-alpine
+FROM node:18.15.0-alpine
 
 # Create App Directory
 # RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/letseat/server
+WORKDIR /usr/src/benetton/server
 
 # Install Dependencies
 COPY package*.json ./
@@ -14,7 +14,11 @@ RUN npm install --silent
 # Copy app source code
 COPY . .
 
-# Exports
-EXPOSE 3000
+# Creates a "dist" folder with the production build
+RUN npm run build
 
-CMD ["npm","start"]
+# Exports
+EXPOSE 5000
+
+# Start the server using the production build
+CMD [ "npm", "run", "start:dev" ]

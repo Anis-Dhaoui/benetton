@@ -1,10 +1,10 @@
 # Dockerfile for React client
 
 # Build react client
-FROM node:14-alpine
+FROM node:18.15.0-alpine
 
 # Working directory be app
-WORKDIR /usr/src/letseat/client
+WORKDIR /usr/src/benetton/client
 
 COPY package*.json ./
 
@@ -17,6 +17,6 @@ RUN yarn install --silent
 # Build project
 RUN yarn build
 
-EXPOSE 3001
+EXPOSE 5001
 
 CMD ["yarn","start"]

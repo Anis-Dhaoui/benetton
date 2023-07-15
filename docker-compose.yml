@@ -5,51 +5,51 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile.server
-    image: letseat-server
-    container_name: letseat-container-server
-    command: npm start
+    image: benetton-server
+    container_name: benetton-container-server
+    command: npm run start:dev
     volumes:
-      - ./server/:/usr/src/letseat/server
+      - ./server/:/usr/src/benetton/server
       # - /usr/src/app/node_modules
     ports:
-      - "3000:3000"
+      - "5000:5000"
     # depends_on:
     #   - mongo
     env_file: ./server/.env
     environment:
       - NODE_ENV=development
     networks:
-      - letseat-network
+      - benetton-network
 
   # mongo:
   #   image: mongo
   #   volumes:
-  #     - letseat_db:/data/db
+  #     - benetton_db:/data/db
   #   ports:
   #     - "27017:27017"
   #   networks:
-  #     - letseat-network
+  #     - benetton-network
 
   client:
     build:
       context: ./client
       dockerfile: Dockerfile.client
-    image: letseat-client
-    container_name: letseat-container-client
+    image: benetton-client
+    container_name: benetton-container-client
     command: yarn start
     volumes:
-      - ./client/:/usr/src/letseat/client
+      - ./client/:/usr/src/benetton/client
       # - /usr/app/node_modules
     depends_on:
       - server
     ports:
-      - "3001:3001"
+      - "5001:5001"
     networks:
-      - letseat-network
+      - benetton-network
 
 networks:
-    letseat-network:
-        driver: bridge
+  benetton-network:
+    driver: bridge
 
 # volumes:
 #     data-volume:

@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import { UseFormReset } from 'react-hook-form';
 
 export const fetchComputers = () => {
-
     return (dispatch: Dispatch) => {
         dispatch(ACTIONS.fetchComputersRequest());
 
@@ -15,7 +14,7 @@ export const fetchComputers = () => {
                 dispatch(ACTIONS.fetchComputersSuccess(res.data));
             })
             .catch((err) => {
-                dispatch(ACTIONS.fetchComputersFailure(err.response.data.message))
+                dispatch(ACTIONS.fetchComputersFailure(err.message))
             })
     }
 }
