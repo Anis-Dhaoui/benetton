@@ -25,12 +25,10 @@ function Navbar() {
       useEffect(() => {
         // Add the click event listener when the component mounts
         document.body.addEventListener('click', handleBodyClick);
-        console.log("component mounts")
     
         // Remove the click event listener when the component unmounts
         return () => {
           document.body.removeEventListener('click', handleBodyClick);
-          console.log("component unmounts")
         };
       }, []);
 
