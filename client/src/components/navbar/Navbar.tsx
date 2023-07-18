@@ -7,14 +7,36 @@ function Navbar() {
 
     // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
     const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || false);
+    const [showRightSideNav, setShowRightSideNav] = useState(false);
 
     useEffect(() => {
         localStorage.setItem('darkModeStatus', JSON.stringify(isDarkMode));
         darkMode(isDarkMode);
     }, [isDarkMode]);
 
+    const handleBodyClick = (event:any) => {
+        if (
+            !event.target.closest('#settingUp') && !event.target.closest('#settingDown') && !event.target.closest('#rightSideNav')
+          ) {
+            setShowRightSideNav(false)
+          }
+      };
+    
+      useEffect(() => {
+        // Add the click event listener when the component mounts
+        document.body.addEventListener('click', handleBodyClick);
+        console.log("component mounts")
+    
+        // Remove the click event listener when the component unmounts
+        return () => {
+          document.body.removeEventListener('click', handleBodyClick);
+          console.log("component unmounts")
+        };
+      }, []);
+
+
     const handleDarkMode = (el: any) => {
-        setisDarkMode(!isDarkMode);  
+        setisDarkMode(!isDarkMode);
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
 
@@ -44,11 +66,11 @@ function Navbar() {
                                     </div>
                                 </a>
                             </li>
-                            <li className="nav-item px-3 d-flex align-items-center">
+                            <li id='settingUp' className="nav-item px-3 d-flex align-items-center">
                                 {/* eslint-disable */}
-                                <a href="#" className="nav-link p-0 top-right-nav-btn">
+                                <i onClick={() => setShowRightSideNav(!showRightSideNav)} className="nav-link p-0 top-right-nav-btn">
                                     <i className="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                                </a>
+                                </i>
                             </li>
 
                             {/* NOTIFICATION DROPDOWN MENU */}
@@ -112,17 +134,17 @@ function Navbar() {
 
 
             {/* CONFIGURATION RIGHT SIDE MENU */}
-            <div className="fixed-plugin">
-                <a className="fixed-plugin-button text-dark position-fixed px-3 py-2">
+            <div id='rightSideNav' className={showRightSideNav ? "fixed-plugin show" : "fixed-plugin"}>
+                <button id='settingDown' onClick={() => setShowRightSideNav(!showRightSideNav)} className="fixed-plugin-button text-dark position-fixed px-3 py-2">
                     <i className="material-icons py-2">settings</i>
-                </a>
+                </button>
                 <div className="card shadow-lg">
                     <div className="card-header pb-0 pt-3">
                         <div className="float-start">
                             <h5 className="mt-3 mb-0">CONFIGURATIONS</h5>
                         </div>
                         <div className="float-end mt-4">
-                            <button className="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                            <button onClick={() => setShowRightSideNav(!showRightSideNav)} className="btn btn-link text-dark p-0 fixed-plugin-close-button">
                                 <i className="material-icons">clear</i>
                             </button>
                         </div>
@@ -138,7 +160,7 @@ function Navbar() {
                         <div className="mt-2 d-flex">
                             <h6 className="mb-0">Light / Dark</h6>
                             <div className="form-check form-switch ps-0 ms-auto my-auto">
-                                <input className="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onChange={(el) => handleDarkMode(el)} checked={isDarkMode}/>
+                                <input className="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onChange={(el) => handleDarkMode(el)} checked={isDarkMode} />
                             </div>
                         </div>
                         <hr className="horizontal dark my-sm-4" />

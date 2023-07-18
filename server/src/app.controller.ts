@@ -1,12 +1,15 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Res } from '@nestjs/common';
 import { AppService } from './app.service';
+// import path, { join } from 'path';
+import { pathToFileURL } from 'url';
+import * as path from 'path';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  index(@Res() res) {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
   }
 }

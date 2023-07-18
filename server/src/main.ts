@@ -7,9 +7,18 @@ async function bootstrap() {
 
   //Without the following line DTO will never work
   app.useGlobalPipes(new ValidationPipe());
-  app.enableCors();
-  await app.listen(5000, '192.168.213.128', () =>{
-    Logger.log(`Server is Running at port: 5000, and host: 192.168.213.128`)
+  app.enableCors(
+    {
+      origin: '*',
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      allowedHeaders: '*',
+      exposedHeaders: '*',
+      credentials: true,
+    }
+  );
+
+  await app.listen(5000, () =>{
+    Logger.log(`Server is Running at port: 5000.`)
   });
 }
 bootstrap();
