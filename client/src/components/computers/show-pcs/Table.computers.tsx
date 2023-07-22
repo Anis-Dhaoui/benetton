@@ -4,6 +4,7 @@ import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 import './style.computer-table.scss';
 import ActionsBtn from './actionsButton/ActionsBtn.computers';
 import { darkMode } from '../../navbar/Plugins';
+import { JsonToExcel } from "react-json-to-excel";
 
 function TableComputer({ computersList }: any) {
 
@@ -61,7 +62,7 @@ function TableComputer({ computersList }: any) {
         if (cell.length !== 0) {
             return cell
         } else {
-            return <span style={{fontWeight: '500'}}>none</span>
+            return <span style={{ fontWeight: '500' }}>none</span>
         }
     }
 
@@ -69,18 +70,29 @@ function TableComputer({ computersList }: any) {
         if (cell.length !== 0) {
             return cell
         } else {
-            return <span style={{fontWeight: '500'}}>none</span>
+            return <span style={{ fontWeight: '500' }}>none</span>
         }
+    }
+
+    const afterSearch = (searchText: string, result: object[]) =>{
+        console.log(result)
     }
 
     return (
         <div id='computer-table'>
+            <JsonToExcel
+                title="Download as Excel"
+                data={manipulatedComputersList}
+                fileName="sample-file"
+                btnClassName="custom-classname"
+            />
             <BootstrapTable data={manipulatedComputersList} striped hover condensed pagination={true}
                 options={{
                     withoutNoDataText: true,
                     clearSearch: true,
                     noDataText: 'Tableau est vide',
-                    exportCSVBtn: createCustomExportCSVButton
+                    exportCSVBtn: createCustomExportCSVButton,
+                    afterSearch: afterSearch
                 }}
 
                 search

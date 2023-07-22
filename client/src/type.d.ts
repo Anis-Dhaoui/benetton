@@ -38,3 +38,5 @@ enum STATUS {
     UNUSED = 'unused',
     RUNNING = 'running'
 }
+
+declare module 'react-json-to-excel'
