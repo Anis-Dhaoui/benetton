@@ -74,15 +74,19 @@ function TableComputer({ computersList }: any) {
         }
     }
 
+    const [exportedData, setExportedData] = useState<object[]>(manipulatedComputersList);
     const afterSearch = (searchText: string, result: object[]) =>{
-        console.log(result)
+        var temp = exportedData
+        setExportedData(result)
     }
+
+    console.log(exportedData);
 
     return (
         <div id='computer-table'>
             <JsonToExcel
                 title="Download as Excel"
-                data={manipulatedComputersList}
+                data={exportedData}
                 fileName="sample-file"
                 btnClassName="custom-classname"
             />
