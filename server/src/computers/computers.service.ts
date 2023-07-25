@@ -19,7 +19,7 @@ export class ComputersService {
   }
 
   async findAll(): Promise<IComputer[]> {
-    const computers = await this.computerModel.find().sort({ createdAt: -1 });
+    const computers = await this.computerModel.find({}, {_id: 0}).sort({ createdAt: -1 });
     if (!computers || computers.length == 0) {
       throw new NotFoundException('No data found!');
     }
