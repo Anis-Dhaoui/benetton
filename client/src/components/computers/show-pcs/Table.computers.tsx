@@ -30,16 +30,6 @@ function TableComputer({ computersList }: any) {
         });
     }
 
-
-    // const cellEdit: any = {
-    //     mode: 'dbclick', // double click cell to edit
-    // };
-
-    // const selectRow: any = {
-    //     mode: 'checkbox' // or radio
-    // };
-
-
     const handleExportCSVButtonClick = (onclick: any) => {
         onclick();
     }
@@ -75,38 +65,28 @@ function TableComputer({ computersList }: any) {
     }
 
     const [exportedData, setExportedData] = useState<object[]>(manipulatedComputersList);
-    const afterSearch = (searchText: string, result: object[]) =>{
-        var temp = exportedData
+    const afterSearch = (searchText: string, result: object[]) => {
         setExportedData(result)
     }
-
-    console.log(exportedData);
 
     return (
         <div id='computer-table'>
             <JsonToExcel
-                title="Download as Excel"
+                title="Télécharger la liste"
                 data={exportedData}
-                fileName="sample-file"
-                btnClassName="custom-classname"
+                fileName="computers"
+                btnClassName="download-btn"
             />
-            <BootstrapTable data={manipulatedComputersList} striped hover condensed pagination={true}
+            <BootstrapTable data={manipulatedComputersList} striped hover condensed pagination={true} 
                 options={{
                     withoutNoDataText: true,
                     clearSearch: true,
                     noDataText: 'Tableau est vide',
-                    exportCSVBtn: createCustomExportCSVButton,
-                    afterSearch: afterSearch
+                    // afterSearch: afterSearch
                 }}
 
                 search
                 searchPlaceholder="Que cherchez-vous?..."
-
-                exportCSV
-                csvFileName='Computers List.csv'
-
-            // cellEdit={cellEdit}
-            // selectRow={selectRow}
             >
                 <TableHeaderColumn dataField="ref" dataAlign="center" dataSort isKey>REF</TableHeaderColumn>
                 <TableHeaderColumn dataField="usedBy" dataAlign="center" dataSort width='200'>UTILISÉ PAR</TableHeaderColumn>

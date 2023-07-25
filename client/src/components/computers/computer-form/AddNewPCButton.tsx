@@ -12,7 +12,7 @@ function AddNewPCButton() {
   return (
     <div id='add-new-pc'>
       <div className="btn-group btn-group-sm" role="group">
-        <button onClick={handleShowModal} type="button" className="btn btn-success react-bs-table-csv-btn  hidden-print">
+        <button onClick={handleShowModal} type="button" className="add-btn">
           <span>
             <i className="fa fa-plus"></i>
             &nbsp; Ajouter Nouveau PC
