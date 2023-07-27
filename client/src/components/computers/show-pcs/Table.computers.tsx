@@ -5,6 +5,7 @@ import './style.computer-table.scss';
 import ActionsBtn from './actionsButton/ActionsBtn.computers';
 import { darkMode } from '../../navbar/Plugins';
 import { JsonToExcel } from "react-json-to-excel";
+import TableOptionsBtns from './TableOptionsBtns';
 
 function TableComputer({ computersList }: any) {
 
@@ -66,23 +67,27 @@ function TableComputer({ computersList }: any) {
 
     const [exportedData, setExportedData] = useState<object[]>(manipulatedComputersList);
     const afterSearch = (searchText: string, result: object[]) => {
+        // const choosenAttribtes = result.map((item) => ({...item, usedBy}))
+        // console.log(choosenAttribtes)
         setExportedData(result)
     }
-
+    // console.log(computersList.map(({ usedBy, group, softwares }: any) => ({ usedBy, group, softwares })))
     return (
         <div id='computer-table'>
-            <JsonToExcel
+            {/* <JsonToExcel
                 title="Télécharger la liste"
                 data={exportedData}
                 fileName="computers"
                 btnClassName="download-btn"
-            />
-            <BootstrapTable data={manipulatedComputersList} striped hover condensed pagination={true} 
+            /> */}
+            <div className='col-md-6'>
+                <TableOptionsBtns list={exportedData} />
+            </div>
+            <BootstrapTable data={manipulatedComputersList} striped hover condensed pagination={true}
                 options={{
-                    withoutNoDataText: true,
                     clearSearch: true,
                     noDataText: 'Tableau est vide',
-                    // afterSearch: afterSearch
+                    afterSearch: afterSearch
                 }}
 
                 search

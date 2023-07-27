@@ -21,7 +21,6 @@ function RenderComputers() {
   if (error) {
     return (
       <>
-        <AddNewPCButton />
         <TableComputer computersList={[]} />
         <hr />
         <div className="alert alert-danger my-5 mx-5" role="alert">
@@ -33,7 +32,6 @@ function RenderComputers() {
   } else {
     return (
       <>
-        <AddNewPCButton />
         <TableComputer computersList={computers} />
       </>
     )
