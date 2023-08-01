@@ -4,13 +4,9 @@ import { JsonToExcel } from "react-json-to-excel";
 
 function TableOptionsBtns(props: any) {
   return (
-    <div className='row'>
+    <div className='row' style={{marginBottom: '-46px'}}>
       <div className='col-md-4'>
         <AddNewPCButton />
-      </div>
-
-      <div className='col-md-4'>
-        aaaaaaaaaaaaa
       </div>
 
       <div className='col-md-4'>
@@ -21,6 +17,15 @@ function TableOptionsBtns(props: any) {
           btnClassName="download-btn"
         />
       </div>
+
+        <div className='col-md-4'>
+          <JsonToExcel
+            title="Télécharger la liste"
+            data={props.list}
+            fileName="computers"
+            btnClassName="download-btn"
+          />
+        </div>
     </div>
   )
 }
