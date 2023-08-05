@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import AddNewPCButton from '../computer-form/AddNewPCButton'
 import { JsonToExcel } from "react-json-to-excel";
 import Multiselect from 'multiselect-react-dropdown';
+import { darkMode } from '../../navbar/Plugins';
 
 function TableOptionsBtns(props: any) {
   const [columnsState, setColumnsState] = useState<string[]>()
