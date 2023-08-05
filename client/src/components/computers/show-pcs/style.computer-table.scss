@@ -26,16 +26,21 @@
 .light-input-search {
     background-color: #ffffff !important;
     color: #000000 !important;
-    height: 47px;
+    height: 47px !important;
     font-size: 18px !important;
 }
 
 .dark-input-search {
     background-color: rgb(26 31 53) !important;
     color: #ffffff !important;
-    height: 47px;
+    height: 47px !important;
     font-size: 18px !important;
 }
+
+// z-index: 0;
+// height: 48px;
+// color: white;
+// background-color: #293048;
 
 #computer-table .input-group-btn {
     position: absolute;
@@ -86,11 +91,11 @@
     position: relative;
   }
   
-  .download-btn{
-    margin-bottom: -47px !important;
-  }
+//   .download-btn{
+//     margin-bottom: -47px !important;
+//   }
   
-  .add-btn:hover, .download-btn:hover {
-    box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px #2e354f !important;
-    outline: 0 !important;
-  }
+//   .add-btn:hover, .download-btn:hover {
+//     box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px #2e354f !important;
+//     outline: 0 !important;
+//   }

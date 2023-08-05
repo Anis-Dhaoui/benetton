@@ -27,7 +27,7 @@ export const darkMode = (isDarkMode) => {
 
     const svg = document.querySelectorAll('g');
 
-    if (isDarkMode) {
+    if (true) {
         body.classList.add('dark-version');
 
         
