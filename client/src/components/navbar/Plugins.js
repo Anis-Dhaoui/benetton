@@ -19,7 +19,7 @@ export const darkMode = (isDarkMode) => {
     const btn_text_white = document.querySelectorAll('.btn.btn-link.text-white, .material-icons.text-white');
     const card_border = document.querySelectorAll('.card.border');
     const card_border_dark = document.querySelectorAll('.card.border.border-dark');
-    const input_search = document.querySelectorAll('#computer-table input')
+    const input_search = document.querySelectorAll('.react-bs-table-search-form input');
     const clear_search_btn = document.querySelectorAll('.react-bs-table-search-clear-btn');
 
     const computer_search = document.querySelector('#computer-table input');
@@ -27,7 +27,7 @@ export const darkMode = (isDarkMode) => {
 
     const svg = document.querySelectorAll('g');
 
-    if (true) {
+    if (isDarkMode) {
         body.classList.add('dark-version');
 
         

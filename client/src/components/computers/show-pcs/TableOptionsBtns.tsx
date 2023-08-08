@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AddNewPCButton from '../computer-form/AddNewPCButton'
 import { JsonToExcel } from "react-json-to-excel";
 import Multiselect from 'multiselect-react-dropdown';
-import { darkMode } from '../../navbar/Plugins';
 
 function TableOptionsBtns(props: any) {
+
   const [columnsState, setColumnsState] = useState<string[]>()
-  // const columns = ['REF', 'UTILISÉ PAR', 'GPE', 'SESSIONS', , 'A.L.R', 'MARQ', 'MODEL', 'OS', 'TYPE', 'CPU', 'STATUS' ]
   const columns = [
     { cat: 'ref', key: 'REF' },
     { cat: 'usedBy', key: 'UTILISÉ PAR' },
@@ -27,7 +26,7 @@ function TableOptionsBtns(props: any) {
       <div className='col-md-4'>
         <AddNewPCButton />
       </div>
-      
+
       <div className='col-md-4'>
         <Multiselect
           onRemove={(items: string[]) => { setColumnsState([...items]) }}
@@ -47,7 +46,7 @@ function TableOptionsBtns(props: any) {
             // },
             multiselectContainer: {
               height: '35px',
-              marginBottom: '56px',
+              margin: 'auto auto 56px -25px',
               borderRadius: '9px'
             },
             searchBox: {
@@ -57,7 +56,8 @@ function TableOptionsBtns(props: any) {
               backgroundColor: '#3c3c43'
             },
             input: {
-              backgroundColor: 'red'
+              maxHeight: '21px',
+              backgroundColor: '#3c3c43 !important'
             }
           }}
         />
