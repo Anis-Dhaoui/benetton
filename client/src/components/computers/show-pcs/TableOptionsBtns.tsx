@@ -5,7 +5,7 @@ import Multiselect from 'multiselect-react-dropdown';
 
 function TableOptionsBtns(props: any) {
 
-  const [columnsState, setColumnsState] = useState<string[]>()
+  const [columnsState, setColumnsState] = useState<string[]>([])
   const columns = [
     { cat: 'ref', key: 'REF' },
     { cat: 'usedBy', key: 'UTILISÉ PAR' },
@@ -20,6 +20,24 @@ function TableOptionsBtns(props: any) {
     { cat: 'cpu', key: 'STATUS' }
   ]
 
+  var selectedColumns: any;
+  if (columnsState.length > 0) {
+    const catArray = columnsState.map((item: any) => item.cat);
+    selectedColumns = props.list && props.list.map((item: any) => {
+      const filteredItem: any = {};
+
+      catArray.forEach((prop: any) => {
+        if (item.hasOwnProperty(prop)) {
+          filteredItem[prop] = item[prop];
+        }
+      });
+
+      return filteredItem;
+    });
+  } else {
+    selectedColumns = props.list;
+  }
+
   return (
     <div className='row' style={{ marginBottom: '-103px' }}>
 
@@ -29,8 +47,8 @@ function TableOptionsBtns(props: any) {
 
       <div className='col-md-4'>
         <Multiselect
-          onRemove={(items: string[]) => { setColumnsState([...items]) }}
-          onSelect={(items: string[]) => { setColumnsState([...items]) }}
+          onRemove={(removedItem: string[]) => { setColumnsState(removedItem) }}
+          onSelect={(selectedItem: string[]) => { setColumnsState(selectedItem) }}
           isObject={true}
           options={columns}
           showArrow
@@ -54,10 +72,6 @@ function TableOptionsBtns(props: any) {
               border: 'none',
               height: '35px',
               backgroundColor: '#3c3c43'
-            },
-            input: {
-              maxHeight: '21px',
-              backgroundColor: '#3c3c43 !important'
             }
           }}
         />
@@ -66,7 +80,7 @@ function TableOptionsBtns(props: any) {
       <div className='col-md-4'>
         <JsonToExcel
           title="Télécharger la liste"
-          data={props.list}
+          data={selectedColumns}
           fileName="computers"
           btnClassName="download-btn"
         />

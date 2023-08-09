@@ -30,18 +30,6 @@ function TableComputer({ computersList }: any) {
         });
     }
 
-    const handleExportCSVButtonClick = (onclick: any) => {
-        onclick();
-    }
-
-    const createCustomExportCSVButton = (onClick: any) => {
-        return (
-            <ExportCSVButton
-                btnText='Télécharger la liste'
-                onClick={() => handleExportCSVButtonClick(onClick)} />
-        );
-    }
-
     const actionsColumns = (cell?: any, row?: IComputer) => {
         return (
             <ActionsBtn computer={row} />
@@ -66,19 +54,11 @@ function TableComputer({ computersList }: any) {
 
     const [exportedData, setExportedData] = useState<object[]>(manipulatedComputersList);
     const afterSearch = (searchText: string, result: object[]) => {
-        // const choosenAttribtes = result.map((item) => ({...item, usedBy}))
-        // console.log(choosenAttribtes)
         setExportedData(result)
     }
-    // console.log(computersList.map(({ usedBy, group, softwares }: any) => ({ usedBy, group, softwares })))
+
     return (
         <div id='computer-table'>
-            {/* <JsonToExcel
-                title="Télécharger la liste"
-                data={exportedData}
-                fileName="computers"
-                btnClassName="download-btn"
-            /> */}
             <div className='col-md-6'>
                 <TableOptionsBtns list={exportedData} />
             </div>
@@ -86,7 +66,7 @@ function TableComputer({ computersList }: any) {
                 options={{
                     clearSearch: true,
                     noDataText: 'Tableau est vide',
-                    // afterSearch: afterSearch
+                    afterSearch: afterSearch
                 }}
 
                 search
