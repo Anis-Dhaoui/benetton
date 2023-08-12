@@ -66,7 +66,7 @@ function TableComputer({ computersList }: any) {
                 options={{
                     clearSearch: true,
                     noDataText: 'Tableau est vide',
-                    afterSearch: afterSearch
+                    // afterSearch: afterSearch
                 }}
 
                 search

@@ -38,6 +38,29 @@ function TableOptionsBtns(props: any) {
     selectedColumns = props.list;
   }
 
+  const transformArraysToString = (data: any) => {
+    console.log(data)
+    return (
+      data && data.map((item: any) => ({
+        ...item,
+        sessions: item.sessions && [...item.sessions].join(', '),
+        softwares: item.softwares && [...item.softwares].join(', '),
+        networkDriveAccess: item.networkDriveAccess && [...item.networkDriveAccess].join(', ')
+      }))
+    )
+  }
+  const tempDataToPrint = transformArraysToString(selectedColumns);
+  tempDataToPrint.map((item: any) =>{
+    if(item.sessions.length === 0){
+      delete item.sessions
+    }
+    if(item.softwares.length === 0){
+      delete item.softwares
+    }
+    if(item.networkDriveAccess.length === 0){
+      delete item.networkDriveAccess
+    }
+  })
   return (
     <div className='row' style={{ marginBottom: '-103px' }}>
 
@@ -80,7 +103,8 @@ function TableOptionsBtns(props: any) {
       <div className='col-md-4'>
         <JsonToExcel
           title="Télécharger la liste"
-          data={selectedColumns}
+          data={transformArraysToString(selectedColumns)}
+          // data={selectedColumns}
           fileName="computers"
           btnClassName="download-btn"
         />
