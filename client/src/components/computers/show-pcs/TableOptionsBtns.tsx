@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import AddNewPCButton from '../computer-form/AddNewPCButton'
 import { JsonToExcel } from "react-json-to-excel";
 import Multiselect from 'multiselect-react-dropdown';
@@ -17,7 +17,8 @@ function TableOptionsBtns(props: any) {
     { cat: 'model', key: 'MODEL' },
     { cat: 'os', key: 'OS' },
     { cat: 'type', key: 'TYPE' },
-    { cat: 'cpu', key: 'STATUS' }
+    { cat: 'cpu', key: 'CPU' },
+    { cat: 'status', key: 'STATUS'}
   ]
 
   var selectedColumns: any;
@@ -39,28 +40,36 @@ function TableOptionsBtns(props: any) {
   }
 
   const transformArraysToString = (data: any) => {
-    console.log(data)
-    return (
-      data && data.map((item: any) => ({
-        ...item,
-        sessions: item.sessions && [...item.sessions].join(', '),
-        softwares: item.softwares && [...item.softwares].join(', '),
-        networkDriveAccess: item.networkDriveAccess && [...item.networkDriveAccess].join(', ')
-      }))
-    )
-  }
-  const tempDataToPrint = transformArraysToString(selectedColumns);
-  tempDataToPrint.map((item: any) =>{
-    if(item.sessions.length === 0){
-      delete item.sessions
+    if (!data) {
+      return [];
     }
-    if(item.softwares.length === 0){
-      delete item.softwares
-    }
-    if(item.networkDriveAccess.length === 0){
-      delete item.networkDriveAccess
-    }
-  })
+  
+    return data.map((item: any) => {
+      const {
+        sessions,
+        softwares,
+        networkDriveAccess,
+        ...restOfProperties  // Destructure and capture the rest of the properties
+      } = item;
+  
+      const transformedItem: any = { ...restOfProperties };  // Initialize with the rest of the properties
+  
+      if (sessions) {
+        transformedItem.sessions = sessions.join(', ');
+      }
+  
+      if (softwares) {
+        transformedItem.softwares = softwares.join(', ');
+      }
+  
+      if (networkDriveAccess) {
+        transformedItem.networkDriveAccess = networkDriveAccess.join(', ');
+      }
+  
+      return transformedItem;
+    });
+  };
+  
   return (
     <div className='row' style={{ marginBottom: '-103px' }}>
 
@@ -104,7 +113,6 @@ function TableOptionsBtns(props: any) {
         <JsonToExcel
           title="Télécharger la liste"
           data={transformArraysToString(selectedColumns)}
-          // data={selectedColumns}
           fileName="computers"
           btnClassName="download-btn"
         />
