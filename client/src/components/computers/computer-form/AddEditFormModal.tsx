@@ -73,9 +73,9 @@ function ModalForm(props: PROPSTYPE) {
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ END HANDLE SESSIONS $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     return (
-        <Modal id='modal-add-new' isOpen={props.show} style={{ minWidth: '700px' }}>
+        <Modal size='lg' id='modal-add-new' isOpen={props.show}>
             <ModalHeader toggle={props.onClose}>Ajouter nouveau PC</ModalHeader>
-            <ModalBody style={{ width: '700px' }}>
+            <ModalBody>
                 <Form id='new_pc_form' onSubmit={handleSubmit(onSubmit)}>
                     <Row>
                         <Col md={6}>
@@ -354,7 +354,7 @@ function ModalForm(props: PROPSTYPE) {
                             {
                                 [...Array(inputCount)].map((_, index) => (
                                     <Row id={`sessionContainer${index}`} key={index} style={index !== 0 ? { marginTop: '-12px' } : {}}>
-                                        <Col md={11}>
+                                        <Col md={12} xs={12} >
                                             <FormGroup>
                                                 {index === 0 ? <Label for="Session utenty"> Sessions </Label> : null}
                                                 <Input className={errors.session ? 'form-control is-invalid' : 'form-control'}
@@ -375,9 +375,9 @@ function ModalForm(props: PROPSTYPE) {
                                             </FormGroup>
                                         </Col>
                                         {
-                                            index === 0 ? <Col md={1} id='new-input-form-btn'> <Button onClick={() => handleAddNewInput('add', index)}> <i className="fa fa-user-plus" aria-hidden="true"></i> </Button> </Col>
+                                            index === 0 ? <Col id='new-input-form-btn'> <Button onClick={() => handleAddNewInput('add', index)} style={{marginLeft: '-28px'}}> <i className="fa fa-user-plus" aria-hidden="true"></i> </Button> </Col>
                                                 :
-                                                <Col md={1} id='close-input-form-btn'> <Button style={{ marginTop: '-37px', marginLeft: '8px' }} onClick={() => handleAddNewInput('remove', index)}> <i className="fa fa-times" aria-hidden="true"></i> </Button> </Col>
+                                                <Col id='close-input-form-btn'> <Button style={{ marginTop: '-36px', marginLeft: '-19px'}} onClick={() => handleAddNewInput('remove', index)}> <i className="fa fa-times" aria-hidden="true"></i> </Button> </Col>
                                         }
                                     </Row>
                                 ))
