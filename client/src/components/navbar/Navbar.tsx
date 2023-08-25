@@ -14,23 +14,21 @@ function Navbar() {
         darkMode(isDarkMode);
     }, [isDarkMode]);
 
-    const handleBodyClick = (event:any) => {
-        if (
-            !event.target.closest('#settingUp') && !event.target.closest('#settingDown') && !event.target.closest('#rightSideNav')
-          ) {
+    const handleBodyClick = (event: any) => {
+        if (!event.target.closest('#settingUp') && !event.target.closest('#rightSideNav')) {
             setShowRightSideNav(false)
-          }
-      };
-    
-      useEffect(() => {
+        }
+    };
+
+    useEffect(() => {
         // Add the click event listener when the component mounts
         document.body.addEventListener('click', handleBodyClick);
-    
+
         // Remove the click event listener when the component unmounts
         return () => {
-          document.body.removeEventListener('click', handleBodyClick);
+            document.body.removeEventListener('click', handleBodyClick);
         };
-      }, []);
+    }, []);
 
 
     const handleDarkMode = (el: any) => {
@@ -40,7 +38,7 @@ function Navbar() {
 
     return (
         <main className="main-content">
-            <nav className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
+            <nav className="navbar navbar-main navbar-expand-lg px-0 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
                 <div className="container-fluid py-1 px-3">
                     <div className="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                         <div className="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -133,9 +131,6 @@ function Navbar() {
 
             {/* CONFIGURATION RIGHT SIDE MENU */}
             <div id='rightSideNav' className={showRightSideNav ? "fixed-plugin show" : "fixed-plugin"}>
-                <button id='settingDown' onClick={() => setShowRightSideNav(!showRightSideNav)} className="fixed-plugin-button text-dark position-fixed px-3 py-2">
-                    <i className="material-icons py-2">settings</i>
-                </button>
                 <div className="card shadow-lg">
                     <div className="card-header pb-0 pt-3">
                         <div className="float-start">

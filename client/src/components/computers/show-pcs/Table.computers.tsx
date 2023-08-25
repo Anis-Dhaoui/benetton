@@ -56,7 +56,8 @@ function TableComputer({ computersList }: any) {
     const afterSearch = (searchText: string, result: object[]) => {
         setExportedData(result)
     }
-
+let i = 0;
+console.log(i++)
     return (
         <div id='computer-table'>
             <div className='col-md-6'>
@@ -66,7 +67,7 @@ function TableComputer({ computersList }: any) {
                 options={{
                     clearSearch: true,
                     noDataText: 'Tableau est vide',
-                    afterSearch: afterSearch
+                    // afterSearch: afterSearch
                 }}
 
                 search

@@ -6,9 +6,11 @@ import RenderComputers from './computers/renderComputers.computers'
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
+
 function Main() {
   return (
-    <div className='row' style={{width: '100%'}}>
+    <div className='container-fluid'>
+          <div className='row'>
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -33,13 +35,15 @@ function Main() {
             <Navbar />
           </div>
 
-          <div className='col-md-12' style={{ marginLeft: '-33px' }}>
+          <div className='col-md-12'>
             <RenderComputers />
           </div>
 
         </div>
       </div>
     </div>
+    </div>
+
   )
 }
 

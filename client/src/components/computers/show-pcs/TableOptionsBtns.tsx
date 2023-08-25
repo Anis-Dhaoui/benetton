@@ -69,15 +69,15 @@ function TableOptionsBtns(props: any) {
       return transformedItem;
     });
   };
-  
-  return (
-    <div className='row' style={{ marginBottom: '-103px' }}>
 
-      <div className='col-md-4'>
+  return (
+    <div id='table-options-btns-container' className='row'>
+
+      <div className='col-md-4 col-sm-12'>
         <AddNewPCButton />
       </div>
 
-      <div className='col-md-4'>
+      <div className='col-md-4 col-sm-12'>
         <Multiselect
           onRemove={(removedItem: string[]) => { setColumnsState(removedItem) }}
           onSelect={(selectedItem: string[]) => { setColumnsState(selectedItem) }}
@@ -96,7 +96,6 @@ function TableOptionsBtns(props: any) {
             // },
             multiselectContainer: {
               height: '35px',
-              margin: 'auto auto 56px -25px',
               borderRadius: '9px'
             },
             searchBox: {
@@ -106,15 +105,16 @@ function TableOptionsBtns(props: any) {
               backgroundColor: '#3c3c43'
             }
           }}
+          className='tab-btn'
         />
       </div>
 
-      <div className='col-md-4'>
+      <div className='col-md-4 col-sm-12'>
         <JsonToExcel
-          title="Télécharger la liste"
+          title={'⤋Exporter'}
           data={transformArraysToString(selectedColumns)}
           fileName="computers"
-          btnClassName="download-btn"
+          btnClassName="download-btn tab-btn"
         />
       </div>
     </div>

@@ -11,11 +11,14 @@ function AddNewPCButton() {
 
   return (
     <div id='add-new-pc'>
-      <button onClick={handleShowModal} type="button" className="add-btn">
-        <span>
-          <i className="fa fa-plus"></i>
-          &nbsp; Ajouter Nouveau PC
+      <button onClick={handleShowModal} type="button" className="add-btn tab-btn">
+        <span className=''>
+        ✙Ajouter
         </span>
+
+        {/* <span className='d-xxl-none'>
+          <i className="fa fa-plus"></i>
+        </span> */}
       </button>
       <ModalForm show={showModal} onClose={handleShowModal} />
     </div>
