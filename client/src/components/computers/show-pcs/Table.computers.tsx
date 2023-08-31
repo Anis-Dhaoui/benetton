@@ -18,7 +18,7 @@ function TableComputer({ computersList }: any) {
     function addSpaceToArrayitems(arr: string[]) {
         return arr.map((item: string) => item = item + " ");
     }
-
+    console.log(computersList)
     if (computersList !== undefined) {
         var manipulatedComputersList = computersList.map((obj: IComputer) => {
             return {

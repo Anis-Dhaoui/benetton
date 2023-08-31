@@ -25,6 +25,7 @@ function TableOptionsBtns(props: any) {
   if (columnsState.length > 0) {
     const catArray = columnsState.map((item: any) => item.cat);
     selectedColumns = props.list && props.list.map((item: any) => {
+      delete item._id;
       const filteredItem: any = {};
 
       catArray.forEach((prop: any) => {
@@ -36,7 +37,8 @@ function TableOptionsBtns(props: any) {
       return filteredItem;
     });
   } else {
-    selectedColumns = props.list;
+
+    selectedColumns = props.list && props.list.map(({_id, createdAt, updatedAt, ...rest}: any) => rest)
   }
 
   const transformArraysToString = (data: any) => {
