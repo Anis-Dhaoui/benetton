@@ -1,2 +1,58 @@
-export const networkDrivesList = ['T:', 'A:', 'U:', 'X:']
-export const softwaresList = ['Iris', 'Citrix', 'Abaco', 'Terminal', 'Beta', 'Aive', 'Ideale', 'Intranet', 'MicroStartegy', 'OpenBee', 'Orgatex', 'TIM', 'EasyMag', 'SAP']
+export const networkDrivesList = ['F:',
+    'G:',
+    'H:',
+    'I:',
+    'J:',
+    'K:',
+    'L:',
+    'M:',
+    'N:',
+    'O:',
+    'P:',
+    'Q:',
+    'R:',
+    'S:',
+    'T:',
+    'U:',
+    'V:',
+    'W:',
+    'X:',
+    'Y:',
+    'Z:'
+]
+
+export const softwaresList = ['Iris',
+    'Citrix',
+    'Abaco',
+    'Terminal',
+    'Beta',
+    'Aive',
+    'Ideale',
+    'Intranet',
+    'MicroStartegy',
+    'OpenBee',
+    'Orgatex',
+    'TIM',
+    'EasyMag',
+    'SAP'
+]
+
+export const groupList = [
+    'IT',
+    'Administration',
+    'RH',
+    'Programmation',
+    'Modlleria',
+    'Qualité',
+    'UTM',
+    'Comptabilité',
+    'Mag MP',
+    'Mag Accessoire',
+    'Teinture',
+    'Industrie',
+    'C.Qualité',
+    'Qualité Textile',
+    'Audit',
+    'Coupe',
+    'G.Gafsa'
+]

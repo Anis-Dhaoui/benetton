@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../../state/store.state';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { createComputer, updateComputer } from '../../../state/actions-creators/computer.actions-creators';
 import Multiselect from 'multiselect-react-dropdown';
-import { networkDrivesList, softwaresList } from './defaultData';
+import { networkDrivesList, softwaresList, groupList } from './defaultData';
 
 type PROPSTYPE = {
     show: boolean,
@@ -421,20 +421,13 @@ function ModalForm(props: PROPSTYPE) {
                                     defaultValue={editMode ? targetPC?.group : undefined}
                                 >
                                     <option disabled selected>Choisir groupe</option>
-                                    <option>IT</option>
-                                    <option>Programmation</option>
-                                    <option>Modelery</option>
-                                    <option>Qualité</option>
-                                    <option>UTM</option>
-                                    <option>Administration</option>
-                                    <option>MAG MP</option>
-                                    <option>Mag Accessoire</option>
-                                    <option>Comptabilité</option>
-                                    <option>RH</option>
-                                    <option>Industrie </option>
-                                    <option>C.Qualité</option>
-                                    <option>Qualité Textile</option>
-                                    <option>G.Gafsa</option>
+                                    {
+                                        groupList.map((item: any, index: number) =>{
+                                            return(
+                                                <option key={index}>{item}</option>
+                                            )
+                                        })
+                                    }
                                 </select>
                             </FormGroup>
                         </Col>
