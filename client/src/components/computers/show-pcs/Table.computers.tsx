@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { BootstrapTable, TableHeaderColumn, ExportCSVButton } from 'react-bootstrap-table'
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 import './style.computer-table.scss';
@@ -18,7 +18,7 @@ function TableComputer({ computersList }: any) {
     function addSpaceToArrayitems(arr: string[]) {
         return arr.map((item: string) => item = item + " ");
     }
-
+    console.log(computersList)
     if (computersList !== undefined) {
         var manipulatedComputersList = computersList.map((obj: IComputer) => {
             return {
@@ -54,10 +54,10 @@ function TableComputer({ computersList }: any) {
 
     const [exportedData, setExportedData] = useState<object[]>(manipulatedComputersList);
     const afterSearch = (searchText: string, result: object[]) => {
-        setExportedData(result)
+        if (exportedData.length !== result.length)
+            setExportedData(result)
     }
-let i = 0;
-console.log(i++)
+    console.log("TableComputer component rendered...")
     return (
         <div id='computer-table'>
             <div className='col-md-6'>
@@ -67,7 +67,7 @@ console.log(i++)
                 options={{
                     clearSearch: true,
                     noDataText: 'Tableau est vide',
-                    // afterSearch: afterSearch
+                    afterSearch: afterSearch
                 }}
 
                 search
@@ -75,8 +75,8 @@ console.log(i++)
             >
                 <TableHeaderColumn dataField="ref" dataAlign="center" dataSort isKey>REF</TableHeaderColumn>
                 <TableHeaderColumn dataField="usedBy" dataAlign="center" dataSort width='200'>UTILISÉ PAR</TableHeaderColumn>
-                <TableHeaderColumn dataField="group" dataAlign="center" dataSort>GPE</TableHeaderColumn>
-                <TableHeaderColumn dataField="sessions" dataAlign="center" dataSort width='130px'>SESSIONS</TableHeaderColumn>
+                <TableHeaderColumn dataField="group" dataAlign="center" dataSort width='160px'>GPE</TableHeaderColumn>
+                <TableHeaderColumn dataField="sessions" dataAlign="center" dataSort>SESSIONS</TableHeaderColumn>
                 <TableHeaderColumn dataField="softwares" dataFormat={softColumn} dataAlign="center" dataSort width='170px'>PROGS-UTILISÉ</TableHeaderColumn>
                 <TableHeaderColumn dataField="networkDriveAccess" dataFormat={netDrivesColumn} dataAlign="center" dataSort>A.L.R</TableHeaderColumn>
                 <TableHeaderColumn dataField="brandName" dataAlign="center" dataSort>MARQ</TableHeaderColumn>
