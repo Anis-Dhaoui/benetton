@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path/posix';
+import { UsersModule } from './users/users.module';
 
 @Module({
 
@@ -18,6 +19,8 @@ import { join } from 'path/posix';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../build'),
     }),
+
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
