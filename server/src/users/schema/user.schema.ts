@@ -12,7 +12,7 @@ export class User {
     username: string;
     @Prop({ required: true, select: false })
     password: string;
-    @Prop({ default: ROLES.User, immutable: true })
+    @Prop({ required: true })
     role: ROLES;
 }
 export const UserSchema = SchemaFactory.createForClass(User);
