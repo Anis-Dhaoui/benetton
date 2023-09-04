@@ -2,18 +2,18 @@ import { Controller, Get, Body, Param, Res, HttpStatus, Put, UseGuards, Delete, 
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { CreateUserDto } from './dto/create-user.dto';
-// import { OwnerGuard } from './../auth/RBAC/verify-owner/owner.guard';
-// import { Roles } from './../auth/RBAC/verify-admin/roles.decorator';
-// import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-// import { RoleGuard } from 'src/auth/RBAC/verify-admin/roles.guard';
+import { OwnerGuard } from './../auth/RBAC/verify-owner/owner.guard';
+import { Roles } from './../auth/RBAC/verify-admin/roles.decorator';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RoleGuard } from 'src/auth/RBAC/verify-admin/roles.guard';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) { }
 
   //$$$$$$$$$$$$$$$$$$$$$$$$// FETCH ALL USERS  //$$$$$$$$$$$$$$$$$$$$$$$$//
-  // @Roles('Admin')
-  // @UseGuards(JwtAuthGuard, RoleGuard)
+  @Roles('Admin')
+  @UseGuards(JwtAuthGuard, RoleGuard)
   @Get('/')
   async findAll(@Res() res) {
     try {
@@ -28,8 +28,8 @@ export class UsersController {
   }
 
 
-  // @Roles('Admin', 'User')
-  // @UseGuards(JwtAuthGuard, RoleGuard, OwnerGuard)
+  @Roles('Admin', 'User')
+  @UseGuards(JwtAuthGuard, RoleGuard, OwnerGuard)
   @Get(':userId')
   async findOne(@Res() res, @Param('userId') userId: string) {
     try {
