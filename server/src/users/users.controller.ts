@@ -43,7 +43,8 @@ export class UsersController {
     }
   }
 
-
+  @Roles('Admin')
+  @UseGuards(JwtAuthGuard, RoleGuard)
   @Post('/register')
   async create(@Res() res, @Body() createUserDto: CreateUserDto) {
     try {
@@ -56,7 +57,7 @@ export class UsersController {
       if (error && error.keyPattern.username == 1) {
         return res.status(HttpStatus.CONFLICT).json({
           statusCode: 409,
-          message: `${error.keyValue.username} is already exist`,
+          message: `Username: "${error.keyValue.username}" is already exist`,
         })
       }
 
@@ -66,8 +67,8 @@ export class UsersController {
 
 
   //$$$$$$$$$$$$$$$$$$$$$$$$// REMOVE SPECICIFIC USER  //$$$$$$$$$$$$$$$$$$$$$$$$//
-  // @Roles('Admin')
-  // @UseGuards(JwtAuthGuard, RoleGuard)
+  @Roles('Admin')
+  @UseGuards(JwtAuthGuard, RoleGuard)
   @Delete(':userId')
   async remove(@Res() res, @Param('userId') userId: string) {
     try {
@@ -81,8 +82,8 @@ export class UsersController {
     }
   }
 
-  // @Roles('Admin', 'User')
-  // @UseGuards(JwtAuthGuard, RoleGuard, OwnerGuard)
+  @Roles('Admin', 'User')
+  @UseGuards(JwtAuthGuard, RoleGuard, OwnerGuard)
   @Put(':userId')
   async update(@Res() res, @Param('userId') userId: string, @Body() updateUserDto: UpdateUserDto) {
     try {
