@@ -26,13 +26,6 @@ enum OS {
     WIN11 = 'WIN-11'
 }
 
-enum SOFTWARES {
-    ABACO = 'abaco',
-    CITRIX = 'citrix',
-    IRIS = 'iris',
-    TIMS = 'tims'
-}
-
 enum STATUS {
     BROKEN = 'broken',
     UNUSED = 'unused',
