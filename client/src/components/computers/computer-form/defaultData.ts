@@ -25,6 +25,7 @@ export const softwaresList = ['Iris',
     'Citrix',
     'Abaco',
     'Terminal',
+    'CQWeb',
     'Beta',
     'Aive',
     'Ideale',
@@ -34,7 +35,9 @@ export const softwaresList = ['Iris',
     'Orgatex',
     'TIM',
     'EasyMag',
-    'SAP'
+    'SAP',
+    'Expert Plan',
+    'Vison R11'
 ]
 
 export const groupList = [
@@ -46,6 +49,7 @@ export const groupList = [
     'Qualité',
     'UTM',
     'Comptabilité',
+    'Planification',
     'Mag MP',
     'Mag Accessoire',
     'Teinture',

@@ -8,7 +8,7 @@ import TableOptionsBtns from './TableOptionsBtns';
 
 function TableComputer({ computersList }: any) {
 
-    const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || false);
+    const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || true);
 
     useEffect(() => {
         localStorage.setItem('darkModeStatus', JSON.stringify(isDarkMode));

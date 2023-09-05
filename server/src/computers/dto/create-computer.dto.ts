@@ -47,9 +47,9 @@ export class CreateComputerDto {
     readonly sessions: string[];
 
     @IsArray()
-    @IsEnum(SOFTWARES, { each: true })
+    // @IsEnum(SOFTWARES, { each: true })
     @ArrayMinSize(0)
-    readonly softwares: SOFTWARES[];
+    readonly softwares: any[];
 
     @IsArray()
     @IsString({ each: true })

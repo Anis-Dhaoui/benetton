@@ -42,7 +42,7 @@ export class Computer {
     sessions: string[];
 
     @Prop()
-    softwares: SOFTWARES[];
+    softwares: any[];
 
     @Prop()
     networkDriveAccess: string[];
