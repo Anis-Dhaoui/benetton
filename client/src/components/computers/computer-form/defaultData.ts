@@ -1,4 +1,5 @@
-export const networkDrivesList = ['F:',
+export const networkDrivesList = [
+    'F:',
     'G:',
     'H:',
     'I:',
