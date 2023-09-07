@@ -15,14 +15,11 @@
 
 /* $$$$$$$$$$$$$$$$$$$$$$$$$$$ AVATAR STYLING $$$$$$$$$$$$$$$$$$$$$$$$$$$ */
 
-.avatar-image {
+.avatar-image img {
     background: #eee !important;
     width: 48px;
     height: 48px;
     border-radius: 48px;
-    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/144644/profile/profile-80.jpg') !important;
-    background-size: contain;
-    background-position: center;
     cursor: pointer;
 }
 
@@ -52,13 +49,13 @@
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-.avatar-dropdown-menu-items a {
+.avatar-dropdown-menu-items span {
     padding: 0 1rem;
     display: block;
     color: #ffffff;
 }
 
-.avatar-dropdown-menu-items a:hover {
+.avatar-dropdown-menu-items span:hover {
     background: #2e354e;
 }
 
@@ -72,6 +69,6 @@
     margin: 0;
 }
 
-.avatar-dropdown-menu-items a {
+.avatar-dropdown-menu-items span {
     cursor: pointer;
 }

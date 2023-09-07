@@ -56,17 +56,19 @@ function Navbar() {
                                 </a> */}
 
                                 <div className="avatar-dropdown-menu">
-                                    <div id="avatar-image" className="avatar-image" onClick={() => setAvatarDropdownMenu(!avatarDropdownMenu)}></div>
+                                    <div id="avatar-image" className="avatar-image" onClick={() => setAvatarDropdownMenu(!avatarDropdownMenu)}>
+                                        <img src={require("../../assets/images/avatar-images/user-1.png")} alt="avatar" />
+                                    </div>
                                     <div className={avatarDropdownMenu ? "open avatar-dropdown-menu-items" : "avatar-dropdown-menu-items"}>
                                         <ul>
                                             <li>
-                                                <a>USSJ</a>
+                                                <span>USSJ</span>
                                             </li>
                                             <li>
-                                                <a>Anis Dhaoui</a>
+                                                <span>Anis Dhaoui</span>
                                             </li>
                                             <li>
-                                                <a>Log out</a>
+                                                <span>Log out</span>
                                             </li>
                                         </ul>
                                     </div>
