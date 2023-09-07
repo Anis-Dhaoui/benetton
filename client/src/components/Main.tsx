@@ -5,6 +5,7 @@ import SideNav from './sidenav/SideNav'
 import RenderComputers from './computers/renderComputers.computers'
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import LoginPage from './login-page/login.login-page'
 
 
 function Main() {
@@ -25,18 +26,19 @@ function Main() {
       />
       <ToastContainer />
 
-      <div className='col-md-2 col-sm-3'>
+      {/* <div className='col-md-2 col-sm-3'>
         <SideNav />
-      </div>
+      </div> */}
       <div className='col-md-10 col-sm-9'>
         <div className='row'>
 
-          <div className='col-md-12'>
+          {/* <div className='col-md-12'>
             <Navbar />
-          </div>
+          </div> */}
 
           <div className='col-md-12'>
-            <RenderComputers />
+            {/* <RenderComputers /> */}
+            <LoginPage />
           </div>
 
         </div>
