@@ -23,18 +23,23 @@ export const darkMode = (isDarkMode) => {
     const clear_search_btn = document.querySelectorAll('.react-bs-table-search-clear-btn');
 
     const computer_search = document.querySelector('#computer-table input');
-    computer_search.classList.add('ligth-table-search-input');
+
+    if(computer_search){
+        computer_search.classList.add('ligth-table-search-input');
+    }
 
     const svg = document.querySelectorAll('g');
 
     if (isDarkMode) {
         body.classList.add('dark-version');
 
-        
-        input_search[0].classList.remove('light-input-search');
-        input_search[0].classList.add('dark-input-search');
+        if (input_search[0] != undefined) {
+            input_search[0].classList.remove('light-input-search');
+            input_search[0].classList.add('dark-input-search');
 
-        clear_search_btn[0].style.color = 'white';
+            clear_search_btn[0].style.color = 'white';
+        }
+
 
         for (var i = 0; i < hr.length; i++) {
             if (hr[i].classList.contains('dark')) {
@@ -100,10 +105,13 @@ export const darkMode = (isDarkMode) => {
     } else {
         body.classList.remove('dark-version');
 
-        input_search[0].classList.remove('dark-input-search');
-        input_search[0].classList.add('light-input-search');
+        if (input_search[0] != undefined) {
+            input_search[0].classList.remove('dark-input-search');
+            input_search[0].classList.add('light-input-search');
 
-        clear_search_btn[0].style.color = 'black';
+            clear_search_btn[0].style.color = 'black';
+        }
+
 
         for (var i = 0; i < hr.length; i++) {
             if (hr[i].classList.contains('light')) {
