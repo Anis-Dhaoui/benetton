@@ -33,7 +33,7 @@ export const darkMode = (isDarkMode) => {
     if (isDarkMode) {
         body.classList.add('dark-version');
 
-        if (input_search[0] != undefined) {
+        if (input_search[0] !== undefined) {
             input_search[0].classList.remove('light-input-search');
             input_search[0].classList.add('dark-input-search');
 
@@ -105,7 +105,7 @@ export const darkMode = (isDarkMode) => {
     } else {
         body.classList.remove('dark-version');
 
-        if (input_search[0] != undefined) {
+        if (input_search[0] !== undefined) {
             input_search[0].classList.remove('dark-input-search');
             input_search[0].classList.add('light-input-search');
 
