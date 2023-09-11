@@ -3,10 +3,12 @@ import { TypedUseSelectorHook } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { ComputerRed } from './reducers/computers.reducers'
+import { loginRed } from './reducers/login.reducers'
 
 export const store = configureStore({
     reducer: {
-        computers: ComputerRed
+        computers: ComputerRed,
+        login: loginRed
     }
 })
 

@@ -148,6 +148,11 @@
     cursor: pointer;
 }
 
+#login-error-msg{
+    position: absolute;
+    bottom: -40px;
+}
+
 @media (max-width: 900px){
     #login-page span {
         width: calc(10vw - 2px);
@@ -161,3 +166,4 @@
         height: calc(20vw - 2px);
     }
 }
+

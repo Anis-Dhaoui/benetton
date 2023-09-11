@@ -33,3 +33,36 @@ enum STATUS {
 }
 
 declare module 'react-json-to-excel'
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$// LOGIN //$$$$$$$$$$$$$$$$$$$$$$$$$$//
+interface ILoginRes {
+    user: {
+        _id: string,
+        firstName: string,
+        lastName: string,
+        username: string,
+        role: string,
+    }
+    access_token: string
+}
+
+interface ILoginReq {
+    username: string,
+    password: string
+}
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$// REGISTER //$$$$$$$$$$$$$$$$$$$$$$$$$$//
+interface IRegisterRes {
+    statusCode: number,
+    message: string,
+    error?: string
+}
+
+interface IRegisterReq {
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+    interests: string[]
+};

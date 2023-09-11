@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react'
 import './Plugins.js';
 import './style.css'
 import { darkMode } from './Plugins.js';
+import { useAppDispatch } from '../../state/store.state';
+import { handleLogout } from '../../state/actions-creators/login.actions-creators';
+;
+
 
 function Navbar() {
-
+    const dispatch = useAppDispatch();
     // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
     const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || false);
     const [showRightSideNav, setShowRightSideNav] = useState(false);
@@ -68,7 +72,7 @@ function Navbar() {
                                                 <span>Anis Dhaoui</span>
                                             </li>
                                             <li>
-                                                <span>Log out</span>
+                                                <span onClick={() => dispatch(handleLogout)}>Log out</span>
                                             </li>
                                         </ul>
                                     </div>
