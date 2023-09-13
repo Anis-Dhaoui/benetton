@@ -44,4 +44,4 @@ export const handleLogout = () => {
     setTimeout(() => {
         window.location.href = window.location.origin + '/login'
     }, 1500);
-} 
+}

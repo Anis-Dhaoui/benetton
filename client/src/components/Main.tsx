@@ -1,14 +1,28 @@
-import React from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import Navbar from './navbar/Navbar'
 import SideNav from './sidenav/SideNav'
 import RenderComputers from './computers/renderComputers.computers'
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import LoginPage from './login-page/login.login-page'
+import { useAppSelector } from '../state/store.state'
 
 
 function Main() {
+  const navigate = useNavigate();
+
+  const { loading, user, errMsg, isAuthenticated } = useAppSelector(state => state.login);
+  //Redirect to home Page when logged user trying to access entry page
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/home');
+    }else{
+      navigate('/login');
+    }
+    /* eslint-disable-next-line */
+  }, [isAuthenticated])
+
   return (
     <div className='container-fluid'>
       <div className='row'>

@@ -21,13 +21,7 @@ function LoginPage() {
         console.log(data);
     }
 
-    //Redirect to home Page when logged user trying to access entry page
-    useEffect(() => {
-        if (isAuthenticated) {
-            navigate('/home');
-        }
-        /* eslint-disable-next-line */
-    }, [])
+
 console.log(isAuthenticated)
     return (
         <section id='login-page'>
