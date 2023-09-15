@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Plugins.js';
 import './style.css'
 import { darkMode } from './Plugins.js';
-import { useAppDispatch } from '../../state/store.state';
+import { useAppDispatch, useAppSelector } from '../../state/store.state';
 import { handleLogout } from '../../state/actions-creators/login.actions-creators';
 ;
 
@@ -42,6 +42,9 @@ function Navbar() {
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
 
+    const { loading, user, errMsg, isAuthenticated } = useAppSelector(state => state.login);
+
+    console.log(user?.user)
     return (
         <main className="main-content">
             <nav className="navbar navbar-main navbar-expand-lg px-0 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
@@ -66,10 +69,10 @@ function Navbar() {
                                     <div className={avatarDropdownMenu ? "open avatar-dropdown-menu-items" : "avatar-dropdown-menu-items"}>
                                         <ul>
                                             <li>
-                                                <span>USSJ</span>
+                                                <span>{user?.user.username}</span>
                                             </li>
                                             <li>
-                                                <span>Anis Dhaoui</span>
+                                                <span>{`${user?.user.firstName} ${user?.user.lastName}`}</span>
                                             </li>
                                             <li>
                                                 <span onClick={() => dispatch(handleLogout)}>Log out</span>

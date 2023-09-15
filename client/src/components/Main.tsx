@@ -15,9 +15,7 @@ function Main() {
   const { loading, user, errMsg, isAuthenticated } = useAppSelector(state => state.login);
   //Redirect to home Page when logged user trying to access entry page
   useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/home');
-    }else{
+    if (!isAuthenticated) {
       navigate('/login');
     }
     /* eslint-disable-next-line */

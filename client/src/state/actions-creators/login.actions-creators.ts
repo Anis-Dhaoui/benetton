@@ -29,11 +29,12 @@ export const handleLogin = (inputs: ILoginReq) => {
                 window.location.href = window.location.origin
             }, 2002);
         } catch (err: any) {
+            console.log(err.response.data)
             dispatch({
                 type: loginActionsTypes.LOGIN_FAILED,
-                payload: err.response.data
+                payload: err.response.data.message
             });
-            toast.update(toastId, { render: err.response.data, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
+            toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
         }
     }
 }

@@ -1,9 +1,12 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import AddNewPCButton from '../computer-form/AddNewPCButton'
 import { JsonToExcel } from "react-json-to-excel";
 import Multiselect from 'multiselect-react-dropdown';
+import { useAppSelector } from '../../../state/store.state';
 
 function TableOptionsBtns(props: any) {
+
+  const { loading, user, errMsg, isAuthenticated } = useAppSelector(state => state.login);
 
   const [columnsState, setColumnsState] = useState<string[]>([])
   const columns = [
@@ -18,7 +21,7 @@ function TableOptionsBtns(props: any) {
     { cat: 'os', key: 'OS' },
     { cat: 'type', key: 'TYPE' },
     { cat: 'cpu', key: 'CPU' },
-    { cat: 'status', key: 'STATUS'}
+    { cat: 'status', key: 'STATUS' }
   ]
 
   var selectedColumns: any;
@@ -38,14 +41,14 @@ function TableOptionsBtns(props: any) {
     });
   } else {
 
-    selectedColumns = props.list && props.list.map(({_id, createdAt, updatedAt, ...rest}: any) => rest)
+    selectedColumns = props.list && props.list.map(({ _id, createdAt, updatedAt, ...rest }: any) => rest)
   }
 
   const transformArraysToString = (data: any) => {
     if (!data) {
       return [];
     }
-  
+
     return data.map((item: any) => {
       const {
         sessions,
@@ -53,21 +56,21 @@ function TableOptionsBtns(props: any) {
         networkDriveAccess,
         ...restOfProperties  // Destructure and capture the rest of the properties
       } = item;
-  
+
       const transformedItem: any = { ...restOfProperties };  // Initialize with the rest of the properties
-  
+
       if (sessions) {
         transformedItem.sessions = sessions.join(', ');
       }
-  
+
       if (softwares) {
         transformedItem.softwares = softwares.join(', ');
       }
-  
+
       if (networkDriveAccess) {
         transformedItem.networkDriveAccess = networkDriveAccess.join(', ');
       }
-  
+
       return transformedItem;
     });
   };
@@ -75,9 +78,14 @@ function TableOptionsBtns(props: any) {
   return (
     <div id='table-options-btns-container' className='row'>
 
-      <div className='col-md-4 col-sm-12'>
-        <AddNewPCButton />
-      </div>
+      {
+        user?.user.role === 'Admin' ?
+          <div className='col-md-4 col-sm-12'>
+            <AddNewPCButton />
+          </div>
+          :
+          null
+      }
 
       <div className='col-md-4 col-sm-12'>
         <Multiselect

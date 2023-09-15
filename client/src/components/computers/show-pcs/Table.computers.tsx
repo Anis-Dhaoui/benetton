@@ -5,10 +5,13 @@ import './style.computer-table.scss';
 import ActionsBtn from './actionsButton/ActionsBtn.computers';
 import { darkMode } from '../../navbar/Plugins';
 import TableOptionsBtns from './TableOptionsBtns';
+import { useAppSelector } from '../../../state/store.state';
 
 function TableComputer({ computersList }: any) {
 
     const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || true);
+    const { loading, user, errMsg, isAuthenticated } = useAppSelector(state => state.login);
+
 
     useEffect(() => {
         localStorage.setItem('darkModeStatus', JSON.stringify(isDarkMode));
@@ -85,7 +88,12 @@ function TableComputer({ computersList }: any) {
                 <TableHeaderColumn dataField="type" dataAlign="center" dataSort>TYPE</TableHeaderColumn>
                 <TableHeaderColumn dataField="cpu" dataAlign="center" dataSort>CPU</TableHeaderColumn>
                 <TableHeaderColumn dataField="status" dataAlign="center" dataSort>STATUS</TableHeaderColumn>
-                <TableHeaderColumn dataField="ref" dataFormat={actionsColumns} dataAlign="center" width='50px'><i className="fa fa-cog" style={{ fontSize: '17px', marginLeft: '-10px' }}></i></TableHeaderColumn>
+                {
+                    user?.user.role === 'Admin' ?
+                        <TableHeaderColumn dataField="ref" dataFormat={actionsColumns} dataAlign="center" width='50px'><i className="fa fa-cog" style={{ fontSize: '17px', marginLeft: '-10px' }}></i></TableHeaderColumn>
+                        :
+                        null
+                }
             </BootstrapTable>
         </div>
     )
