@@ -29,7 +29,6 @@ export const handleLogin = (inputs: ILoginReq) => {
                 window.location.href = window.location.origin
             }, 2002);
         } catch (err: any) {
-            console.log(err.response.data)
             dispatch({
                 type: loginActionsTypes.LOGIN_FAILED,
                 payload: err.response.data.message

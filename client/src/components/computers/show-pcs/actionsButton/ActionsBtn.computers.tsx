@@ -22,10 +22,6 @@ function ActionsBtn({ computer }: IComputer | any) {
         setDelConfAlert(!delConfAlert);
     }
 
-    // const handleEdit = (pc: IComputer) =>{
-    //     console.log(pc);
-    // }
-
     const [showModal, setShowModal] = useState(false);
     const handleShowModal = () => {
         setShowModal(!showModal);

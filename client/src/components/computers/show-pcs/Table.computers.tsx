@@ -21,7 +21,7 @@ function TableComputer({ computersList }: any) {
     function addSpaceToArrayitems(arr: string[]) {
         return arr.map((item: string) => item = item + " ");
     }
-    console.log(computersList)
+
     if (computersList !== undefined) {
         var manipulatedComputersList = computersList.map((obj: IComputer) => {
             return {
@@ -60,7 +60,7 @@ function TableComputer({ computersList }: any) {
         if (exportedData.length !== result.length)
             setExportedData(result)
     }
-    console.log("TableComputer component rendered...")
+
     return (
         <div id='computer-table'>
             <div className='col-md-6'>

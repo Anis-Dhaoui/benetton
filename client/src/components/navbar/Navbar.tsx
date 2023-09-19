@@ -44,7 +44,6 @@ function Navbar() {
 
     const { loading, user, errMsg, isAuthenticated } = useAppSelector(state => state.login);
 
-    console.log(user?.user)
     return (
         <main className="main-content">
             <nav className="navbar navbar-main navbar-expand-lg px-0 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">

@@ -18,11 +18,8 @@ function LoginPage() {
     let { register, handleSubmit, watch, formState: { errors } } = useForm<ILoginReq>({ mode: 'all' });
     const onSubmit: SubmitHandler<ILoginReq> = (data) => {
         dispatch(handleLogin(data));
-        console.log(data);
     }
 
-
-console.log(isAuthenticated)
     return (
         <section id='login-page'>
             {spanElements}
