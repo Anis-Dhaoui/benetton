@@ -7,6 +7,8 @@ import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import LoginPage from './login-page/login.login-page'
 import { useAppSelector } from '../state/store.state'
+import Profile from './profile/profile.profile'
+import RouteProtector from './RouteProtector'
 
 
 function Main() {
@@ -38,35 +40,47 @@ function Main() {
         />
         <ToastContainer />
 
-        <Routes>
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/home' element={
+        {
+          window.location.pathname !== '/login' && isAuthenticated ?
             <>
+              <div className='col-md-12'>
+                <Navbar />
+              </div>
               <div className='col-md-2 col-sm-3'>
                 <SideNav />
               </div>
-              <div className='col-md-10 col-sm-9'>
-                <div className='row'>
-
-                  <div className='col-md-12'>
-                    <Navbar />
-                  </div>
-
-                  <div className='col-md-12'>
-                    <RenderComputers />
-                  </div>
-
-                </div>
-              </div>
             </>
-          }
-          />
+            : null
+        }
 
-          <Route path="/" element={<Navigate to="/home" />} />
+        <div className='col-md-10 col-sm-9'>
+          <div className='row'>
+            <div className='col-md-12'>
+              <Routes>
+                <Route path='/login' element={<LoginPage />} />
 
-          <Route path='*' element={<div>NOT FOUND</div>} />
-        </Routes>
+                <Route path='/home'
+                  element={
+                    <RouteProtector isLoggedIn={isAuthenticated}>
+                      <RenderComputers />
+                    </RouteProtector>
+                  }
+                />
 
+                <Route path='/profile'
+                  element={
+                    <RouteProtector isLoggedIn={isAuthenticated}>
+                      <Profile />
+                    </RouteProtector>
+                  }
+                />
+
+                <Route path='*' element={<div>NOT FOUND</div>} />
+                <Route path='/' element={<Navigate to="/home" />} />
+              </Routes>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
