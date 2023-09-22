@@ -62,8 +62,8 @@ function LoginPage() {
                             <i id='login-error-msg' className='text-danger my-0'><ErrorMessage errors={errors} name="password" /></i>
                         </div>
                         <div className="links">
-                            <a href="#">Forgot Password</a>
-                            <a href="#">Signup</a>
+                            {/* <a href="#">Forgot Password</a>
+                            <a href="#">Signup</a> */}
                         </div>
                         <div className="inputBx">
                             <input type="submit" value="Login" />
