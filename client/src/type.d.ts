@@ -14,6 +14,13 @@ interface IComputer {
     group: string
 }
 
+interface IUser{
+    firstName: string,
+    lastName: string,
+    username: string,
+    role: string
+}
+
 enum TYPE {
     LAPTOP = 'Laptop',
     DESKTOP = 'Desktop'

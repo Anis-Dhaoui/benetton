@@ -82,14 +82,14 @@ export class UsersController {
     }
   }
 
-  @Roles('Admin', 'User')
-  @UseGuards(JwtAuthGuard, RoleGuard, OwnerGuard)
+  // @Roles('Admin', 'User')
+  // @UseGuards(JwtAuthGuard, RoleGuard, OwnerGuard)
   @Put(':userId')
   async update(@Res() res, @Param('userId') userId: string, @Body() updateUserDto: UpdateUserDto) {
     try {
       const updatedUser = await this.usersService.update(userId, updateUserDto);
       return res.status(HttpStatus.OK).json({
-        message: `User ${updatedUser._id} updated successfully`,
+        message: `User "${updatedUser.username}" updated successfully`,
         updatedUser: updatedUser
       })
     } catch (error) {
