@@ -143,10 +143,14 @@ function Profile() {
               <div className="col-md-12 col-4 d-flex justify-content-md-end">
                 {
                   editMode ?
-                    <>
-                      <span onClick={handleEditMode} className="save-btn text-danger"> Annuler </span> &nbsp;&nbsp;
-                      <button type='submit' className="save-btn mr-5"> {updating ? <i className="fas fa-cog fa-spin"></i> : 'Enregistrer'} </button>
-                    </>
+                    <div className='row'>
+                      <div className='col-md-6'>
+                        <span onClick={handleEditMode} className="save-btn text-danger"> Annuler </span>
+                      </div>
+                      <div className='col-md-6'>
+                        <button type='submit' className="save-btn"> {updating ? <i className="fas fa-cog fa-spin"></i> : 'Enregistrer'} </button>
+                      </div>
+                    </div>
                     :
                     <span onClick={handleEditMode} className="save-btn"> Modifier </span>
                 }
