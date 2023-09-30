@@ -86,6 +86,14 @@ export class UsersController {
   // @UseGuards(JwtAuthGuard, RoleGuard, OwnerGuard)
   @Put(':userId')
   async update(@Res() res, @Param('userId') userId: string, @Body() updateUserDto: UpdateUserDto) {
+    // Prevent user from editing password through this route
+      // const { password, role, ...filteredObject } = updateUserDto;
+      // if(updateUserDto.password){
+      //   const user = await this.usersService.findOneUser(userId);
+      //   if(!user){
+
+      //   }
+      // }
     try {
       const updatedUser = await this.usersService.update(userId, updateUserDto);
       return res.status(HttpStatus.OK).json({
