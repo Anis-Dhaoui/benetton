@@ -5,7 +5,6 @@ import { useAppSelector, useAppDispatch } from '../../state/store.state';
 import { updateUser } from '../../state/actions-creators/user.actions-creators';
 
 function Profile() {
-  console.log(localStorage.getItem('loggedUser'))
   const dispatch = useAppDispatch();
 
   const [isChecked, setIsChecked] = useState(false);
@@ -19,7 +18,6 @@ function Profile() {
 
   const { loading, user, errMsg, isAuthenticated } = useAppSelector(state => state.login);
   const { updating } = useAppSelector(state => state.user);
-  console.log(updating)
 
   let { register, handleSubmit, watch, formState: { errors }, reset } = useForm<any>({ mode: 'all' });
 
@@ -27,11 +25,9 @@ function Profile() {
     console.log(data);
     dispatch(updateUser(data, user?.user._id))
     setEditMode(!editMode)
-    console.log("... onSubmit method Invoked ...")
   }
 
   const handleEditMode = () => {
-    console.log("handleEditMode method invoked...")
     setEditMode(!editMode);
   }
 
@@ -129,10 +125,40 @@ function Profile() {
               isChecked ?
                 <div className="row mt-2">
                   <div className="col-12 col-md-6 mb-md-0 mb-2">
-                    <input type="password" className="form-control" placeholder="Ancien Mot de passe" />
+                    <input type="password" className="form-control" placeholder="Ancien Mot de passe"
+                      {...register("currentPassword",
+                        {
+                          required: "Required field"
+                        })
+                      }
+                      name="currentPassword"
+                    />
+                    {
+                      errors.currentPassword &&
+                      <div className="text-danger">
+                        {errors.currentPassword?.message?.toString()}
+                      </div>
+                    }
                   </div>
                   <div className="col-12 col-md-6 mb-md-0 mb-2">
-                    <input type="password" className="form-control float-right" placeholder="Nouveau Mot de passe" />
+                    <input type="password" className="form-control float-right" placeholder="Nouveau Mot de passe"
+                      {...register("newPassword",
+                        {
+                          required: "Required field",
+                          pattern: {
+                            value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+                            message: 'Au moins 8 caractères [a-z, A-Z, 0-9].'
+                          }
+                        })
+                      }
+                      name="newPassword"
+                    />
+                    {
+                      errors.newPassword &&
+                      <div className="text-danger">
+                        {errors.newPassword?.message?.toString()}
+                      </div>
+                    }
                   </div>
                 </div>
                 :
