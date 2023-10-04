@@ -22,11 +22,14 @@ export default function ChangePasswordModal() {
 
     return (
         <>
-            <div className="container">
-                <button onClick={() => setIsOpen(!isOpen)} type="button" className="btn btn-danger" data-toggle="modal" data-target="#form">
-                    Change password
-                </button>
-            </div>
+                <span onClick={() => setIsOpen(!isOpen)} className="text-danger" data-toggle="modal" data-target="#form"
+                style={{
+                    marginTop: "20px",
+                    cursor: "pointer"
+                }}
+                >
+                    Changer mot de passe
+                </span>
 
             <Modal isOpen={isOpen}>
                 <ModalHeader toggle={() => setIsOpen(!isOpen)}>Modal title</ModalHeader>
@@ -79,10 +82,10 @@ export default function ChangePasswordModal() {
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={handleSubmit(onSubmit)}>
+                    <Button className='save-btn' color="primary" onClick={handleSubmit(onSubmit)}>
                         Changer
                     </Button>{' '}
-                    <Button color="secondary" onClick={() => setIsOpen(!isOpen)}>
+                    <Button className='save-btn btn-danger' color="secondary" onClick={() => setIsOpen(!isOpen)}>
                         Cancel
                     </Button>
                 </ModalFooter>
