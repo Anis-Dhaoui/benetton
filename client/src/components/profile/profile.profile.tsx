@@ -3,6 +3,7 @@ import './style.profile.scss'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppSelector, useAppDispatch } from '../../state/store.state';
 import { updateUser } from '../../state/actions-creators/user.actions-creators';
+import ChangePasswordModal from './passwordModal/Modal.password.profile';
 
 function Profile() {
   const dispatch = useAppDispatch();
@@ -21,12 +22,13 @@ function Profile() {
 
   let { register, handleSubmit, watch, formState: { errors }, reset } = useForm<any>({ mode: 'all' });
 
-  const onSubmit: SubmitHandler<any> = (data: any) => {
+  const onSubmit: SubmitHandler<any> = (data: any, event: any) => {
+    event.preventDefault();
     console.log(data);
     dispatch(updateUser(data, user?.user._id))
     setEditMode(!editMode)
   }
-
+console.log(watch())
   const handleEditMode = () => {
     setEditMode(!editMode);
   }
@@ -109,17 +111,7 @@ function Profile() {
                 />
               </div>
             </div>
-            <div className="row mt-2">
-              <div className="col">
-                <input className="form-check-input" type="checkbox" value="" id="defaultCheck1"
-                  checked={isChecked}
-                  onChange={handleCheckboxChange}
-                />
-                <label className="form-check-label" htmlFor="defaultCheck1">
-                  Changer Mot de passe
-                </label>
-              </div>
-            </div>
+
 
             {
               isChecked ?
@@ -183,6 +175,7 @@ function Profile() {
               </div>
             </div>
           </form>
+          <ChangePasswordModal />
         </div>
       </div>
     </div>
