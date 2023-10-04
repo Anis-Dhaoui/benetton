@@ -23,7 +23,7 @@ function Profile() {
   const handleEditMode = () => {
     setEditMode(!editMode);
   }
-  
+
   return (
     <div className="settings-page">
       <div className="settings-container">
