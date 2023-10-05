@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppSelector, useAppDispatch } from '../../state/store.state';
 import { updateUser } from '../../state/actions-creators/user.actions-creators';
 import ChangePasswordModal from './passwordModal/Modal.password.profile';
+import { Form } from 'reactstrap';
 
 function Profile() {
   const dispatch = useAppDispatch();
@@ -15,9 +16,8 @@ function Profile() {
 
   let { register, handleSubmit, watch, formState: { errors }, reset } = useForm<any>({ mode: 'all' });
 
-  const onSubmit: SubmitHandler<any> = (data: any, event: any) => {
-    event.preventDefault();
-    dispatch(updateUser(data, user?.user._id))
+  const onSubmit: SubmitHandler<any> = (data: any) => {
+    dispatch(updateUser(data, user?.user._id));
     setEditMode(!editMode)
   }
   const handleEditMode = () => {
@@ -30,10 +30,10 @@ function Profile() {
         <h1 className="page-title">Account</h1>
         <div className="settings-section">
           <h2 className="settings-title">General Information</h2>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <Form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
               <div className="col-12 col-md-6 mb-md-0 mb-2">
-                <input type="text" className="form-control" placeholder="Nom"
+                <input type="text" id="firstname" className="form-control" placeholder="Nom"
                   {...register("firstName",
                     {
                       required: "Required field",
@@ -49,11 +49,11 @@ function Profile() {
                   }
                   name="firstName"
                   defaultValue={user?.user.firstName}
-                  disabled={!editMode}
+                  readOnly={!editMode}
                 />
               </div>
               <div className="col-12 col-md-6">
-                <input type="text" className="form-control" placeholder="Prénom"
+                <input type="text" id="lastname" className="form-control" placeholder="Prénom"
                   {...register("lastName",
                     {
                       required: "Required field",
@@ -69,13 +69,13 @@ function Profile() {
                   }
                   name="lastName"
                   defaultValue={user?.user.lastName}
-                  disabled={!editMode}
+                  readOnly={!editMode}
                 />
               </div>
             </div>
             <div className="row mt-2">
               <div className="col-12 col-md-6 mb-md-0 mb-2">
-                <input type="text" className="form-control" placeholder="Username"
+                <input type="text" id="username" className="form-control" placeholder="Username"
                   {...register("username",
                     {
                       required: "Required field",
@@ -91,11 +91,11 @@ function Profile() {
                   }
                   name="username"
                   defaultValue={user?.user.username}
-                  disabled={!editMode}
+                  readOnly={!editMode}
                 />
               </div>
               <div className="col col-12 col-md-6 mb-md-0 mb-2">
-                <input type="text" className="form-control" placeholder="Role"
+                <input type="text" id="role" className="form-control" placeholder="Role"
                   style={{ padding: "10px 20px" }}
                   name="Role"
                   defaultValue={user?.user.role}
@@ -116,7 +116,7 @@ function Profile() {
                         <span onClick={handleEditMode} className="save-btn text-danger"> Annuler </span>
                       </div>
                       <div className='col-md-6 col-12'>
-                        <button type='submit' className="save-btn text-center"> {updating ? <i className="fas fa-cog fa-spin"></i> : 'Enregistrer'} </button>
+                        <button type='submit' className="save-btn"> Enregistrer </button>
                       </div>
                     </div>
                     :
@@ -124,7 +124,7 @@ function Profile() {
                 }
               </div>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </div>

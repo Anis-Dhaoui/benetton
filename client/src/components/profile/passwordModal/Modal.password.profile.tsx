@@ -82,10 +82,10 @@ export default function ChangePasswordModal() {
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button className='save-btn' color="primary" onClick={handleSubmit(onSubmit)}>
+                    <Button className='modal-buttons' color="primary" onClick={handleSubmit(onSubmit)}>
                         Changer
                     </Button>{' '}
-                    <Button className='save-btn btn-danger' color="secondary" onClick={() => setIsOpen(!isOpen)}>
+                    <Button className='modal-buttons btn-danger' color="secondary" onClick={() => setIsOpen(!isOpen)}>
                         Cancel
                     </Button>
                 </ModalFooter>
