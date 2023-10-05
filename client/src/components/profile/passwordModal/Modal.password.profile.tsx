@@ -2,34 +2,41 @@ import React, { useState } from 'react'
 import './style.passwordModal.profile.scss'
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 import { SubmitHandler, useForm } from 'react-hook-form';
-
-
-type PASSWORD = {
-    currentPassword: string,
-    newPassword: string
-}
+import { useAppDispatch, useAppSelector } from '../../../state/store.state';
+import { updatePassword } from '../../../state/actions-creators/password.actions-creators';
 
 
 export default function ChangePasswordModal() {
     const [isOpen, setIsOpen] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const handleShowPassword = () => {
+        setShowPassword(!showPassword)
+    }
+
+    const { loading, user, errMsg, isAuthenticated } = useAppSelector(state => state.login);
+    const dispatch = useAppDispatch();
+
+
 
     let { register, handleSubmit, watch, formState: { errors }, reset } = useForm<any>({ mode: 'all' });
 
-    const onSubmit: SubmitHandler<any> = (data: PASSWORD | any) => {
-        console.log("Password changed...")
-        console.log(data)
+    const onSubmit: SubmitHandler<any> = (data: IPassword | any) => {
+        if (watch().newPassword === watch().confirmPassword) {
+            dispatch(updatePassword(data, user?.user._id, reset));
+        }
     }
 
+    const isPasswordMatch: boolean = watch().newPassword === watch().confirmPassword;
     return (
         <>
-                <span onClick={() => setIsOpen(!isOpen)} className="text-danger" data-toggle="modal" data-target="#form"
+            <span onClick={() => setIsOpen(!isOpen)} className="text-danger" data-toggle="modal" data-target="#form"
                 style={{
                     marginTop: "20px",
                     cursor: "pointer"
                 }}
-                >
-                    Changer mot de passe
-                </span>
+            >
+                Changer mot de passe
+            </span>
 
             <Modal isOpen={isOpen}>
                 <ModalHeader toggle={() => setIsOpen(!isOpen)}>Modal title</ModalHeader>
@@ -76,17 +83,32 @@ export default function ChangePasswordModal() {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="confirmPassword">Confirmer mot de passe</label>
-                                <input type="password" className="form-control" id="confirmPassword" placeholder="Confirmer mot de passe" />
+                                <input type="password" className="form-control" id="confirmPassword" placeholder="Confirmer mot de passe"
+                                    {...register("confirmPassword", { required: "Required field" })}
+                                    name="confirmPassword"
+                                />
+                                <div className="form-check" style={{margin: "5px auto -6px -23px"}} >
+                                    <input className="form-check-input" type="checkbox" id="showHidePassword" />
+                                    <label className="form-check-label" htmlFor="showHidePassword">
+                                        Afficher Mot de passe
+                                    </label>
+                                </div>
+                                {
+                                    !isPasswordMatch && watch().confirmPassword.length > 0 &&
+                                    <div className="text-danger mb-n4">
+                                        Mot de passe ne correspond pas!
+                                    </div>
+                                }
                             </div>
                         </div>
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button className='modal-buttons' color="primary" onClick={handleSubmit(onSubmit)}>
+                    <Button disabled={!isPasswordMatch || errors.newPassword?.message?.toString().length === 0} className='modal-buttons' color="primary" onClick={handleSubmit(onSubmit)}>
                         Changer
                     </Button>{' '}
                     <Button className='modal-buttons btn-danger' color="secondary" onClick={() => setIsOpen(!isOpen)}>
-                        Cancel
+                        Annuler
                     </Button>
                 </ModalFooter>
             </Modal>

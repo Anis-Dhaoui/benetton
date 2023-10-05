@@ -14,7 +14,7 @@ interface IComputer {
     group: string
 }
 
-interface IUser{
+interface IUser {
     firstName: string,
     lastName: string,
     username: string,
@@ -73,3 +73,10 @@ interface IRegisterReq {
     password: string,
     interests: string[]
 };
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$// UPDATE PASSWORD //$$$$$$$$$$$$$$$$$$$$$$$$$$//µ
+interface IPassword {
+    currentPassword: string,
+    newPassword: string
+}
