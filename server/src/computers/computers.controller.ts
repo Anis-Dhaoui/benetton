@@ -1,12 +1,17 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, Res, Req, HttpStatus, Logger, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, Res, Req, HttpStatus, Logger, Query, UseGuards } from '@nestjs/common';
 import { ComputersService } from './computers.service';
 import { CreateComputerDto } from './dto/create-computer.dto';
 import { UpdateComputerDto } from './dto/update-computer.dto';
+import { RoleGuard } from 'src/auth/RBAC/verify-admin/roles.guard';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { Roles } from 'src/auth/RBAC/verify-admin/roles.decorator';
 
 @Controller('computers')
 export class ComputersController {
   constructor(private readonly computersService: ComputersService) { }
 
+  @Roles('Admin')
+  @UseGuards(JwtAuthGuard, RoleGuard)
   @Post()
   async create(@Res() res, @Req() req, @Body() createComputerDto: CreateComputerDto) {
 
@@ -34,11 +39,15 @@ export class ComputersController {
     }
   }
 
+
+  @UseGuards(JwtAuthGuard)
   @Get('/')
   async findAll() {
     return await this.computersService.findAll();
   }
 
+  @Roles('Admin')
+  @UseGuards(JwtAuthGuard, RoleGuard)
   @Get(':cmpId')
   async findOne(@Res() res, @Param('cmpId') cmpId: string) {
     try {
@@ -55,6 +64,9 @@ export class ComputersController {
     }
   }
 
+
+  @Roles('Admin')
+  @UseGuards(JwtAuthGuard, RoleGuard)
   @Put(':cmpId')
   async update(@Res() res, @Param('cmpId') cmpId: string, @Body() UpdateComputerDto: UpdateComputerDto) {
     try {
@@ -74,6 +86,9 @@ export class ComputersController {
     }
   }
 
+
+  @Roles('Admin')
+  @UseGuards(JwtAuthGuard, RoleGuard)
   @Delete(':cmpId')
   async remove(@Res() res, @Param('cmpId') cmpId: string) {
     try {
@@ -93,6 +108,8 @@ export class ComputersController {
     }
   }
 
+
+  @UseGuards(JwtAuthGuard)
   @Get('/search')
   async search(@Res() res, @Req() req, @Query() query) {
     try {

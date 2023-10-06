@@ -37,21 +37,21 @@ import { axiosInstance } from './axiosHeaderInstance';
 // }
 
 export const updateUser = (data: any, id: any) => {
-    return (dispatch: Dispatch) => {
-        dispatch(ACTIONS.updateUsersRequest());
-        const toastId = toast.loading('Please wait...')
+  return (dispatch: Dispatch) => {
+    dispatch(ACTIONS.updateUsersRequest());
+    const toastId = toast.loading('Please wait...')
 
-        axiosInstance
-            .put(`${process.env.REACT_APP_BASE_URL}/users/${id}`, data)
-            .then((res) => {
-                dispatch(ACTIONS.updateUsersSuccess(res.data));
-                toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
-            })
-            .catch((err) => {
-                dispatch(ACTIONS.updateUsersFailure(err.response.data.message));
-                toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
-            })
-    }
+    axiosInstance
+      .put(`${process.env.REACT_APP_BASE_URL}/users/${id}`, data)
+      .then((res) => {
+        dispatch(ACTIONS.updateUsersSuccess(res.data));
+        toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
+      })
+      .catch((err) => {
+        dispatch(ACTIONS.updateUsersFailure(err.response.data.message));
+        toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
+      })
+  }
 }
 
 

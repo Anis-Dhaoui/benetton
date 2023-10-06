@@ -3,18 +3,19 @@ import { Dispatch } from 'redux';
 import * as ACTIONS from '../actions/computer.actions';
 import { toast } from 'react-toastify';
 import { UseFormReset } from 'react-hook-form';
+import { axiosInstance } from './axiosHeaderInstance';
 
 export const fetchComputers = () => {
     return (dispatch: Dispatch) => {
         dispatch(ACTIONS.fetchComputersRequest());
 
-        axios
+        axiosInstance
             .get(`${process.env.REACT_APP_BASE_URL}/computers`)
             .then((res) => {
                 dispatch(ACTIONS.fetchComputersSuccess(res.data));
             })
-            .catch((err) => {
-                dispatch(ACTIONS.fetchComputersFailure(err.message))
+            .catch((err: any) => {
+                dispatch(ACTIONS.fetchComputersFailure(`${err.response.data.message} ${err.response.data.statusCode}`))
             })
     }
 }
@@ -48,7 +49,7 @@ export const createComputer = (data: IComputer, reset: UseFormReset<any>, setNet
         dispatch(ACTIONS.createComputersRequest());
         const toastId = toast.loading('Please wait...')
 
-        axios
+        axiosInstance
             .post(`${process.env.REACT_APP_BASE_URL}/computers`, data)
             .then((res) => {
                 dispatch(ACTIONS.createComputersSuccess(res.data));
@@ -69,7 +70,7 @@ export const updateComputer = (data: IComputer, id: string, reset: UseFormReset<
         dispatch(ACTIONS.updateComputersRequest());
         const toastId = toast.loading('Please wait...')
 
-        axios
+        axiosInstance
             .put(`${process.env.REACT_APP_BASE_URL}/computers/${id}`, data)
             .then((res) => {
                 dispatch(ACTIONS.updateComputersSuccess(res.data));
@@ -90,7 +91,7 @@ export const deleteComputer = (id: any) => {
         dispatch(ACTIONS.deleteComputersRequest());
         const toastId = toast.loading('Please wait...')
 
-        axios
+        axiosInstance
             .delete(`${process.env.REACT_APP_BASE_URL}/computers/${id}`)
             .then((res) => {
                 dispatch(ACTIONS.deleteComputersSuccess(res.data));
@@ -111,7 +112,7 @@ export const getSingleComputer = (computerID: any) => {
     return (dispatch: Dispatch) => {
         dispatch(ACTIONS.getSingleComputerRequest());
 
-        axios
+        axiosInstance
             .get(`${process.env.REACT_APP_BASE_URL}/computers/${computerID}`)
             .then((res) => {
                 dispatch(ACTIONS.getSingleComputerSuccess(res.data));
