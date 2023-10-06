@@ -32,7 +32,8 @@ export default function ChangePasswordModal() {
             <span onClick={() => setIsOpen(!isOpen)} className="text-danger" data-toggle="modal" data-target="#form"
                 style={{
                     marginTop: "20px",
-                    cursor: "pointer"
+                    cursor: "pointer",
+                    textDecoration: "underline"
                 }}
             >
                 Changer mot de passe
