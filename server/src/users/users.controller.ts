@@ -1,4 +1,4 @@
-import { Controller, Get, Body, Param, Res, HttpStatus, Put, UseGuards, Delete, Post } from '@nestjs/common';
+import { Controller, Get, Body, Param, Res, HttpStatus, Put, UseGuards, Delete, Post, Req } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { CreateUserDto, updatePasswordDto } from './dto/create-user.dto';
@@ -82,10 +82,11 @@ export class UsersController {
     }
   }
 
-  // @Roles('Admin', 'User')
-  // @UseGuards(JwtAuthGuard, RoleGuard, OwnerGuard)
+  @Roles('Admin', 'User')
+  @UseGuards(JwtAuthGuard, RoleGuard, OwnerGuard)
   @Put(':userId')
   async update(@Res() res, @Param('userId') userId: string, @Body() updateUserDto: UpdateUserDto) {
+
     try {
       const updatedUser = await this.usersService.update(userId, updateUserDto);
       return res.status(HttpStatus.OK).json({
@@ -104,8 +105,8 @@ export class UsersController {
     }
   }
 
-  // @Roles('Admin', 'User')
-  // @UseGuards(JwtAuthGuard, RoleGuard, OwnerGuard)
+  @Roles('Admin', 'User')
+  @UseGuards(JwtAuthGuard, RoleGuard, OwnerGuard)
   @Put(':userId/updatepassword')
   async updatePassword(@Res() res, @Param('userId') userId: string, @Body() updatePasswordDto: updatePasswordDto) {
     try {

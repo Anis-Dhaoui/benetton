@@ -1,23 +1,7 @@
-import axios from 'axios';
 import { Dispatch } from 'redux';
 import * as ACTIONS from '../actions/user.actions';
 import { toast } from 'react-toastify';
-
-const storedData = localStorage.getItem('loggedUser');
-var access_token;
-
-if (storedData !== null) {
-  const parsedData = JSON.parse(storedData);
-  access_token = parsedData.access_token;
-}
-console.log(access_token)
-// Create an Axios instance with default headers
-const axiosInstance = axios.create({
-    headers: {
-      'Authorization': access_token, // Send the token in the 'Authorization' header
-      'Content-Type': 'application/json', // Set the content type if needed
-    },
-  });
+import { axiosInstance } from './axiosHeaderInstance';
 
 // export const fetchUsers = () => {
 //     return (dispatch: Dispatch) => {
@@ -57,7 +41,7 @@ export const updateUser = (data: any, id: any) => {
         dispatch(ACTIONS.updateUsersRequest());
         const toastId = toast.loading('Please wait...')
 
-        axios
+        axiosInstance
             .put(`${process.env.REACT_APP_BASE_URL}/users/${id}`, data)
             .then((res) => {
                 dispatch(ACTIONS.updateUsersSuccess(res.data));
