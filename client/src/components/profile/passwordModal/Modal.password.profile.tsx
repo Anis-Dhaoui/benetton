@@ -45,8 +45,14 @@ export default function ChangePasswordModal() {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="modal-body">
                             <div className="form-group">
+                                <div className="form-check" style={{ margin: "-17px auto -6px -23px" }} >
+                                    <input onChange={handleShowPassword} className="form-check-input" type="checkbox" id="showHidePassword" />
+                                    <label className="form-check-label" htmlFor="showHidePassword">
+                                        Afficher Mot de passe
+                                    </label>
+                                </div>
                                 <label htmlFor="curentPassword">Mot de passe actuel</label>
-                                <input type="password" className="form-control" id="curentPassword" aria-describedby="curentPassword" placeholder="Entrer mot de passe actuelle"
+                                <input type={showPassword ? "text" : "password"} className="form-control" id="curentPassword" aria-describedby="curentPassword" placeholder="Entrer mot de passe actuelle"
                                     {...register("currentPassword",
                                         {
                                             required: "Required field"
@@ -63,7 +69,7 @@ export default function ChangePasswordModal() {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="newPassword">Nouveau mot de passe:</label>
-                                <input type="password" className="form-control" id="newPassword" placeholder="Nouveau mot de passe"
+                                <input type={showPassword ? "text" : "password"} className="form-control" id="newPassword" placeholder="Nouveau mot de passe"
                                     {...register("newPassword",
                                         {
                                             required: "Required field",
@@ -84,16 +90,10 @@ export default function ChangePasswordModal() {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="confirmPassword">Confirmer mot de passe</label>
-                                <input type="password" className="form-control" id="confirmPassword" placeholder="Confirmer mot de passe"
+                                <input type={showPassword ? "text" : "password"} className="form-control" id="confirmPassword" placeholder="Confirmer mot de passe"
                                     {...register("confirmPassword", { required: "Required field" })}
                                     name="confirmPassword"
                                 />
-                                <div className="form-check" style={{margin: "5px auto -6px -23px"}} >
-                                    <input className="form-check-input" type="checkbox" id="showHidePassword" />
-                                    <label className="form-check-label" htmlFor="showHidePassword">
-                                        Afficher Mot de passe
-                                    </label>
-                                </div>
                                 {
                                     !isPasswordMatch && watch().confirmPassword.length > 0 &&
                                     <div className="text-danger mb-n4">
