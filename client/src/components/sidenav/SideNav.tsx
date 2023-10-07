@@ -67,7 +67,7 @@ export default function SideNav() {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to={'/'}  className="nav-link text-white ">
+          <Link to={'users_management'}  className="nav-link text-white ">
             <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i className="material-icons opacity-10">manage_accounts</i>
             </div>

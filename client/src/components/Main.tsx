@@ -9,6 +9,7 @@ import LoginPage from './login-page/login.login-page'
 import { useAppSelector } from '../state/store.state'
 import Profile from './profile/profile.profile'
 import RouteProtector from './RouteProtector'
+import UsersManagement from './user-Management/users.user-management'
 
 
 function Main() {
@@ -71,6 +72,14 @@ function Main() {
                   element={
                     <RouteProtector isLoggedIn={isAuthenticated}>
                       <Profile />
+                    </RouteProtector>
+                  }
+                />
+
+                <Route path='/users_management'
+                  element={
+                    <RouteProtector isLoggedIn={isAuthenticated}>
+                      <UsersManagement />
                     </RouteProtector>
                   }
                 />
