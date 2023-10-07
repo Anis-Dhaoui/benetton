@@ -1,0 +1,66 @@
+.pagination {
+    margin-top: 0px !important;
+    float: right !important;
+}
+
+.page-link,
+#pageDropDown {
+    background-color: #e53270 !important;
+    color: white !important;
+}
+
+.pagination .active .page-link {
+    background-color: #ffffff8c !important;
+}
+
+.sort-column {
+    cursor: pointer;
+}
+
+#usres-table tr>td:hover {
+    overflow: visible;
+    white-space: unset;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.light-input-search {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    height: 47px !important;
+    font-size: 18px !important;
+}
+
+.dark-input-search {
+    background-color: rgb(26 31 53) !important;
+    color: #ffffff !important;
+    height: 47px !important;
+    font-size: 18px !important;
+}
+
+#usres-table .input-group-btn {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}
+
+#usres-table .react-bs-table-search-clear-btn {
+    background: linear-gradient(13deg, #ff000000 0%, #ff00002f 50%, #ff0000b7 50%, #ff0000 100%);
+    background-size: 200% auto;
+    transition: background-position 0.5s;
+
+    margin-top: 1px;
+    // background-color: transparent !important;
+    box-shadow: none !important;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    transition: border-bottom 0.9s;
+    transition: background-position 0.9s;
+}
+
+#usres-table .react-bs-table-search-clear-btn:hover {
+    background-position: -300% 0;
+    /* Shift background position to the left */
+    margin-top: 0px;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+}
