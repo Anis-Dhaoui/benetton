@@ -3,20 +3,20 @@ import * as ACTIONS from '../actions/user.actions';
 import { toast } from 'react-toastify';
 import { axiosInstance } from './axiosHeaderInstance';
 
-// export const fetchUsers = () => {
-//     return (dispatch: Dispatch) => {
-//         dispatch(ACTIONS.fetchUsersRequest());
+export const fetchUsers = () => {
+    return (dispatch: Dispatch) => {
+        dispatch(ACTIONS.fetchUsersRequest());
 
-//         axios
-//             .get(`${process.env.REACT_APP_BASE_URL}/users`)
-//             .then((res) => {
-//                 dispatch(ACTIONS.fetchUsersSuccess(res.data));
-//             })
-//             .catch((err) => {
-//                 dispatch(ACTIONS.fetchUsersFailure(err.message))
-//             })
-//     }
-// }
+        axiosInstance
+            .get(`${process.env.REACT_APP_BASE_URL}/users`)
+            .then((res) => {
+                dispatch(ACTIONS.fetchUsersSuccess(res.data));
+            })
+            .catch((err) => {
+                dispatch(ACTIONS.fetchUsersFailure(err.message))
+            })
+    }
+}
 
 // export const createUser = (data: any) => {
 //     return (dispatch: Dispatch) => {

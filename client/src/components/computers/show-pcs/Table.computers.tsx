@@ -9,10 +9,9 @@ import { useAppSelector } from '../../../state/store.state';
 
 function TableComputer({ computersList }: any) {
 
-    const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || true);
     const { loading, user, errMsg, isAuthenticated } = useAppSelector(state => state.login);
 
-
+    const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || true);
     useEffect(() => {
         localStorage.setItem('darkModeStatus', JSON.stringify(isDarkMode));
         darkMode(isDarkMode);

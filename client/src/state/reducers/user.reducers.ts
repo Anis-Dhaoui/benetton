@@ -1,21 +1,21 @@
 import { UserActionsTypes } from "../actions-types/user.actions-types"
 
 interface STATE {
-    // loading: boolean,
-    // users?: IUser[],
-    // error?: string | null,
+    loading: boolean,
+    users?: any,
+    error?: string | null,
 
-    // creating?: boolean,
-    // createdUser?: any,
-    // createError?: string | null
+    creating?: boolean,
+    createdUser?: any,
+    createError?: string | null
 
-    // deleting?: boolean,
-    // deletedUser?: any,
-    // deleteError?: string | null,
+    deleting?: boolean,
+    deletedUser?: any,
+    deleteError?: string | null,
 
-    // oneUserLoading?: boolean,
-    // user?: IUser,
-    // oneUserError?: string | null,
+    oneUserLoading?: boolean,
+    user?: IUser,
+    oneUserError?: string | null,
 
     updating?: boolean,
     updatedUser?: any,
@@ -46,14 +46,17 @@ const initialState = {
 
 export const UserRed = (state: STATE = initialState, action: any): STATE => {
     switch (action.type) {
-        // case UserActionsTypes.FETCH_USERS_REQUEST:
-        //     return { ...state, loading: true, error: null }
+        case UserActionsTypes.FETCH_USERS_REQUEST:
+            console.log("case UserActionsTypes.FETCH_USERS_REQUEST")
+            return { ...state, loading: true, error: null }
 
-        // case UserActionsTypes.FETCH_USERS_SUCCESS:
-        //     return { ...state, loading: false, users: action.payload }
+        case UserActionsTypes.FETCH_USERS_SUCCESS:
+            console.log("case UserActionsTypes.FETCH_USERS_SUCCESS")
+            return { ...state, loading: false, users: action.payload }
 
-        // case UserActionsTypes.FETCH_USERS_FAILURE:
-        //     return { ...state, loading: false, error: action.payload }
+        case UserActionsTypes.FETCH_USERS_FAILURE:
+            console.log("case UserActionsTypes.FETCH_USERS_FAILURE")
+            return { ...state, loading: false, error: action.payload }
 
 
 

@@ -24,7 +24,7 @@ export const darkMode = (isDarkMode) => {
 
     const computer_search = document.querySelector('#computer-table input');
 
-    if(computer_search){
+    if (computer_search) {
         computer_search.classList.add('ligth-table-search-input');
     }
 
