@@ -22,12 +22,11 @@ export default function RenderUsers({ usersList }: any) {
                 search
                 searchPlaceholder="Que cherchez-vous?..."
             >
-                <TableHeaderColumn dataField="_id" dataAlign="center" dataSort isKey>ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="firstName" dataAlign="center" dataSort width='200'>NOM</TableHeaderColumn>
-                <TableHeaderColumn dataField="lastName" dataAlign="center" dataSort width='160px'>PRENOM</TableHeaderColumn>
-                <TableHeaderColumn dataField="username" dataAlign="center" dataSort>USERNAME</TableHeaderColumn>
-                <TableHeaderColumn dataField="role" dataAlign="center" dataSort>ROLE</TableHeaderColumn>
+                <TableHeaderColumn dataField="username" dataAlign="center" dataSort isKey>USERNAME</TableHeaderColumn>
+                <TableHeaderColumn dataField="firstName" dataAlign="center" dataSort>NOM</TableHeaderColumn>
+                <TableHeaderColumn dataField="lastName" dataAlign="center" dataSort>PRENOM</TableHeaderColumn>
                 <TableHeaderColumn dataField="password" dataAlign="center" dataSort>MOT DE PASSE</TableHeaderColumn>
+                <TableHeaderColumn dataField="role" dataAlign="center" dataSort>ROLE</TableHeaderColumn>
             </BootstrapTable>
         </div>
     )

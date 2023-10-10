@@ -23,4 +23,10 @@
 			border-bottom: 1px solid red;
 		}
 	}
+
+	tr>td:hover {
+		overflow: visible;
+		white-space: unset;
+		background-color: rgba(0, 0, 0, 0.2);
+	}
 }
