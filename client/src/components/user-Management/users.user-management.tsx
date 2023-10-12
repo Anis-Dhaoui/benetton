@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import { useAppDispatch, useAppSelector } from '../../state/store.state';
 import { Loading } from '../Loading/loading';
 import { fetchUsers } from '../../state/actions-creators/user.actions-creators';

@@ -6,7 +6,6 @@ import { IUser } from './entities/user.entity';
 import { CreateUserDto, updatePasswordDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
 
-
 @Injectable()
 export class UsersService {
   constructor(@InjectModel('User') public userModel: Model<IUser>) { }
