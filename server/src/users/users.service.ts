@@ -54,7 +54,7 @@ export class UsersService {
     const user = await this.userModel.findById(id, ['+password', '-firstName', '-lastName', '-username', '-role', '-__v']);
     if (user) {
       const isPasswordValid = await bcrypt.compare(updatePasswordDto.currentPassword, user.password);
-      if (isPasswordValid) {
+      if (!isPasswordValid) {
         throw new HttpException('Current password is incorrect!', HttpStatus.UNAUTHORIZED);
       } else {
         const hashNewPassword = await bcrypt.hash(updatePasswordDto.newPassword, 10);

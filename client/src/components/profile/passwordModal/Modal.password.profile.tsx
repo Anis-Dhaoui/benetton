@@ -22,6 +22,7 @@ export default function ChangePasswordModal() {
 
     const onSubmit: SubmitHandler<any> = (data: IPassword | any) => {
         if (watch().newPassword === watch().confirmPassword) {
+            delete data.confirmPassword;
             dispatch(updatePassword(data, user?.user._id, reset));
         }
     }
