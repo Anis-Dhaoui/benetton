@@ -8,6 +8,9 @@ import { updateUser } from '../../state/actions-creators/user.actions-creators';
 import { resetPassword } from '../../state/actions-creators/password.actions-creators';
 
 export default function RenderUsers({ usersList }: any) {
+    const xx = localStorage.getItem('loggedUser');
+  console.log(JSON.parse(xx!).user.role)
+
     const dispatch = useAppDispatch();
     const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || true);
     useEffect(() => {

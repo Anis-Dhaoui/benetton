@@ -49,6 +49,7 @@ export class UsersService {
     }
     return user;
   }
+  
 
   async updatePassword(id: string, updatePasswordDto: updatePasswordDto): Promise<any> {
     const user = await this.userModel.findById(id, ['+password', '-firstName', '-lastName', '-username', '-role', '-__v']);

@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import './Plugins.js';
-import './style.css'
+import './style.navbar.css'
 import { darkMode } from './Plugins.js';
 import { useAppDispatch, useAppSelector } from '../../state/store.state';
 import { handleLogout } from '../../state/actions-creators/login.actions-creators';
+import Avatar from './avatar/avatar.avatar';
 ;
 
 
 function Navbar() {
-    const dispatch = useAppDispatch();
     // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
     const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || false);
     const [showRightSideNav, setShowRightSideNav] = useState(false);
-    const [avatarDropdownMenu, setAvatarDropdownMenu] = useState(false)
 
     useEffect(() => {
         localStorage.setItem('darkModeStatus', JSON.stringify(isDarkMode));
@@ -20,9 +19,8 @@ function Navbar() {
     }, [isDarkMode]);
 
     const handleBodyClick = (event: any) => {
-        if (!event.target.closest('#settingUp') && !event.target.closest('#rightSideNav') && !event.target.closest('#avatar-image')) {
+        if (!event.target.closest('#settingUp') && !event.target.closest('#rightSideNav')) {
             setShowRightSideNav(false)
-            setAvatarDropdownMenu(false)
         }
     };
 
@@ -42,8 +40,6 @@ function Navbar() {
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
 
-    const { loading, user, errMsg, isAuthenticated } = useAppSelector(state => state.login);
-
     return (
         <main className="main-content">
             <nav className="navbar navbar-main navbar-expand-lg px-0 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
@@ -60,25 +56,7 @@ function Navbar() {
                                     <i className="fa fa-user me-sm-1"></i>
                                     <span className="d-sm-inline d-none">Sign In</span>
                                 </a> */}
-
-                                <div className="avatar-dropdown-menu">
-                                    <div id="avatar-image" className="avatar-image" onClick={() => setAvatarDropdownMenu(!avatarDropdownMenu)}>
-                                        <img src={require("../../assets/images/avatar-images/user-1.png")} alt="avatar" />
-                                    </div>
-                                    <div className={avatarDropdownMenu ? "open avatar-dropdown-menu-items" : "avatar-dropdown-menu-items"}>
-                                        <ul>
-                                            <li>
-                                                <span>{user?.user.username}</span>
-                                            </li>
-                                            <li>
-                                                <span>{`${user?.user.firstName} ${user?.user.lastName}`}</span>
-                                            </li>
-                                            <li>
-                                                <span onClick={() => dispatch(handleLogout)}>Log out</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <Avatar />
                             </li>
                             <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
                                 <a href="#!" className="nav-link p-0 top-right-nav-btn" id="iconNavbarSidenav">
