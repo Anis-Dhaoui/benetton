@@ -57,8 +57,9 @@ export default function SideNav() {
               <span className="nav-link-text ms-1">Notifications</span>
             </Link>
           </li>
+          <br />
           <li className="nav-item mt-3">
-            <h6 className="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Administrateur</h6>
+            <h6 className="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">CONFIGURATIONS</h6>
           </li>
           <li className="nav-item">
             <Link to={'/profile'} className="nav-link text-white ">
