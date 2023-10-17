@@ -9,7 +9,7 @@ import { useAppSelector } from '../../../state/store.state';
 
 function TableComputer({ computersList }: any) {
 
-    const { loading, user, errMsg, isAuthenticated } = useAppSelector(state => state.login);
+    const { user } = useAppSelector(state => state.login);
 
     const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || true);
     useEffect(() => {
