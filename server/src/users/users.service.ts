@@ -3,7 +3,7 @@ import { Model } from 'mongoose';
 import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { IUser } from './entities/user.entity';
-import { CreateUserDto, updatePasswordDto } from './dto/create-user.dto';
+import { CreateUserDto, updatePasswordDto, resetPasswordDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -54,7 +54,7 @@ export class UsersService {
     const user = await this.userModel.findById(id, ['+password', '-firstName', '-lastName', '-username', '-role', '-__v']);
     if (user) {
       const isPasswordValid = await bcrypt.compare(updatePasswordDto.currentPassword, user.password);
-      if (!isPasswordValid) {
+      if (isPasswordValid) {
         throw new HttpException('Current password is incorrect!', HttpStatus.UNAUTHORIZED);
       } else {
         const hashNewPassword = await bcrypt.hash(updatePasswordDto.newPassword, 10);
@@ -64,5 +64,14 @@ export class UsersService {
     } else {
       throw new HttpException(`User #${id} not found!`, HttpStatus.NOT_FOUND)
     }
+  }
+
+  async resetPassword(id: string, resetPasswordDto: resetPasswordDto): Promise<any> {
+    const hashNewPassword = await bcrypt.hash(resetPasswordDto.newPassword, 10);
+    const user = await this.userModel.findByIdAndUpdate(id, { password: hashNewPassword }, { new: true });
+    if (!user) {
+      throw new NotFoundException(`User #${id} not found`);
+    }
+    return user;
   }
 }

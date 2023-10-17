@@ -39,3 +39,10 @@ export class updatePasswordDto {
     @IsNotEmpty()
     readonly newPassword: string;
 }
+
+export class resetPasswordDto {
+    @IsString()
+    @MaxLength(50)
+    @IsNotEmpty()
+    readonly newPassword: string;
+}

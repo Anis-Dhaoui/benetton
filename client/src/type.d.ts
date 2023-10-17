@@ -77,6 +77,7 @@ interface IRegisterReq {
 
 //$$$$$$$$$$$$$$$$$$$$$$$$$$// UPDATE PASSWORD //$$$$$$$$$$$$$$$$$$$$$$$$$$//µ
 interface IPassword {
-    currentPassword: string,
+    currentPassword?: string,
     newPassword: string
 }
+

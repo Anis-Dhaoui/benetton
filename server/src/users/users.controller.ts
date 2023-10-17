@@ -1,7 +1,7 @@
 import { Controller, Get, Body, Param, Res, HttpStatus, Put, UseGuards, Delete, Post, Req } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { CreateUserDto, updatePasswordDto } from './dto/create-user.dto';
+import { CreateUserDto, resetPasswordDto, updatePasswordDto } from './dto/create-user.dto';
 import { OwnerGuard } from './../auth/RBAC/verify-owner/owner.guard';
 import { Roles } from './../auth/RBAC/verify-admin/roles.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
@@ -116,7 +116,24 @@ export class UsersController {
         updatedUser: updatedUser
       })
     } catch (error) {
-      console.log(error)
+      return res.status(HttpStatus.UNAUTHORIZED).json({
+        statusCode: error.status,
+        message: `Error: ${error.response}`
+      })
+    }
+  }
+
+  @Roles('Admin')
+  @UseGuards(JwtAuthGuard, RoleGuard)
+  @Put(':userId/resetpassword')
+  async resetPassword(@Res() res, @Param('userId') userId: string, @Body() resetPasswordDto: resetPasswordDto) {
+    try {
+      const updatedUser = await this.usersService.resetPassword(userId, resetPasswordDto);
+      return res.status(HttpStatus.OK).json({
+        message: `User "${updatedUser.username}" password updated successfully`,
+        updatedUser: updatedUser
+      })
+    } catch (error) {
       return res.status(HttpStatus.UNAUTHORIZED).json({
         statusCode: error.status,
         message: `Error: ${error.response}`

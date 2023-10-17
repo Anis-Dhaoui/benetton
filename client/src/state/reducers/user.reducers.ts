@@ -47,15 +47,12 @@ const initialState = {
 export const UserRed = (state: STATE = initialState, action: any): STATE => {
     switch (action.type) {
         case UserActionsTypes.FETCH_USERS_REQUEST:
-            console.log("case UserActionsTypes.FETCH_USERS_REQUEST")
             return { ...state, loading: true, error: null }
 
         case UserActionsTypes.FETCH_USERS_SUCCESS:
-            console.log("case UserActionsTypes.FETCH_USERS_SUCCESS")
             return { ...state, loading: false, users: action.payload }
 
         case UserActionsTypes.FETCH_USERS_FAILURE:
-            console.log("case UserActionsTypes.FETCH_USERS_FAILURE")
             return { ...state, loading: false, error: action.payload }
 
 
@@ -105,7 +102,6 @@ export const UserRed = (state: STATE = initialState, action: any): STATE => {
                 const updatedData = JSON.stringify(parsedData);
                 localStorage.setItem('loggedUser', updatedData);
             }
-
             return { ...state, updating: false, updatedUser: action.payload }
 
         case UserActionsTypes.UPDATE_USER_FAILURE:
