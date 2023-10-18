@@ -95,12 +95,14 @@ export const UserRed = (state: STATE = initialState, action: any): STATE => {
 
         case UserActionsTypes.UPDATE_USER_SUCCESS:
             const storedData = localStorage.getItem('loggedUser');
-
             if (storedData) {
                 const parsedData = JSON.parse(storedData);
-                parsedData.user = action.payload.updatedUser;
-                const updatedData = JSON.stringify(parsedData);
-                localStorage.setItem('loggedUser', updatedData);
+                if (action.payload.updatedUser._id === parsedData.user._id) {
+                    parsedData.user = action.payload.updatedUser;
+                    const updatedData = JSON.stringify(parsedData);
+                    localStorage.setItem('loggedUser', updatedData);
+                }
+
             }
             return { ...state, updating: false, updatedUser: action.payload }
 

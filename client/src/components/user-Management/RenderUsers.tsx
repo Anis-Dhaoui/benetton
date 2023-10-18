@@ -8,9 +8,6 @@ import { updateUser } from '../../state/actions-creators/user.actions-creators';
 import { resetPassword } from '../../state/actions-creators/password.actions-creators';
 
 export default function RenderUsers({ usersList }: any) {
-    const xx = localStorage.getItem('loggedUser');
-  console.log(JSON.parse(xx!).user.role)
-
     const dispatch = useAppDispatch();
     const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || true);
     useEffect(() => {
@@ -21,7 +18,7 @@ export default function RenderUsers({ usersList }: any) {
     const manipulatedData = usersList?.map((item: any) => {
         return {
             ...item,
-            password: "••••••••••••••••"
+            password: "•••••••••"
         }
     })
 
@@ -30,6 +27,7 @@ export default function RenderUsers({ usersList }: any) {
         let key: any = cellName;
         obj[key] = cellValue;
         if (cellName !== "password") {
+            console.log(obj)
             dispatch(updateUser(obj, row._id));
         }
         else {
