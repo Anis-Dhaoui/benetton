@@ -102,9 +102,13 @@ export const UserRed = (state: STATE = initialState, action: any): STATE => {
                     const updatedData = JSON.stringify(parsedData);
                     localStorage.setItem('loggedUser', updatedData);
                 }
-
             }
-            return { ...state, updating: false, updatedUser: action.payload }
+            return {
+                ...state,
+                updating: false,
+                updatedUser: action.payload,
+                users: (state.users.users as IUser[])!.map((item: any) => item._id === action.payload.updatedUser._id ? action.payload.updatedUser : item)
+            }
 
         case UserActionsTypes.UPDATE_USER_FAILURE:
             return { ...state, updating: false, updateError: action.payload }
