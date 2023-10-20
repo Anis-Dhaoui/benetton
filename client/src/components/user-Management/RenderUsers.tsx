@@ -39,13 +39,12 @@ export default function RenderUsers({ usersList }: any) {
         afterSaveCell: afterSaveCell
     };
 
-
     return (
         <div id='users-table'>
             <BootstrapTable data={manipulatedData} striped hover condensed
                 options={{
                     clearSearch: true,
-                    noDataText: 'Tableau est vide'
+                    noDataText: 'Tableau est vide',
                 }}
                 cellEdit={cellEdit}
                 search
@@ -54,7 +53,7 @@ export default function RenderUsers({ usersList }: any) {
                 <TableHeaderColumn dataField="username" dataAlign="center" dataSort isKey>USERNAME</TableHeaderColumn>
                 <TableHeaderColumn dataField="firstName" dataAlign="center" dataSort>NOM</TableHeaderColumn>
                 <TableHeaderColumn dataField="lastName" dataAlign="center" dataSort>PRENOM</TableHeaderColumn>
-                <TableHeaderColumn dataField="role" dataAlign="center" dataSort>ROLE</TableHeaderColumn>
+                <TableHeaderColumn dataField="role" editable={{ type: 'select', options: { values: ["Admin", "User"] } }} dataAlign="center" dataSort>ROLE</TableHeaderColumn>
                 <TableHeaderColumn dataField="password" dataAlign="center" dataSort>Changer Mot de passe</TableHeaderColumn>
             </BootstrapTable>
         </div>
