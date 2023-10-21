@@ -56,23 +56,24 @@ export const updateUser = (data: any, id: any) => {
 
 
 
-// export const deleteUser = (id: any) => {
-//     return (dispatch: Dispatch) => {
-//         dispatch(ACTIONS.deleteUsersRequest());
-//         const toastId = toast.loading('Please wait...')
+export const deleteUser = (id: any) => {
+  console.log(id)
+    return (dispatch: Dispatch) => {
+        dispatch(ACTIONS.deleteUsersRequest());
+        const toastId = toast.loading('Please wait...')
 
-//         axios
-//             .delete(`${process.env.REACT_APP_BASE_URL}/users/${id}`)
-//             .then((res) => {
-//                 dispatch(ACTIONS.deleteUsersSuccess(res.data));
-//                 toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
-//             })
-//             .catch((err) => {
-//                 dispatch(ACTIONS.deleteUsersFailure(err.response.data.message));
-//                 toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
-//             })
-//     }
-// }
+        axiosInstance
+            .delete(`${process.env.REACT_APP_BASE_URL}/users/${id}`)
+            .then((res) => {
+                dispatch(ACTIONS.deleteUsersSuccess(res.data));
+                toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
+            })
+            .catch((err) => {
+                dispatch(ACTIONS.deleteUsersFailure(err.response.data.message));
+                toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
+            })
+    }
+}
 
 
 

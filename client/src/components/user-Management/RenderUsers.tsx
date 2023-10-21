@@ -6,10 +6,12 @@ import { darkMode } from '../navbar/Plugins';
 import { useAppDispatch } from '../../state/store.state';
 import { fetchUsers, updateUser } from '../../state/actions-creators/user.actions-creators';
 import { resetPassword } from '../../state/actions-creators/password.actions-creators';
+import DeleteUserBtn from './DeleteUserBtn.user-management';
 
 export default function RenderUsers({ usersList }: any) {
     const dispatch = useAppDispatch();
     const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || true);
+    
     useEffect(() => {
         localStorage.setItem('darkModeStatus', JSON.stringify(isDarkMode));
         darkMode(isDarkMode);
@@ -39,6 +41,13 @@ export default function RenderUsers({ usersList }: any) {
         afterSaveCell: afterSaveCell
     };
 
+    const actionsColumns = (cell?: any, row?: IUser) => {
+        const userID = cell;
+        return (
+            <DeleteUserBtn user={userID} />
+        )
+    }
+
     return (
         <div id='users-table'>
             <BootstrapTable data={manipulatedData} striped hover condensed
@@ -55,6 +64,7 @@ export default function RenderUsers({ usersList }: any) {
                 <TableHeaderColumn dataField="lastName" dataAlign="center" dataSort>PRENOM</TableHeaderColumn>
                 <TableHeaderColumn dataField="role" editable={{ type: 'select', options: { values: ["Admin", "User"] } }} dataAlign="center" dataSort>ROLE</TableHeaderColumn>
                 <TableHeaderColumn dataField="password" dataAlign="center" dataSort>Changer Mot de passe</TableHeaderColumn>
+                <TableHeaderColumn dataField="_id" dataFormat={actionsColumns} dataAlign="center" width='50px'><i className="fa fa-cog" style={{ fontSize: '17px', marginLeft: '-10px' }}></i></TableHeaderColumn>
             </BootstrapTable>
         </div>
     )
