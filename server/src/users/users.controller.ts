@@ -74,7 +74,7 @@ export class UsersController {
     try {
       const deletedUser = await this.usersService.remove(userId);
       return res.status(HttpStatus.OK).json({
-        message: `User ${deletedUser._id} deleted successfully`,
+        message: `User "${deletedUser.username}" deleted successfully`,
         deletedUser: deletedUser
       })
     } catch (error) {

@@ -9,7 +9,6 @@ export default function DeleteUserBtn({user}: IUser | any) {
   const { onePCLoading, pc, onePCError } = useAppSelector(state => state.computers);
 
   const handleDelete = (userId: IUser) => {
-    // console.log(user)
     dispatch(deleteUser(userId))
   }
 

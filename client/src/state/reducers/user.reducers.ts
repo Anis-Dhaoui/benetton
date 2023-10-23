@@ -72,7 +72,7 @@ export const UserRed = (state: STATE = initialState, action: any): STATE => {
             return { ...state, deleting: true, deleteError: null }
 
         case UserActionsTypes.DELETE_USER_SUCCESS:
-            return { ...state, deleting: false, deletedUser: action.payload, users: (state.users as IUser[])!.filter((item: any) => item._id !== action.payload.deletedUser._id) }
+            return { ...state, deleting: false, deletedUser: action.payload, users: (state.users.users as IUser[])!.filter((item: any) => item._id !== action.payload.deletedUser._id) }
 
         case UserActionsTypes.DELETE_USER_FAILURE:
             return { ...state, deleting: false, deleteError: action.payload }
