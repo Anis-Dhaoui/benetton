@@ -11,11 +11,18 @@ import DeleteUserBtn from './DeleteUserBtn.user-management';
 export default function RenderUsers({ usersList }: any) {
     const dispatch = useAppDispatch();
     const [isDarkMode, setisDarkMode] = useState(() => JSON.parse(localStorage.getItem('darkModeStatus')!) || true);
-    
+
     useEffect(() => {
         localStorage.setItem('darkModeStatus', JSON.stringify(isDarkMode));
         darkMode(isDarkMode);
     }, [isDarkMode]);
+
+    // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ CUSTOMIZING ADD NEW USER MODAL INTERFACE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    useEffect(() => {
+        let newBtn = document.querySelector('.react-bs-table-add-btn');
+        newBtn!.innerHTML = "Nouveau utilisateur";
+    }, [])
+    // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ CUSTOMIZING ADD NEW USER MODAL INTERFACE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
     const manipulatedData = usersList?.map((item: any) => {
         return {
@@ -58,13 +65,14 @@ export default function RenderUsers({ usersList }: any) {
                 cellEdit={cellEdit}
                 search
                 searchPlaceholder="Que cherchez-vous?..."
+                insertRow
             >
                 <TableHeaderColumn dataField="username" dataAlign="center" dataSort isKey>USERNAME</TableHeaderColumn>
                 <TableHeaderColumn dataField="firstName" dataAlign="center" dataSort>NOM</TableHeaderColumn>
                 <TableHeaderColumn dataField="lastName" dataAlign="center" dataSort>PRENOM</TableHeaderColumn>
                 <TableHeaderColumn dataField="role" editable={{ type: 'select', options: { values: ["Admin", "User"] } }} dataAlign="center" dataSort>ROLE</TableHeaderColumn>
-                <TableHeaderColumn dataField="password" dataAlign="center" dataSort>Changer Mot de passe</TableHeaderColumn>
-                <TableHeaderColumn dataField="_id" dataFormat={actionsColumns} dataAlign="center" width='50px'><i className="fa fa-cog" style={{ fontSize: '17px', marginLeft: '-10px' }}></i></TableHeaderColumn>
+                <TableHeaderColumn dataField="password" dataAlign="center" dataSort>Mot de passe</TableHeaderColumn>
+                <TableHeaderColumn dataField="_id" hiddenOnInsert dataFormat={actionsColumns} dataAlign="center" width='50px'><i className="fa fa-cog" style={{ fontSize: '17px', marginLeft: '-10px' }}></i></TableHeaderColumn>
             </BootstrapTable>
         </div>
     )

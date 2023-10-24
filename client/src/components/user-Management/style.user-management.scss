@@ -66,3 +66,38 @@ $color_3: rgb(81, 255, 0);
 		}
 	}
 }
+
+
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ADD NEW USER MODAL FORM $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+.ReactModal__Overlay.ReactModal__Overlay--after-open{
+	background-color: rgba(0, 0, 0, 0.75) !important;
+}
+.ReactModal__Overlay.ReactModal__Overlay--after-open .ReactModal__Content.ReactModal__Content--after-open.react-bs-insert-modal.modal-dialog{
+	width: 380px !important;
+	margin: 120px auto;
+}
+
+
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open .ReactModal__Content.ReactModal__Content--after-open.react-bs-insert-modal.modal-dialog .modal-content.react-bs-table-insert-modal{
+	padding: 10px;
+	border-radius: 11px;
+}
+
+.ReactModal__Content.ReactModal__Content--after-open.react-bs-insert-modal.modal-dialog .modal-footer.react-bs-table-inser-modal-footer{
+	margin-top: 10px;
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open .ReactModal__Content.ReactModal__Content--after-open.react-bs-insert-modal.modal-dialog .modal-header.react-bs-table-inser-modal-header button{
+	display: none;
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open .ReactModal__Content.ReactModal__Content--after-open.react-bs-insert-modal.modal-dialog .modal-footer.react-bs-table-inser-modal-footer{
+	justify-content: space-evenly;
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open .ReactModal__Content.ReactModal__Content--after-open.react-bs-insert-modal.modal-dialog .modal-footer.react-bs-table-inser-modal-footer button:first-child{
+	color: whitesmoke;
+	background-color: red;
+	box-shadow: none !important;
+}
