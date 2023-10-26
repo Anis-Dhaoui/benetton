@@ -57,14 +57,14 @@ export const UserRed = (state: STATE = initialState, action: any): STATE => {
 
 
 
-        // case UserActionsTypes.CREATE_USER_REQUEST:
-        //     return { ...state, creating: true, createError: null }
+        case UserActionsTypes.CREATE_USER_REQUEST:
+            return { ...state, creating: true, createError: null }
 
-        // case UserActionsTypes.CREATE_USER_SUCCESS:
-        //     return { ...state, creating: false, createdUser: action.payload, users: [action.payload.computer, ...(state.users as IUser[])!] }
+        case UserActionsTypes.CREATE_USER_SUCCESS:
+            return { ...state, creating: false, createdUser: action.payload, users: [action.payload.createdUser, ...(state.users.users as IUser[])!] }
 
-        // case UserActionsTypes.CREATE_USER_FAILURE:
-        //     return { ...state, creating: false, createError: action.payload }
+        case UserActionsTypes.CREATE_USER_FAILURE:
+            return { ...state, creating: false, createError: action.payload }
 
 
 

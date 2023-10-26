@@ -4,7 +4,7 @@ import './style.user-management.scss';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import { darkMode } from '../navbar/Plugins';
 import { useAppDispatch } from '../../state/store.state';
-import { fetchUsers, updateUser } from '../../state/actions-creators/user.actions-creators';
+import { createUser, fetchUsers, updateUser } from '../../state/actions-creators/user.actions-creators';
 import { resetPassword } from '../../state/actions-creators/password.actions-creators';
 import DeleteUserBtn from './DeleteUserBtn.user-management';
 
@@ -55,12 +55,19 @@ export default function RenderUsers({ usersList }: any) {
         )
     }
 
+    const afterInsertRow = (row: any) => {
+        delete row._id;
+        dispatch(createUser(row))
+    }
+
     return (
         <div id='users-table'>
             <BootstrapTable data={manipulatedData} striped hover condensed
                 options={{
                     clearSearch: true,
                     noDataText: 'Tableau est vide',
+                    // onAddRow: onAddRow,
+                    afterInsertRow: afterInsertRow
                 }}
                 cellEdit={cellEdit}
                 search

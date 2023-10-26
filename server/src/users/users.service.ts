@@ -15,7 +15,7 @@ export class UsersService {
     if (!userData || userData.length == 0) {
       throw new NotFoundException('User data not found');
     }
-
+ 
     return userData;
   }
 
@@ -27,10 +27,11 @@ export class UsersService {
     return user;
   }
 
+
   //$$$$$$$$$$$$$$$$$$// REGISTER NEW USER //$$$$$$$$$$$$$$$$$$//
-  async register(createUserDto: CreateUserDto): Promise<IUser> {
-    const newUser = await new this.userModel(createUserDto);
-    return newUser.save();
+  async register(createUserDto: CreateUserDto): Promise<any> {
+    const newUser = await new this.userModel(createUserDto).save();
+    return newUser;
   }
 
 
@@ -49,7 +50,7 @@ export class UsersService {
     }
     return user;
   }
-  
+
 
   async updatePassword(id: string, updatePasswordDto: updatePasswordDto): Promise<any> {
     const user = await this.userModel.findById(id, ['+password', '-firstName', '-lastName', '-username', '-role', '-__v']);

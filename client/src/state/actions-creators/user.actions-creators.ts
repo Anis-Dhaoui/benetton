@@ -18,23 +18,23 @@ export const fetchUsers = () => {
   }
 }
 
-// export const createUser = (data: any) => {
-//     return (dispatch: Dispatch) => {
-//         dispatch(ACTIONS.createUsersRequest());
-//         const toastId = toast.loading('Please wait...')
+export const createUser = (data: any) => {
+  return (dispatch: Dispatch) => {
+    dispatch(ACTIONS.createUsersRequest());
+    const toastId = toast.loading('Please wait...')
 
-//         axios
-//             .post(`${process.env.REACT_APP_BASE_URL}/users`, data)
-//             .then((res) => {
-//                 dispatch(ACTIONS.createUsersSuccess(res.data));
-//                 toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
-//             })
-//             .catch((err) => {
-//                 dispatch(ACTIONS.createUsersFailure(err.response.data.message));
-//                 toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
-//             })
-//     }
-// }
+    axiosInstance
+      .post(`${process.env.REACT_APP_BASE_URL}/users/register`, data)
+      .then((res) => {
+        dispatch(ACTIONS.createUsersSuccess(res.data));
+        toast.update(toastId, { render: res.data.message, type: "success", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true, icon: true });
+      })
+      .catch((err) => {
+        dispatch(ACTIONS.createUsersFailure(err.response.data.message));
+        toast.update(toastId, { render: err.response.data.message, type: "error", isLoading: false, autoClose: 2000, closeButton: true, closeOnClick: true });
+      })
+  }
+}
 
 export const updateUser = (data: any, id: any) => {
   return (dispatch: Dispatch) => {

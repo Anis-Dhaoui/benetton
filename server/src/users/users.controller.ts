@@ -52,6 +52,7 @@ export class UsersController {
       return res.status(HttpStatus.CREATED).json({
         statusCode: 200,
         message: 'Account created successfully',
+        createdUser: newUser
       });
     } catch (error) {
       if (error && error.keyPattern.username == 1) {

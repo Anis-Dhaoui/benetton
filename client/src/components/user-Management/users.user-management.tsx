@@ -7,11 +7,11 @@ import RenderUsers from './RenderUsers';
 function UsersManagement() {
 
   const dispatch = useAppDispatch();
-  const { loading, users, error, updatedUser, deletedUser } = useAppSelector(state => state.user);
+  const { loading, users, error, updatedUser, deletedUser, createdUser } = useAppSelector(state => state.user);
 
   useEffect(() => {
     dispatch(fetchUsers());
-  }, [updatedUser || deletedUser])
+  }, [updatedUser || deletedUser || createdUser])
 
   if (loading) {
     return (
