@@ -1,4 +1,4 @@
-import { Controller, Get, Body, Param, Res, HttpStatus, Put, UseGuards, Delete, Post, Req } from '@nestjs/common';
+import { Controller, Get, Body, Param, Res, HttpStatus, Put, UseGuards, Delete, Post, Req, HttpException, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { CreateUserDto, resetPasswordDto, updatePasswordDto } from './dto/create-user.dto';
@@ -71,13 +71,17 @@ export class UsersController {
   @Roles('Admin')
   @UseGuards(JwtAuthGuard, RoleGuard)
   @Delete(':userId')
-  async remove(@Res() res, @Param('userId') userId: string) {
+  async remove(@Req() req, @Res() res, @Param('userId') userId: string) {
     try {
-      const deletedUser = await this.usersService.remove(userId);
-      return res.status(HttpStatus.OK).json({
-        message: `User "${deletedUser.username}" deleted successfully`,
-        deletedUser: deletedUser
-      })
+      if (!req.user._id.equals(userId)) {
+        const deletedUser = await this.usersService.remove(userId);
+        return res.status(HttpStatus.OK).json({
+          message: `User "${deletedUser.username}" deleted successfully`,
+          deletedUser: deletedUser
+        })
+      } else {
+        throw new UnauthorizedException('Cannot remove your own account, use a different one');
+      }
     } catch (error) {
       return res.status(error.status).json(error.response);
     }
