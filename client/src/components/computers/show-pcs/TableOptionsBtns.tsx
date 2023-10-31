@@ -106,7 +106,8 @@ function TableOptionsBtns(props: any) {
             // },
             multiselectContainer: {
               height: '35px',
-              borderRadius: '9px'
+              borderRadius: '9px',
+              zIndex: '500'
             },
             searchBox: {
               marginTop: '0px !important',
