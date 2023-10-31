@@ -80,7 +80,7 @@ export class UsersController {
           deletedUser: deletedUser
         })
       } else {
-        throw new UnauthorizedException('Cannot remove your own account, use a different one');
+        throw new UnauthorizedException('Cannot remove your own account, use different account');
       }
     } catch (error) {
       return res.status(error.status).json(error.response);
@@ -90,14 +90,19 @@ export class UsersController {
   @Roles('Admin', 'User')
   @UseGuards(JwtAuthGuard, RoleGuard, OwnerGuard)
   @Put(':userId')
-  async update(@Res() res, @Param('userId') userId: string, @Body() updateUserDto: UpdateUserDto) {
+  async update(@Req() req, @Res() res, @Param('userId') userId: string, @Body() updateUserDto: UpdateUserDto) {
 
     try {
-      const updatedUser = await this.usersService.update(userId, updateUserDto);
-      return res.status(HttpStatus.OK).json({
-        message: `User "${updatedUser.username}" updated successfully`,
-        updatedUser: updatedUser
-      })
+      if ((req.user._id.equals(userId) && updateUserDto.role == undefined) || (!req.user._id.equals(userId) && updateUserDto.role == undefined) || (!req.user._id.equals(userId) && updateUserDto.role != undefined)) {
+        const updatedUser = await this.usersService.update(userId, updateUserDto);
+        return res.status(HttpStatus.OK).json({
+          message: `User "${updatedUser.username}" updated successfully`,
+          updatedUser: updatedUser
+        })
+      } else {
+        throw new UnauthorizedException('Cannot downgrade your own role, use different account');
+      }
+
     } catch (error) {
       if (error && error.keyPattern && error.keyPattern.username == 1) {
         return res.status(HttpStatus.CONFLICT).json({

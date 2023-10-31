@@ -50,10 +50,10 @@ export default function RenderUsers({ usersList }: any) {
         mode: 'dbclick',
         afterSaveCell: afterSaveCell,
         // Prevent the authenticaticated Admin from Editing his own information from this page...
-        nonEditableRows: function () {
-            const authenticatedAdmin = user?.user._id
-            return usersList?.filter((user: any) => user._id === authenticatedAdmin).map((user: any) => user.username);
-        }
+        // nonEditableRows: function () {
+        //     const authenticatedAdmin = user?.user._id
+        //     return usersList?.filter((user: any) => user._id === authenticatedAdmin).map((user: any) => user.username);
+        // }
     }
 
     const actionsColumns = (cell?: any, row?: IUser) => {
