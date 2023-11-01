@@ -32,6 +32,7 @@ function Navbar() {
         return () => {
             document.body.removeEventListener('click', handleBodyClick);
         };
+
     }, []);
 
 
@@ -39,6 +40,42 @@ function Navbar() {
         setisDarkMode(!isDarkMode);
     }
     // $$$$$$$$$$$$$$$$$$$$$$$$$ WHEN DARK MODE BUTTON CLICKED $$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+    // $$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE SHOWING LEFT SIDE NAVBAR $$$$$$$$$$$$$$$$$$$$$$$$$
+    useEffect(() => {
+        const iconNavbarSidenav = document.getElementById('iconNavbarSidenav');
+        const iconSidenav = document.getElementById('iconSidenav');
+        const sidenav = document.getElementById('sidenav-main');
+        let body = document.getElementsByTagName('body')[0];
+        let className = 'g-sidenav-pinned';
+    
+        if (iconNavbarSidenav) {
+            iconNavbarSidenav.addEventListener("click", toggleSidenav);
+        }
+    
+        if (iconSidenav) {
+            iconSidenav.addEventListener("click", toggleSidenav);
+        }
+    
+        function toggleSidenav() {
+            if (body.classList.contains(className)) {
+                body.classList.remove(className);
+                setTimeout(function () {
+                    sidenav?.classList.remove('bg-white');
+                }, 100);
+                sidenav?.classList.remove('bg-transparent');
+    
+            } else {
+                body.classList.add(className);
+                // sidenav.classList.add('bg-white');
+                sidenav?.classList.remove('bg-transparent');
+                iconSidenav?.classList.remove('d-none');
+            }
+        }
+    }, [])
+    // $$$$$$$$$$$$$$$$$$$$$$$$$ HANDLE SHOWING LEFT SIDE NAVBAR $$$$$$$$$$$$$$$$$$$$$$$$$
+
 
     return (
         <main className="main-content">
@@ -59,13 +96,13 @@ function Navbar() {
                                 <Avatar />
                             </li>
                             <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
-                                <a href="#!" className="nav-link p-0 top-right-nav-btn" id="iconNavbarSidenav">
+                                <span className="text-body p-0" id="iconNavbarSidenav">
                                     <div className="sidenav-toggler-inner">
                                         <i className="sidenav-toggler-line"></i>
                                         <i className="sidenav-toggler-line"></i>
                                         <i className="sidenav-toggler-line"></i>
                                     </div>
-                                </a>
+                                </span>
                             </li>
                             <li id='settingUp' className="nav-item px-3 d-flex align-items-center">
                                 {/* eslint-disable */}
