@@ -8,9 +8,9 @@ body{
         margin-left: 5px !important;
     }
 
-    /* #add-new-pc {
+    #add-new-pc {
         left: 420px !important;
-    } */
+    }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1518px) {
@@ -38,5 +38,17 @@ body{
 
     #computer-table .react-bs-table-container .react-bs-table-tool-bar .row:first-child .col-xs-6:last-child {
         width: 100%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    #computers-wrapper{
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 575px) and (max-width: 768px) {
+    #computers-wrapper{
+        width: 100% !important;
     }
 }

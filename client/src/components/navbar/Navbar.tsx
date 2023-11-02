@@ -49,15 +49,15 @@ function Navbar() {
         const sidenav = document.getElementById('sidenav-main');
         let body = document.getElementsByTagName('body')[0];
         let className = 'g-sidenav-pinned';
-    
+
         if (iconNavbarSidenav) {
             iconNavbarSidenav.addEventListener("click", toggleSidenav);
         }
-    
+
         if (iconSidenav) {
             iconSidenav.addEventListener("click", toggleSidenav);
         }
-    
+
         function toggleSidenav() {
             if (body.classList.contains(className)) {
                 body.classList.remove(className);
@@ -65,7 +65,7 @@ function Navbar() {
                     sidenav?.classList.remove('bg-white');
                 }, 100);
                 sidenav?.classList.remove('bg-transparent');
-    
+
             } else {
                 body.classList.add(className);
                 // sidenav.classList.add('bg-white');
@@ -82,7 +82,11 @@ function Navbar() {
             <nav className="navbar navbar-main navbar-expand-lg px-0 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
                 <div className="container-fluid py-1 px-3">
                     <div className="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAJFBMVEVMaXEAmUYAmUYAmUYAmUYAmUYAmUYAmUYAmUYAmUYAmUYAmUbxgxxeAAAADHRSTlMAL2WgtxmE5P9J9dLvxwmjAAAA8UlEQVR4Aa1QJVsDUBQ904pbwiHi1nAruLtbwh9xfr6HS4KITSr+59j23jzvtmvHkL7KbuwqTewnBenZiPeWfk99uXAOxwYm1gE5rI0NHsNLS78vNtj2qbEjNug/BoA5Z3zwqQbnw8kXU/GLbbvCcMdZzlNYTOwAcmM6Voct/eclxh/nsKVKDVoHMOZ9GZRNeNCw27IN1eQBcrxa2uiPbNsi3+7FeWXUvOThFr2xACzbZNMY6Y4qffAGvOc/8k8O6D7He175RJ6FsDo07XmlZhn90SwtGzCIrz1PJiaP1OAWsHpuDGIZKIIuGJuBtRKkq4IKHEfwsaigsQAAAABJRU5ErkJggg=="
+                            alt="LOGO"
+                        />
                         <div className="ms-md-auto pe-md-3 d-flex align-items-center">
+
                             {/* <div className="input-group input-group-outline">
                                 <input type="text" className="form-control" placeholder='Chercher...' />
                             </div> */}

@@ -1712,7 +1712,7 @@ progress {
 
   .col-lg-10 {
     flex: 0 0 auto;
-    width: 83.333333%;
+    width: 100%;
   }
 
   .col-lg-11 {
@@ -23450,7 +23450,7 @@ hr.horizontal.gray-light {
     top: 0;
     bottom: 0;
     width: 100%;
-    max-width: 15.625rem !important;
+    /* max-width: 15.625rem !important; */
     overflow-y: auto;
     padding: 0;
     box-shadow: none;

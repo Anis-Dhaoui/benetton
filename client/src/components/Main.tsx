@@ -47,14 +47,14 @@ function Main() {
               <div className='col-md-12'>
                 <Navbar />
               </div>
-              <div className='col-md-2 col-sm-3'>
+              <div className='col-2' id='sideNav'>
                 <SideNav />
               </div>
             </>
             : null
         }
 
-        <div className='col-md-10 col-sm-9'>
+        <div className='col-lg-10 col-md-12 col-sm-10' id="computers-wrapper">
           <div className='row'>
             <div className='col-md-12'>
               <Routes>
