@@ -21,9 +21,9 @@ export const createUsersRequest = () => ({
     type: UserActionsTypes.CREATE_USER_REQUEST
 })
 
-export const createUsersSuccess = (computer: any) => ({
+export const createUsersSuccess = (user: any) => ({
     type: UserActionsTypes.CREATE_USER_SUCCESS,
-    payload: computer
+    payload: user
 })
 
 export const createUsersFailure = (errMsg: string) => ({
@@ -38,9 +38,9 @@ export const updateUsersRequest = () => ({
     type: UserActionsTypes.UPDATE_USER_REQUEST
 })
 
-export const updateUsersSuccess = (computer: any) => ({
+export const updateUsersSuccess = (user: any) => ({
     type: UserActionsTypes.UPDATE_USER_SUCCESS,
-    payload: computer
+    payload: user
 })
 
 export const updateUsersFailure = (errMsg: string) => ({
@@ -72,9 +72,9 @@ export const getSingleUserRequest = () => ({
     type: UserActionsTypes.GET_SINGLE_USER_REQUEST
 })
 
-export const getSingleUserSuccess = (computer: any) => ({
+export const getSingleUserSuccess = (user: any) => ({
     type: UserActionsTypes.GET_SINGLE_USER_SUCCESS,
-    payload: computer
+    payload: user
 })
 
 export const getSingleUserFailure = (errMsg: string) => ({
