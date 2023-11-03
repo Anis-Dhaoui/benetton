@@ -3,12 +3,12 @@ import { ROLES } from "../enum/roles.enum";
 
 export class CreateUserDto {
     @IsString()
-    @MaxLength(15)
+    @MaxLength(30)
     @IsNotEmpty()
     readonly firstName: string;
 
     @IsString()
-    @MaxLength(15)
+    @MaxLength(30)
     @IsNotEmpty()
     readonly lastName: string;
 
