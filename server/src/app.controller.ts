@@ -6,10 +6,11 @@ import * as path from 'path';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
-  @Get()
+  @Get(['/', '/home', '/profile', '/users_management'])
   index(@Res() res) {
-    res.sendFile(path.join(__dirname, '../build/index.html'))
+    const absolutePath = path.resolve(__dirname, '../build/index.html');
+    res.sendFile(absolutePath);
   }
 }
