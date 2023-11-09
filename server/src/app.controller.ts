@@ -8,7 +8,7 @@ import * as path from 'path';
 export class AppController {
   constructor(private readonly appService: AppService) { }
 
-  @Get(['/', '/home', '/profile', '/users_management'])
+  @Get(['/', '/login', '/home', '/profile', '/users_management'])
   index(@Res() res) {
     const absolutePath = path.resolve(__dirname, '../build/index.html');
     res.sendFile(absolutePath);
