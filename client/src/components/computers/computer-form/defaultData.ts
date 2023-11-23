@@ -26,6 +26,8 @@ export const softwaresList = [
     'Abaco',
     'Aive',
     'Assyst',
+    'Graphics',
+    'TessisCloud',
     'Atomos',
     'Beta',
     'CICS',
