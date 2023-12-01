@@ -67,6 +67,8 @@ export const groupList = [
     'Audit Soc et Envir',
     'Bon de Livraison',
     'CAD',
+    'logistique',
+    'Facturation',
     'C.Qualité',
     'Campionnario',
     'Comptabilité',
