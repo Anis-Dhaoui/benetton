@@ -80,6 +80,7 @@ export const groupList = [
     'G.Gafsa',
     'G.Kasserine',
     'IT',
+    'Smart Client',
     'Indus',
     'Industrie',
     'LAV.Teint B1',
