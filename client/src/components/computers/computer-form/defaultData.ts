@@ -57,7 +57,9 @@ export const softwaresList = [
     'TTN',
     'Terminal',
     'TEXCUT',
-    'Vison R11'
+    'INFO_TINT',
+    'Vison R11',
+    'Stampa Pendali',
 ]
 
 
